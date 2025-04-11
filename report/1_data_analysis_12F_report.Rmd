@@ -1,0 +1,1384 @@
+---
+title: "The Descriptive Analysis of IPD Caused by 12F"
+author: "DAChristina"
+output: 
+  html_document:
+    toc: TRUE
+    toc_float: TRUE
+date: "`r format(Sys.time(), '%d %B %Y')`"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(warning = FALSE, echo = FALSE)
+
+if(!require(pacman)) install.packages("pacman")
+pacman::p_load(reactable, tidyverse, plotly)
+```
+
+## 1. Introduction
+
+### 1.1. Data
+
+1.  Serotype 12F Version 1: Daily data (2016-2022)
+2.  Serotype 12F Version 2: Epidemiological year separated into six age bands (2009.5-2022.5)
+3.  Serotype 12F Version 3: Epidemiological year separated into six age bands, grouped per week (2000-2017; 2000 is filtered)
+4.  Serotype 7F (for comparison)
+5.  Serotype 1 (for comparison)
+
+### 1.2. Summary
+
+This report contains descriptive analysis and data visualisation for invasive pneumococcal disease (IPD) caused by Serotype 12F pneumococcus. Three sets of data were shared with me on 19 December 2024 to 15 January 2025. They consist of information about the patient's age, sample type, sterility, and collection date (2016-2022, ver1) or just the epidemiological year separated into six age bands (2009.5-2022.5, ver2) or epidemiological year separated into weeks and six age bands (2000-2017; 2000 is filtered).
+
+I combined ver3 (2001-2017) and ver1 (2017-2022) datasets based on their consistency compared to ver2 dataset, resulting in total of 4,907 recorded cases from January 2001 to March 2022, dominated by elderly people aged 65+ (1,730), then followed by 45-64 (1,720) and 15-44 (1,108).
+
+In the ver1 dataset, 1,341 recorded cases were recorded from 2 January 2016 to 23 March 2022, dominated by adults and elderly people aged \>= 40. The IPD cases peaked in 2018 (495 cases) and 2019 (365 cases) before slowly disappearing thereafter. 96.2% of the samples dominated by blood culture (1290), and 98.7% of the samples were considered sterile.
+
+In the ver2 dataset, 2,050.2 adjusted counts (2016-2022) are recorded, peaking in 2016.5 (epidemiological year 2016/2017; instead of disease peak in 2018 ver1), with 4,195.9 adjusted cases in total. I created a barplot (Figure 1. A, B and C) and found a huge difference in recorded cases of adults (3 age bands ranging from 15-65+ demographic groups); including why the numbers are different in 2016 (Figure 1. C).
+
+```{r}
+# 
+options(dplyr.summarise.inform = FALSE) # supress annoying messages & warnings
+dat <- read.csv("/home/ron/Strep_postThesis/raw_data/12F_cleaned.csv") %>%
+  dplyr::mutate(yearMonth = as.Date(yearMonth))
+
+dat_v2 <- read.csv("/home/ron/Strep_postThesis/raw_data/12F_v2_cleaned.csv")
+
+dat_v3 <- read.csv("/home/ron/Strep_postThesis/raw_data/12F_Jan_2025_cleaned.csv") %>% 
+  dplyr::filter(year != "2000") # filtered coz' I don't have population data for 2000
+
+dat_c <- read.csv("/home/ron/Strep_postThesis/raw_data/12F_Jan_2025_combined_cleaned.csv")
+
+dat_sty7F <- read.csv("/home/ron/Strep_postThesis/raw_data/7F_Jan_2025_cleaned.csv") %>% 
+  dplyr::filter(year != "2000") # filtered coz' I don't have population data for 2000
+
+dat_sty1 <- read.csv("/home/ron/Strep_postThesis/raw_data/serotype1_cleaned.csv") %>%
+  dplyr::mutate(yearMonth = as.Date(yearMonth))
+
+pop_l <- read.csv("/home/ron/Strep_postThesis/raw_data/nomis_population_long.csv")
+
+col_map <- c(
+  # Data version
+  "12F ver1 (2016-2022)" = "indianred4",
+  "12F ver2 (2009.5-2022.5)" = "seagreen4",
+  "12F ver3 weekly (2001-2017)" = "orange2",
+  "serotype 1" = "steelblue",
+  "7F" = "purple3",
+  "12F ver1 & 3 (2001-2022)" = "indianred4",
+  
+  # Vaccination
+  "Pre-PCV7" = "lightblue",
+  "PCV7" = "gray70",
+  "PCV13" = "gray20",
+  
+  # 2 age bands
+  "children" = "darkred",
+  "adults" = "darkblue",
+  
+  # 3 age bands
+  "<2" = "indianred4",
+  "2-64" = "seagreen4",
+  "65+" = "purple3",
+  
+  # 5 age bands 
+  "<5" = "indianred4",
+  "5-18" = "orange",
+  "19-30" = "seagreen4",
+  "31-64" = "steelblue",
+  #"65+" = "purple3",
+  
+  # 6 age bands 
+  #"<2" = "indianred4", 
+  "2-4" = "indianred2", 
+  "5-14" = "orange",
+  "15-44" = "seagreen4",
+  "45-64" = "steelblue",
+  #"65+" = "purple3",
+  
+  # 7 age bands
+  #"<2" = "indianred4", 
+  #"2-4" = "indianred2", 
+  #"5-14" = "orange",
+  "15-30" = "seagreen1", # Edit the Age-band into 15-30 & 31-44
+  "31-44" = "seagreen4", # Edit the Age-band into 15-30 & 31-44
+  #"45-64" = "steelblue",
+  #"65+" = "purple3",
+  "Unknown" = "black",
+  
+  # Regions (From north to south)
+  "North West" = "indianred4",
+  "North East" = "steelblue",
+  "Yorkshire and The Humber" = "seagreen4",
+  "East Midlands" = "purple3",
+  "West Midlands" = "orange",
+  "East of England" = "indianred2",
+  "London" = "seagreen1",
+  "South East" = "deepskyblue",
+  "South West" = "gold1",
+  # Cases vs sequenced
+  "Serotype 1 Case" = "gray75",
+  "Sequenced" = "deepskyblue3",
+  "Meningitis" = "green",
+  "30 Day Death" = "maroon"
+)
+
+vaccine_UK <- data.frame(
+  year = c(2011),
+  vaccine = c("PCV13")
+)
+
+```
+
+```{r}
+# Trial combine datasets (ver.1 & 2)
+
+# dat_combined <- dplyr::bind_rows(
+#   dat %>% 
+#     dplyr::group_by(year, ageGroup6) %>% 
+#     dplyr::summarise(counts = n()) %>% 
+#     dplyr::ungroup() %>% 
+#     dplyr::mutate(version = as.character("12F ver1 (2016-2022)"))
+#   ,
+#   dat_v2 %>% 
+#     dplyr::select(year, ageGroup6, Adjusted.counts) %>% 
+#     dplyr::rename(counts = Adjusted.counts) %>% 
+#     dplyr::mutate(version = as.character("12F ver2 (2009.5-2022.5)"))
+#   ,
+#   dat_v3 %>% 
+#     dplyr::select(year, ageGroup6, CountOfRevisedOPIEID) %>% 
+#     dplyr::rename(counts = CountOfRevisedOPIEID) %>% 
+#     dplyr::mutate(version = as.character("12F ver3 weekly (2001-2017)"))
+# ) %>% 
+#   dplyr::mutate(ageGroup6 = fct_relevel(ageGroup6, 
+#             "<2", "2-4", "5-14", 
+#             "15-44", "45-64", "65+"))
+
+dat_combined <- dplyr::bind_rows(
+  dat_c %>% 
+    dplyr::group_by(year, ageGroup6) %>% 
+    dplyr::summarise(counts = sum(counts)) %>% 
+    dplyr::ungroup() %>% 
+    dplyr::mutate(version = as.character("12F ver1 & 3 (2001-2022)"))
+  ,
+  dat_v2 %>% 
+    dplyr::select(year, ageGroup6, Adjusted.counts) %>% 
+    dplyr::rename(counts = Adjusted.counts) %>% 
+    dplyr::mutate(version = as.character("12F ver2 (2009.5-2022.5)"))
+) %>% 
+  dplyr::mutate(ageGroup6 = fct_relevel(ageGroup6, 
+            "<2", "2-4", "5-14", 
+            "15-44", "45-64", "65+"))
+
+# Data viz!
+viz_age_all <- ggplot(dat_combined, aes(x = ageGroup6, y = counts,
+                                        fill = version, group = version)) +
+  geom_bar(stat = "identity", position = "dodge") +
+  scale_fill_manual(values = c(col_map)) +
+  labs(title = "Bar plot (ver1 & 3)", x = "Demographic", y = "Counts") +
+  theme_bw() +
+  theme(legend.position="none")
+
+viz_age_choosen <- ggplot(dat_combined %>% 
+                            dplyr::filter(year >= 2016),
+                          aes(x = ageGroup6, y = counts,
+                              fill = version, group = version)) +
+  geom_bar(stat = "identity", position = "dodge") +
+  scale_fill_manual(values = c(col_map)) +
+  labs(title = "Bar plot (2016 onwards)", x = "Demographic", y = "Counts") +
+  theme_bw() +
+  theme(legend.position="none")
+
+viz_age_facet <-ggplot(dat_combined %>% 
+                         dplyr::filter(year >= 2016),
+                       aes(x = ageGroup6, y = counts,
+                           fill = version, group = version)) +
+  geom_bar(stat = "identity", position = "dodge") +
+  scale_fill_manual(values = c(col_map)) +
+  labs(title = "Bar plot (2016 onwards)", x = "Demographic", y = "Counts") +
+  theme_bw() +
+  theme(legend.position="bottom") +
+  facet_wrap(~ year, ncol = 4, scales = "free_y")
+
+viz_age1 <- cowplot::plot_grid(viz_age_all, viz_age_choosen,
+                               ncol = 2,
+                               labels = c("A", "B"))
+
+viz_stacked <- cowplot::plot_grid(NULL, viz_age_facet,
+                                    ncol = 1,
+                                    rel_heights = c(0.1, 2),
+                                    labels = c("", "C"))
+
+# viz_all <- cowplot::plot_grid(viz_age1, viz_stacked,
+#                                ncol = 1)
+
+viz_age1
+viz_stacked
+```
+
+## 2. Data Visualisation
+
+### 2.1. Seasonality
+
+Based on the ver1 & ver3 dataset, the case counts peaked in 2016-2017 (790 & 626, respectively) before slowly reducing in the following year (Figure 2.1.1. A). I grouped the data by months (Figure 2.1.1. A) and found that the case counts peaked in December (762 cases) before slightly reduced in January of the following year (505) but increased again in February (660 cases). The case counts hit its lowest case counts in August (only 145 cases recorded).
+
+```{r}
+# all_year is ver1 & ver3 combination
+all_year_v1 <- dplyr::left_join(
+  dat %>% 
+    dplyr::group_by(year) %>% 
+    dplyr::summarise(counts = n()) %>% 
+    dplyr::ungroup()
+  ,
+  pop_l %>% 
+    dplyr::group_by(year) %>% 
+    dplyr::summarise(PopSize = sum(PopSize)) %>% 
+    dplyr::ungroup()
+  ,
+  by = "year"
+) %>% 
+  dplyr::mutate(Conf_Int = epitools::binom.exact(counts, PopSize),
+                incid_per10e5 = Conf_Int$proportion*100000,  # per-100,000 population
+                version = "12F ver1 (2016-2022)")
+
+all_year_v2 <- dplyr::left_join(
+  dat_v2 %>%
+    dplyr::mutate(year = as.numeric(substr(year, 1, 4))+1) %>% # shifted to next year
+    dplyr::group_by(year) %>%
+    dplyr::summarise(counts = round(sum(Adjusted.counts), 0)) %>%
+    dplyr::ungroup()
+  ,
+  pop_l %>%
+    dplyr::group_by(year) %>%
+    dplyr::summarise(PopSize = sum(PopSize)) %>%
+    dplyr::ungroup()
+  ,
+  by = "year"
+) %>%
+  dplyr::mutate(Conf_Int = epitools::binom.exact(counts, PopSize),
+                incid_per10e5 = Conf_Int$proportion*100000,  # per-100,000 population
+                version = "12F ver2 (2009.5-2022.5)")
+
+all_year_v3 <- dplyr::left_join(
+  dat_v3 %>%
+    dplyr::group_by(year) %>%
+    dplyr::summarise(counts = round(sum(CountOfRevisedOPIEID), 0)) %>%
+    dplyr::ungroup()
+  ,
+  pop_l %>%
+    dplyr::group_by(year) %>%
+    dplyr::summarise(PopSize = sum(PopSize)) %>%
+    dplyr::ungroup()
+  ,
+  by = "year"
+) %>%
+  dplyr::mutate(Conf_Int = epitools::binom.exact(counts, PopSize),
+                incid_per10e5 = Conf_Int$proportion*100000,  # per-100,000 population
+                version = "12F ver3 weekly (2001-2017)")
+
+all_year <- dplyr::bind_rows(
+  all_year_v1,
+  all_year_v3
+)
+
+all_month <- dplyr::bind_rows(
+  dat %>% 
+    dplyr::group_by(month) %>% 
+    dplyr::summarise(counts = n())
+  ,
+  dat_v3 %>% 
+    dplyr::group_by(month) %>% 
+    dplyr::summarise(counts = round(sum(CountOfRevisedOPIEID), 0)) %>% 
+    dplyr::ungroup()
+  ) %>% 
+  dplyr::group_by(month) %>% 
+  dplyr::summarise(counts = round(sum(counts), 0)) %>% 
+  dplyr::ungroup()
+
+# Generate new dataframe for yearMonth because no data in some yearMonth
+# Serotype 12F
+# all_yearMonth is ver1 & ver3 combination
+all_yearMonth_v1 <- dplyr::left_join(
+  data.frame(yearMonth = seq(as.Date(paste0(min(dat$year), "-01-01")),
+                             as.Date(paste0(max(dat$year), "-12-01")),
+                             by = "1 month"))
+  ,
+  dat %>% 
+    dplyr::group_by(yearMonth) %>% 
+    dplyr::summarise(counts = n()) %>% 
+    dplyr::ungroup() %>% 
+    dplyr::mutate(
+      version = as.character("12F ver1 (2016-2022)"),
+      yearMonth = as.Date(yearMonth))
+  ,
+  by = "yearMonth"
+)
+
+all_yearMonth_v3 <- dplyr::left_join(
+  data.frame(yearMonth = seq(as.Date(paste0(min(dat_v3$year), "-01-01")),
+                             as.Date(paste0(max(dat_v3$year), "-12-01")),
+                             by = "1 month"))
+  ,
+  dat_v3 %>% 
+    dplyr::group_by(yearMonth) %>% 
+    dplyr::summarise(counts = round(sum(CountOfRevisedOPIEID), 0)) %>%
+    dplyr::ungroup() %>% 
+    dplyr::mutate(version = as.character("12F ver3 weekly (2001-2017)"),
+                  yearMonth = as.Date(yearMonth))
+  ,
+  by = "yearMonth"
+)
+
+all_yearMonth <- dplyr::bind_rows(
+  all_yearMonth_v1,
+  all_yearMonth_v3
+)
+
+
+# Serotype 1 for comparison
+all_yearMonth_sty1 <- dplyr::left_join(
+  data.frame(yearMonth = seq(as.Date(paste0(min(dat_sty1$year), "-01-01")),
+                             as.Date(paste0(max(dat_sty1$year), "-12-01")),
+                             by = "1 month"))
+  ,
+  dat_sty1 %>% 
+    dplyr::group_by(yearMonth) %>% 
+    dplyr::summarise(counts = n()) %>% 
+    dplyr::ungroup() %>% 
+    dplyr::mutate(
+      version = as.character("serotype 1"),
+      yearMonth = as.Date(yearMonth))
+  ,
+  by = "yearMonth"
+)
+
+# Serotype 7F for comparison
+all_yearMonth_sty7F <- dplyr::left_join(
+  data.frame(yearMonth = seq(as.Date(paste0(min(dat_sty7F$year), "-01-01")),
+                             as.Date(paste0(max(dat_sty7F$year), "-12-01")),
+                             by = "1 month"))
+  ,
+  dat_sty7F %>% 
+    dplyr::mutate(yearMonth = as.Date(yearMonth)) %>% 
+    dplyr::group_by(yearMonth) %>% 
+    dplyr::summarise(counts = n()) %>% 
+    dplyr::ungroup() %>% 
+    dplyr::mutate(
+      version = as.character("7F"),
+      yearMonth = as.Date(yearMonth))
+  ,
+  by = "yearMonth"
+)
+
+all_yearMonth_all <- dplyr::bind_rows(
+  all_yearMonth,
+  all_yearMonth_sty1,
+  all_yearMonth_sty7F
+)
+
+
+```
+
+```{r}
+
+# Data viz!
+viz_year <- ggplot(all_year, aes(x = year, y = counts,
+                                 group = version, colour = version)) +
+  geom_line(size = 1.5) +
+  scale_colour_manual(values = c(col_map)) +
+  scale_x_continuous(limits = c(2010, 2022),
+                     breaks = ~ axisTicks(., log = FALSE)) + # delete weird decimals in Year
+  labs(title = "Case counts\nver1&3(2001-2022)") +
+  theme_bw() +
+  theme(legend.position="none")
+
+viz_year_v2 <- ggplot(all_year_v2, aes(x = year, y = counts,
+                                 group = version, colour = version)) +
+  geom_line(size = 1.5) +
+  scale_colour_manual(values = c(col_map)) +
+  scale_x_continuous(limits = c(2010, 2022),
+                     breaks = ~ axisTicks(., log = FALSE)) + # delete weird decimals in Year
+  labs(title = "Case counts\nver2") +
+  theme_bw() +
+  theme(legend.position="none")
+
+viz_year_incid <- ggplot(all_year, aes(x = year, y = Conf_Int$proportion*100000,
+                                       group = version, colour = version)) +
+  geom_line(size = 1.5) +
+  scale_colour_manual(values = c(col_map)) +
+  geom_errorbar(aes(ymin = Conf_Int$lower*100000, ymax = Conf_Int$upper*100000),
+                width = .1) +
+  scale_x_continuous(limits = c(2010, 2022),
+                     breaks = ~ axisTicks(., log = FALSE)) + # delete weird decimals in Year
+  labs(y = "incidence",
+       title = "Incidence\nver1&3(2001-2022)") +
+  theme_bw() +
+  theme(legend.position="none")
+
+viz_year_incid_v2 <- ggplot(all_year_v2, aes(x = year, y = Conf_Int$proportion*100000,
+                                       group = version, colour = version)) +
+  geom_line(size = 1.5) +
+  scale_colour_manual(values = c(col_map)) +
+  geom_errorbar(aes(ymin = Conf_Int$lower*100000, ymax = Conf_Int$upper*100000),
+                width = .1) +
+  scale_x_continuous(limits = c(2010, 2022),
+                     breaks = ~ axisTicks(., log = FALSE)) + # delete weird decimals in Year
+  labs(y = "incidence",
+       title = "Incidence\nver2") +
+  theme_bw() +
+  theme(legend.position="none")
+
+
+viz_month <- ggplot(all_month, aes(x = month, y = counts)) +
+  geom_line(size = 1.5) +
+  scale_x_continuous(breaks = ~ axisTicks(., log = FALSE)) + # delete weird decimals in Year
+  theme_bw()
+
+# Additional data to viz seasonality pattern in yearMonth
+# Change min date from those recorded for Serotype 1
+december_lines <- seq(from = as.Date(paste0(min(dat_sty1$year)-1, "-12-01")),
+                      to = as.Date(paste0(max(dat$year)-1, "-12-01")),
+                      by = "1 year")
+
+
+blocks <- data.frame(
+  xmin = as.Date(paste0((min(dat_sty1$year) - 1):(max(dat$year) - 1), "-12-01")),  # Start December
+  xmax = as.Date(paste0((min(dat_sty1$year)):(max(dat$year)), "-03-01")),  # End March
+  year = (min(dat_sty1$year) - 1):(max(dat$year) - 1)
+)
+
+viz_yearMonth <- ggplot(all_yearMonth, aes(x = yearMonth, y = counts,
+                                           group = version, colour = version)) +
+  geom_line(size = 1.5) +
+  scale_colour_manual(values = c(col_map)) +
+  scale_x_date(date_labels = "%Y", date_breaks = "1 year",
+               limits = c(as.Date("2002-12-01"), as.Date("2023-01-01"))
+               ) +
+  # geom_vline(xintercept = december_lines, linetype = "dashed", colour = "darkred") +
+  geom_rect(data = blocks, aes(xmin = xmin, xmax = xmax,
+                               ymin = -Inf, ymax = Inf),
+            fill = "darkred",
+            inherit.aes = FALSE, alpha = 0.2
+  ) +
+  ggtitle("The Counts of Serotype 12F by Months Specific to Every Year") +
+  theme_bw() +
+  theme(
+    panel.grid.major = element_line(size = 0.2, color = "grey80"),
+    panel.grid.minor = element_line(size = 0.2, color = "grey80"),
+    axis.line = element_line(color = "black"),
+    legend.position="bottom"
+  )
+
+viz_yearMonth_all <- ggplot(all_yearMonth_all, aes(x = yearMonth, y = counts,
+                                                    group = version, colour = version)) +
+  geom_line(size = 1.5) +
+  scale_colour_manual(values = c(col_map)) +
+  scale_x_date(date_labels = "%Y", date_breaks = "1 year",
+               limits = c(as.Date("2002-12-01"), as.Date("2023-01-01"))
+               ) +
+  geom_vline(xintercept = december_lines, linetype = "dashed", colour = "darkred") +
+  geom_rect(data = blocks, aes(xmin = xmin, xmax = xmax,
+                               ymin = -Inf, ymax = Inf),
+            fill = "darkred",
+            inherit.aes = FALSE, alpha = 0.2
+  ) +
+  ggtitle("The Counts of All Serotype Data by Months Specific to Every Year") +
+  theme_bw() +
+  theme(
+    panel.grid.major = element_line(size = 0.2, color = "grey80"),
+    panel.grid.minor = element_line(size = 0.2, color = "grey80"),
+    axis.line = element_line(color = "black"),
+    legend.position="bottom"
+  )
+
+p_month <- cowplot::plot_grid(NULL, viz_month,
+                                    ncol = 1,
+                                    rel_heights = c(0.1, 2),
+                                    labels = c("", "A"))
+
+p1 <- cowplot::plot_grid(viz_year, viz_year_v2,
+                         ncol = 1,
+                         labels = c("B", "C"))
+
+p2 <- cowplot::plot_grid(viz_year_incid, viz_year_incid_v2,
+                         ncol = 1,
+                         labels = c("D", "E"))
+
+p2 <- cowplot::plot_grid(viz_year_incid, viz_year_incid_v2,
+                         ncol = 1,
+                         labels = c("D", "E"))
+
+p3 <- cowplot::plot_grid(p1, p2,
+                         rel_heights = c(1, 1))
+
+
+p4 <- cowplot::plot_grid(p_month, p3,
+                         ncol = 1,
+                         rel_heights = c(1.5, 3))
+
+p4
+```
+
+I did the seasonality pattern based on ver1 and ver3 datasets. Seasonality was evident when I analysed the data specific to months in every year (Figure 2.1.1. C), with peaks recorded in December (dashed red lines) but reduced in January and then increased again in February (red boxes covered December to March on the following year).
+
+Based on my curiosity, I compared the seasonality pattern in serotype 1, 7F and 12F; the outbreak caused by 12F increased after the introduction of PCV13. PCV13 does not cover protection for serotype 12F.
+
+```{r}
+# Annoying plot for label
+cow_yearMonth <- cowplot::plot_grid(NULL, viz_yearMonth,
+                                    ncol = 1,
+                                    rel_heights = c(0.1, 1))
+
+cow_yearMonth
+```
+
+```{r}
+# Trial combined plot for all known serotypes
+viz_yearMonth_sty_combined <- ggplot(all_yearMonth_all,
+                                     aes(x = yearMonth, y = counts,
+                                         group = version, colour = version)) +
+  geom_line(size = 1.5) +
+  scale_colour_manual(values = c(col_map)) +
+  scale_x_date(date_labels = "%Y", date_breaks = "1 year",
+               limits = c(as.Date("2002-12-01"), as.Date("2023-01-01"))
+               ) +
+  # geom_vline(xintercept = december_lines, linetype = "dashed", colour = "darkred") +
+  geom_rect(data = blocks, aes(xmin = xmin, xmax = xmax,
+                               ymin = -Inf, ymax = Inf),
+            fill = "darkred",
+            inherit.aes = FALSE, alpha = 0.2
+  ) +
+  geom_vline(xintercept = as.Date("2010-04-01"),
+             linetype = "dashed") +
+  geom_label(aes(x = as.Date("2010-04-01"), y = 90, label = "PCV13\nApril 2010"),
+             fill = "white", color = "black") + # 2011 = PCV13 = "gray20"
+  ggtitle("The Counts by Months Specific to Every Year") +
+  theme_bw() +
+  theme(
+    panel.grid.major = element_line(size = 0.2, color = "grey80"),
+    panel.grid.minor = element_line(size = 0.2, color = "grey80"),
+    axis.line = element_line(color = "black"),
+    legend.position="bottom"
+  )
+
+viz_yearMonth_sty_combined
+
+```
+
+### 2.2. Age heterogeneity
+
+Because the ver1 and ver3 datasets are similar, I combined the data by deleting overlapped data in ver1 (January 2016 - June 2017). I re-visualised case counts between two datasets (combined data and ver2) based on 6 demographic groups each year (Figure 2.2.1) and am quite optimistic that both data are similar.
+
+```{r}
+# Hereby it would be fine to combine data ver1 & ver3
+# load dat_c
+
+ageGroup3_y <- dplyr::left_join(
+  dat_c %>% 
+    dplyr::group_by(year, ageGroup3) %>% 
+    dplyr::summarise(counts = sum(counts)) %>% 
+    dplyr::ungroup()
+  ,
+  pop_l %>% 
+    dplyr::group_by(year, ageGroup3) %>% 
+    dplyr::summarise(PopSize = sum(PopSize)) %>% 
+    dplyr::ungroup()
+  ,
+  by = c("year", "ageGroup3")
+) %>% 
+  dplyr::filter(ageGroup3 != "Unknown") %>% 
+  dplyr::mutate(Conf_Int = epitools::binom.exact(counts, PopSize),
+                incid_per10e5 = Conf_Int$proportion*100000) # per-100,000 population
+
+ageGroup3_yM <- dat_c %>% 
+  dplyr::group_by(yearMonth, ageGroup3) %>% 
+  dplyr::summarise(counts = sum(counts)) %>% 
+  dplyr::ungroup() %>% 
+  dplyr::mutate(yearMonth = as.Date(yearMonth))
+
+
+##### UKHSA 6 age bands #####
+ageGroup6_y <- dplyr::left_join(
+  dat_c %>% 
+    dplyr::group_by(year, ageGroup6) %>% 
+    dplyr::summarise(counts = sum(counts)) %>% 
+    dplyr::ungroup()
+  ,
+  pop_l %>% 
+    dplyr::group_by(year, ageGroup6) %>% 
+    dplyr::summarise(PopSize = sum(PopSize)) %>% 
+    dplyr::ungroup()
+  ,
+  by = c("year", "ageGroup6")
+) %>% 
+  dplyr::filter(ageGroup6 != "Unknown") %>% 
+  dplyr::mutate(Conf_Int = epitools::binom.exact(counts, PopSize),
+                incid_per10e5 = Conf_Int$proportion*100000) # per-100,000 population
+
+ageGroup6_yM <- dat_c %>% 
+  dplyr::group_by(yearMonth, ageGroup6) %>% 
+  dplyr::summarise(counts = sum(counts)) %>% 
+  dplyr::ungroup() %>% 
+  dplyr::mutate(yearMonth = as.Date(yearMonth))
+
+ageGroup6_y_v2 <- dat_v2 %>% 
+  dplyr::group_by(year, ageGroup6) %>% 
+  dplyr::summarise(counts = sum(Adjusted.counts)) %>% 
+  dplyr::ungroup()
+##### UKHSA 6 age bands #####
+
+
+```
+
+```{r}
+# With dat_v2 data
+viz_agegroup6_y <- ggplot(ageGroup6_y, aes(x = year, y = counts, group = ageGroup6,
+                                           color = ageGroup6)) +
+  geom_line(size = 1.5) + 
+  geom_vline(data = vaccine_UK, aes(xintercept = year,
+                                    colour = vaccine),
+             linetype = "dashed") +
+  geom_label(aes(x = 2011, y = 150, label = "PCV13"),
+             fill = "white", color = "black") + # 2011 = PCV13 = "gray20"
+  scale_color_manual(values = c(col_map),
+                     name = " ",
+                     breaks = c("<2", "2-4", "5-14", "15-44", "45-64", "65+", "Unknown"),
+                     labels = c("<2", "2-4", "5-14", "15-44", "45-64", "65+", "Unknown")
+  ) +
+  scale_x_continuous(breaks = ~ axisTicks(., log = FALSE)) + # delete weird decimals in Year
+  labs(y = "Counts",
+       title = "ver1 & 3 (2001-2022)") +
+  theme_bw() +
+  theme(legend.position = "none")
+
+viz_agegroup6_y_v2 <- ggplot(ageGroup6_y_v2, aes(x = year, y = counts, group = ageGroup6,
+                                           color = ageGroup6)) +
+  geom_line(size = 1.5) +
+  geom_vline(data = vaccine_UK, aes(xintercept = year,
+                                    colour = vaccine),
+             linetype = "dashed") +
+  geom_label(aes(x = 2011, y = 150, label = "PCV13"),
+             fill = "white", color = "black") + # 2011 = PCV13 = "gray20"
+  scale_color_manual(values = c(col_map),
+                     name = " ",
+                     breaks = c("<2", "2-4", "5-14", "15-44", "45-64", "65+", "Unknown"),
+                     labels = c("<2", "2-4", "5-14", "15-44", "45-64", "65+", "Unknown")
+  ) +
+  scale_x_continuous(breaks = ~ axisTicks(., log = FALSE)) + # delete weird decimals in Year
+  labs(y = "Counts (adjusted)",
+       title = "ver2 (Jul. 2009-Jun. 2021)") +
+  theme_bw() +
+  # theme(legend.position = "none")
+  theme(
+    legend.text = element_text(size=10),
+    legend.title = element_text(size=11),
+    legend.key.size = unit(0.25, "cm")
+  )
+
+
+p6 <- cowplot::plot_grid(viz_agegroup6_y, viz_agegroup6_y_v2,
+                         ncol = 2,
+                         rel_widths = c(1, 1.2))
+
+p6_final <- cowplot::ggdraw(p6,
+                            xlim = c(0, 1),
+                            ylim = c(0, 1.2))+
+  cowplot::draw_label("Two Datasets Comparison",
+                      fontface = 'bold', size = 14,
+                      x = 0.5, y = 1.05,
+                      hjust = 0.5, vjust = 0.5)
+
+p6_final
+```
+
+I visualised incidence in various age bands assuming that the combined dataset (ver1 & ver3) represents a nationwide case in England; the case counts were against a population group specific to the year and age bands (Figure 2.2.2.). A statistically significant difference (Kruskal-Wallis followed by Dunn's Test with Bonferroni's correction) only occurred between 2-64 and 65+ age groups in 3 age bands, while in 6 age bands, those in 5-14 showed statistically significant result as the lowest incidence profile compared to \<2, 2-4 and 45-64 age groups.
+
+According to the incidence analysis, those in \<2 and 65+ are vulnerable compared to other age groups. I propose to group the data into 3 demographic groups (\<2, 2-64, 65+, as represented in Figure 2.2.2. A). I created a set of additional graphs for case counts and seasonality in each month specific to years (Figure 2.2.2. B).
+
+```{r}
+# Incidence stats analyses
+# cat("2 demographic groups")
+# print(kruskal.test(Conf_Int$proportion ~ ageGroup2, data = ageGroup2_y))
+# 
+cat("3 demographic groups")
+print(kruskal.test(Conf_Int$proportion ~ ageGroup3, data = ageGroup3_y))
+dunn_age3 <- FSA::dunnTest(Conf_Int$proportion ~ ageGroup3, data = ageGroup3_y, method = "bonferroni")
+dunn_age3_res <- dunn_age3$res %>% 
+  dplyr::mutate(Significant = case_when(
+    P.adj < 0.05 ~ "Yes",
+    P.adj >= 0.05 ~ "No"
+  ))
+
+print(dunn_age3_res)
+# 
+# cat("5 demographic groups")
+# print(kruskal.test(Conf_Int$proportion ~ ageGroup5, data = ageGroup5_y))
+# print(FSA::dunnTest(Conf_Int$proportion ~ ageGroup5, data = ageGroup5_y, method = "bonferroni"))
+# 
+cat("6 demographic groups")
+print(kruskal.test(Conf_Int$proportion ~ ageGroup6, data = ageGroup6_y))
+dunn_age6 <- FSA::dunnTest(Conf_Int$proportion ~ ageGroup6, data = ageGroup6_y, method = "bonferroni")
+dunn_age6_res <- dunn_age6$res %>% 
+  dplyr::mutate(Significant = case_when(
+    P.adj < 0.05 ~ "Yes",
+    P.adj >= 0.05 ~ "No"
+  ))
+
+print(dunn_age6_res)
+# 
+# cat("7 demographic groups")
+# print(kruskal.test(Conf_Int$proportion ~ ageGroup7, data = ageGroup7_y))
+# print(FSA::dunnTest(Conf_Int$proportion ~ ageGroup7, data = ageGroup7_y, method = "bonferroni"))
+```
+
+```{r}
+# Incidence viz!
+viz_agegroup3_y_incid <- ggplot(ageGroup3_y, aes(x = year, y = Conf_Int$proportion*100000,
+                                                 group = ageGroup3, color = ageGroup3)) +
+  geom_line(size = 1.5) +
+  geom_errorbar(aes(ymin = Conf_Int$lower*100000, ymax = Conf_Int$upper*100000),
+                width = .1) +
+  scale_color_manual(values = c(col_map),
+                     name = " ",
+                     breaks = c("<2", "2-64", "65+"),
+                     labels = c("<2", "2-64", "65+")
+  ) +
+  scale_x_continuous(breaks = ~ axisTicks(., log = FALSE)) + # delete weird decimals in Year
+  labs(y = "incidence (100,000)",
+       title = "3 age bands") +
+  theme_bw() +
+  theme(
+    legend.text = element_text(size=10),
+    legend.title = element_text(size=11),
+    legend.key.size = unit(0.25, "cm")
+  )
+
+viz_agegroup6_y_incid <- ggplot(ageGroup6_y, aes(x = year, y = Conf_Int$proportion*100000,
+                                                 group = ageGroup6, color = ageGroup6)) +
+  geom_line(size = 1.5) +
+  geom_errorbar(aes(ymin = Conf_Int$lower*100000, ymax = Conf_Int$upper*100000),
+                width = .1) +
+  scale_color_manual(values = c(col_map),
+                     name = " ",
+                     breaks = c("<2", "2-4", "5-14", "15-44", "45-64", "65+", "Unknown"),
+                     labels = c("<2", "2-4", "5-14", "15-44", "45-64", "65+", "Unknown")
+  ) +
+  scale_x_continuous(breaks = ~ axisTicks(., log = FALSE)) + # delete weird decimals in Year
+  labs(y = "incidence (100,000)",
+       title = "6 age bands (UKHSA)") +
+  theme_bw() +
+  theme(
+    legend.text = element_text(size=10),
+    legend.title = element_text(size=11),
+    legend.key.size = unit(0.25, "cm")
+  )
+
+# incidence_plot <- cowplot::plot_grid(viz_agegroup2_y_incid, viz_agegroup5_y_incid,
+#                                      viz_agegroup6_y_incid, viz_agegroup7_y_incid,
+#                            ncol = 2,
+#                            labels = c("A", "B", "C", "D"))
+
+# incidence_plot <- cowplot::plot_grid(viz_agegroup3_y_incid, viz_agegroup6_y_incid,
+#                            ncol = 1,
+#                            labels = c("A", "B"))
+# 
+# incidence_plot
+```
+
+```{r}
+
+# Data viz!
+viz_agegroup3_y <- ggplot(ageGroup3_y, aes(x = year, y = counts, group = ageGroup3,
+                                           color = ageGroup3)) +
+  geom_line(size = 1.5) +
+  scale_color_manual(values = c(col_map),
+                     name = " ",
+                     breaks = c("<2", "2-64", "65+"),
+                     labels = c("<2", "2-64", "65+")
+  ) +
+  scale_x_continuous(breaks = ~ axisTicks(., log = FALSE)) + # delete weird decimals in Year
+  theme_bw() +
+  theme(legend.position = "none")
+
+viz_agegroup3_yM <- ggplot(ageGroup3_yM, aes(x = yearMonth, y = counts, group = ageGroup3,
+                                             color = ageGroup3)) +
+  geom_line(size = 1) +
+  scale_color_manual(values = c(col_map),
+                     name = " ",
+                     breaks = c("<2", "2-64", "65+"),
+                     labels = c("<2", "2-64", "65+")
+  ) +
+  scale_x_date(date_labels = "%Y", date_breaks = "1 year"
+               # limits = c(as.Date("2015-12-01"), as.Date("2022-04-01"))
+               ) +
+  theme_bw() +
+  theme(
+    legend.text = element_text(size=10),
+    legend.title = element_text(size=11),
+    legend.key.size = unit(0.25, "cm")
+  )
+
+viz_agegroup6_y <- ggplot(ageGroup6_y, aes(x = year, y = counts, group = ageGroup6,
+                                           color = ageGroup6)) +
+  geom_line(size = 1.5) +
+  scale_color_manual(values = c(col_map),
+                     name = " ",
+                     breaks = c("<2", "2-4", "5-14", "15-44", "45-64", "65+"),
+                     labels = c("<2", "2-4", "5-14", "15-44", "45-64", "65+")
+  ) +
+  scale_x_continuous(breaks = ~ axisTicks(., log = FALSE)) + # delete weird decimals in Year
+  theme_bw() +
+  theme(legend.position = "none")
+
+viz_agegroup6_yM <- ggplot(ageGroup6_yM, aes(x = yearMonth, y = counts, group = ageGroup6,
+                                             color = ageGroup6)) +
+  geom_line(size = 1) +
+  scale_color_manual(values = c(col_map),
+                     name = " ",
+                     breaks = c("<2", "2-4", "5-14", "15-44", "45-64", "65+"),
+                     labels = c("<2", "2-4", "5-14", "15-44", "45-64", "65+")
+  ) +
+  scale_x_date(date_labels = "%Y", date_breaks = "1 year"
+               # limits = c(as.Date("2015-12-01"), as.Date("2022-04-01"))
+               ) +
+  theme_bw() +
+  theme(
+    legend.text = element_text(size=10),
+    legend.title = element_text(size=11),
+    legend.key.size = unit(0.25, "cm")
+  )
+
+viz_agegroup3_y_incid <- cowplot::plot_grid(NULL, viz_agegroup3_y_incid,
+                                            ncol = 1,
+                                            rel_heights = c(0.1, 2),
+                                            labels = c("", "A"))
+
+p5_y <- cowplot::plot_grid(viz_agegroup3_y, viz_agegroup6_y,
+                           ncol = 1,
+                           labels = c("A", "B"))
+
+p5_yM <- cowplot::plot_grid(viz_agegroup3_yM, viz_agegroup6_yM,
+                            ncol = 1)
+
+p5 <- cowplot::plot_grid(p5_y, p5_yM,
+                         ncol = 2,
+                         rel_widths = c(0.65, 1.25))
+
+# Focused on age group 3 only
+p_ageGroup3_only <- cowplot::plot_grid(viz_agegroup3_y, viz_agegroup3_yM,
+                         ncol = 2,
+                         rel_widths = c(0.65, 1.25))
+
+combined_ageGroup3 <- cowplot::plot_grid(viz_agegroup3_y_incid, p_ageGroup3_only,
+                         ncol = 1,
+                         labels = c("", "B"),
+                         rel_heights = c(2, 1.25))
+
+combined_ageGroup3
+```
+
+```{r}
+# Focused on age group 6 only
+p_ageGroup6_only <- cowplot::plot_grid(viz_agegroup6_y, viz_agegroup6_yM,
+                         ncol = 2,
+                         rel_widths = c(0.65, 1.25))
+
+combined_ageGroup6 <- cowplot::plot_grid(viz_agegroup6_y_incid, p_ageGroup6_only,
+                         ncol = 1,
+                         labels = c("C", "D"),
+                         rel_heights = c(2, 1.25))
+
+combined_ageGroup6
+```
+
+## 3. Conclusions and Future Works
+
+1.  Serotype 12F, like any other (known) pneumococcal disease, follows a seasonality pattern and peaked in December before reducing again in January of the following year and then increasing again in February.
+2.  Children aged \<2 and elderly populations (65+) are the most vulnerable age groups with the highest incidence nationally.
+3.  Future works would benefit from analysing vaccination strategies by using epidemiological model in these 2 vulnerable groups; resulted in three heterogeneity groups (\<2, PCV13; 2-64; 65+, PPV23).
+
+## 4. Additional analyses
+
+### 4.1. Serotype 1
+
+No statistically significant results occur among age groups for Serotype 1 prevalence.
+
+```{r}
+# Hereby it would be fine to combine data ver1 & ver3
+# load dat_sty1
+
+ageGroup3_y_sty1 <- dplyr::left_join(
+  dat_sty1 %>% 
+    dplyr::group_by(year, ageGroup3) %>% 
+    dplyr::summarise(counts = n()) %>% 
+    dplyr::ungroup()
+  ,
+  pop_l %>% 
+    dplyr::group_by(year, ageGroup3) %>% 
+    dplyr::summarise(PopSize = sum(PopSize)) %>% 
+    dplyr::ungroup()
+  ,
+  by = c("year", "ageGroup3")
+) %>% 
+  dplyr::filter(ageGroup3 != "Unknown") %>% 
+  dplyr::mutate(Conf_Int = epitools::binom.exact(counts, PopSize),
+                incid_per10e5 = Conf_Int$proportion*100000) # per-100,000 population
+
+ageGroup3_yM_sty1 <- dat_sty1 %>% 
+  dplyr::group_by(yearMonth, ageGroup3) %>% 
+  dplyr::summarise(counts = n()) %>% 
+  dplyr::ungroup() %>% 
+  dplyr::mutate(yearMonth = as.Date(yearMonth))
+
+
+##### UKHSA 6 age bands #####
+ageGroup6_y_sty1 <- dplyr::left_join(
+  dat_sty1 %>% 
+    dplyr::group_by(year, ageGroup6) %>% 
+    dplyr::summarise(counts = n()) %>% 
+    dplyr::ungroup()
+  ,
+  pop_l %>% 
+    dplyr::group_by(year, ageGroup6) %>% 
+    dplyr::summarise(PopSize = sum(PopSize)) %>% 
+    dplyr::ungroup()
+  ,
+  by = c("year", "ageGroup6")
+) %>% 
+  dplyr::filter(ageGroup6 != "Unknown") %>% 
+  dplyr::mutate(Conf_Int = epitools::binom.exact(counts, PopSize),
+                incid_per10e5 = Conf_Int$proportion*100000) # per-100,000 population
+
+ageGroup6_yM_sty1 <- dat_sty1 %>% 
+  dplyr::group_by(yearMonth, ageGroup6) %>% 
+  dplyr::summarise(counts = n()) %>% 
+  dplyr::ungroup() %>% 
+  dplyr::mutate(yearMonth = as.Date(yearMonth))
+
+##### UKHSA 6 age bands #####
+
+
+```
+
+```{r}
+# Incidence stats analyses
+# cat("2 demographic groups")
+# print(kruskal.test(Conf_Int$proportion ~ ageGroup2, data = ageGroup2_y))
+# 
+cat("3 demographic groups")
+print(kruskal.test(Conf_Int$proportion ~ ageGroup3, data = ageGroup3_y_sty1))
+dunn_age3_sty1 <- FSA::dunnTest(Conf_Int$proportion ~ ageGroup3, data = ageGroup3_y_sty1, method = "bonferroni")
+dunn_age3_res_sty1 <- dunn_age3_sty1$res %>% 
+  dplyr::mutate(Significant = case_when(
+    P.adj < 0.05 ~ "Yes",
+    P.adj >= 0.05 ~ "No"
+  ))
+
+print(dunn_age3_res_sty1)
+# 
+# cat("5 demographic groups")
+# print(kruskal.test(Conf_Int$proportion ~ ageGroup5, data = ageGroup5_y))
+# print(FSA::dunnTest(Conf_Int$proportion ~ ageGroup5, data = ageGroup5_y, method = "bonferroni"))
+# 
+cat("6 demographic groups")
+print(kruskal.test(Conf_Int$proportion ~ ageGroup6, data = ageGroup6_y_sty1))
+dunn_age6_sty1 <- FSA::dunnTest(Conf_Int$proportion ~ ageGroup6, data = ageGroup6_y_sty1, method = "bonferroni")
+dunn_age6_res_sty1 <- dunn_age6_sty1$res %>% 
+  dplyr::mutate(Significant = case_when(
+    P.adj < 0.05 ~ "Yes",
+    P.adj >= 0.05 ~ "No"
+  ))
+
+print(dunn_age6_res_sty1)
+# 
+# cat("7 demographic groups")
+# print(kruskal.test(Conf_Int$proportion ~ ageGroup7, data = ageGroup7_y))
+# print(FSA::dunnTest(Conf_Int$proportion ~ ageGroup7, data = ageGroup7_y, method = "bonferroni"))
+```
+
+```{r}
+
+# Data viz!
+viz_agegroup3_y_sty1 <- ggplot(ageGroup3_y_sty1, aes(x = year, y = counts, group = ageGroup3,
+                                           color = ageGroup3)) +
+  geom_line(size = 1.5) +
+  scale_color_manual(values = c(col_map),
+                     name = " ",
+                     breaks = c("<2", "2-64", "65+"),
+                     labels = c("<2", "2-64", "65+")
+  ) +
+  scale_x_continuous(breaks = ~ axisTicks(., log = FALSE)) + # delete weird decimals in Year
+  theme_bw() +
+  theme(legend.position = "none")
+
+viz_agegroup3_yM_sty1 <- ggplot(ageGroup3_yM_sty1, aes(x = yearMonth, y = counts, group = ageGroup3,
+                                             color = ageGroup3)) +
+  geom_line(size = 1) +
+  scale_color_manual(values = c(col_map),
+                     name = " ",
+                     breaks = c("<2", "2-64", "65+"),
+                     labels = c("<2", "2-64", "65+")
+  ) +
+  scale_x_date(date_labels = "%Y", date_breaks = "1 year"
+               # limits = c(as.Date("2015-12-01"), as.Date("2022-04-01"))
+               ) +
+  theme_bw() +
+  theme(
+    legend.text = element_text(size=10),
+    legend.title = element_text(size=11),
+    legend.key.size = unit(0.25, "cm")
+  )
+
+viz_agegroup6_y_sty1 <- ggplot(ageGroup6_y_sty1, aes(x = year, y = counts, group = ageGroup6,
+                                           color = ageGroup6)) +
+  geom_line(size = 1.5) +
+  scale_color_manual(values = c(col_map),
+                     name = " ",
+                     breaks = c("<2", "2-4", "5-14", "15-44", "45-64", "65+"),
+                     labels = c("<2", "2-4", "5-14", "15-44", "45-64", "65+")
+  ) +
+  scale_x_continuous(breaks = ~ axisTicks(., log = FALSE)) + # delete weird decimals in Year
+  theme_bw() +
+  theme(legend.position = "none")
+
+viz_agegroup6_yM_sty1 <- ggplot(ageGroup6_yM_sty1, aes(x = yearMonth, y = counts, group = ageGroup6,
+                                             color = ageGroup6)) +
+  geom_line(size = 1) +
+  scale_color_manual(values = c(col_map),
+                     name = " ",
+                     breaks = c("<2", "2-4", "5-14", "15-44", "45-64", "65+"),
+                     labels = c("<2", "2-4", "5-14", "15-44", "45-64", "65+")
+  ) +
+  scale_x_date(date_labels = "%Y", date_breaks = "1 year"
+               # limits = c(as.Date("2015-12-01"), as.Date("2022-04-01"))
+               ) +
+  theme_bw() +
+  theme(
+    legend.text = element_text(size=10),
+    legend.title = element_text(size=11),
+    legend.key.size = unit(0.25, "cm")
+  )
+
+
+viz_agegroup3_y_incid_sty1 <- ggplot(ageGroup3_y_sty1, aes(x = year, y = Conf_Int$proportion*100000,
+                                                 group = ageGroup3, color = ageGroup3)) +
+  geom_line(size = 1.5) +
+  geom_errorbar(aes(ymin = Conf_Int$lower*100000, ymax = Conf_Int$upper*100000),
+                width = .1) +
+  scale_color_manual(values = c(col_map),
+                     name = " ",
+                     breaks = c("<2", "2-64", "65+"),
+                     labels = c("<2", "2-64", "65+")
+  ) +
+  scale_x_continuous(breaks = ~ axisTicks(., log = FALSE)) + # delete weird decimals in Year
+  labs(y = "incidence (100,000)",
+       title = "3 age bands") +
+  theme_bw() +
+  theme(
+    legend.text = element_text(size=10),
+    legend.title = element_text(size=11),
+    legend.key.size = unit(0.25, "cm")
+  )
+
+viz_agegroup6_y_incid_sty1 <- ggplot(ageGroup6_y_sty1, aes(x = year, y = Conf_Int$proportion*100000,
+                                                 group = ageGroup6, color = ageGroup6)) +
+  geom_line(size = 1.5) +
+  geom_errorbar(aes(ymin = Conf_Int$lower*100000, ymax = Conf_Int$upper*100000),
+                width = .1) +
+  scale_color_manual(values = c(col_map),
+                     name = " "
+  ) +
+  scale_x_continuous(breaks = ~ axisTicks(., log = FALSE)) + # delete weird decimals in Year
+  labs(y = "incidence (100,000)",
+       title = "6 age bands") +
+  theme_bw() +
+  theme(
+    legend.text = element_text(size=10),
+    legend.title = element_text(size=11),
+    legend.key.size = unit(0.25, "cm")
+  )
+
+
+viz_agegroup3_y_incid_sty1 <- cowplot::plot_grid(NULL, viz_agegroup3_y_incid_sty1,
+                                            ncol = 1,
+                                            rel_heights = c(0.1, 2),
+                                            labels = c("", "A"))
+
+p5_y_sty1 <- cowplot::plot_grid(viz_agegroup3_y_sty1, viz_agegroup6_y_sty1,
+                           ncol = 1,
+                           labels = c("A", "B"))
+
+p5_yM_sty1 <- cowplot::plot_grid(viz_agegroup3_yM_sty1, viz_agegroup6_yM_sty1,
+                            ncol = 1)
+
+p5_sty1 <- cowplot::plot_grid(p5_y_sty1, p5_yM_sty1,
+                         ncol = 2,
+                         rel_widths = c(0.65, 1.25))
+
+# Focused on age group 3 only
+p_ageGroup3_only_sty1 <- cowplot::plot_grid(viz_agegroup3_y_sty1, viz_agegroup3_yM_sty1,
+                         ncol = 2,
+                         rel_widths = c(0.65, 1.25))
+
+combined_ageGroup3_sty1 <- cowplot::plot_grid(viz_agegroup3_y_incid_sty1, p_ageGroup3_only_sty1,
+                         ncol = 1,
+                         labels = c("", "B"),
+                         rel_heights = c(2, 1.25))
+
+combined_ageGroup3_sty1
+```
+
+```{r}
+# Focused on age group 6 only
+p_ageGroup6_only_sty1 <- cowplot::plot_grid(viz_agegroup6_y_sty1, viz_agegroup6_yM_sty1,
+                         ncol = 2,
+                         rel_widths = c(0.65, 1.25))
+
+combined_ageGroup6_sty1 <- cowplot::plot_grid(viz_agegroup6_y_incid_sty1, p_ageGroup6_only_sty1,
+                         ncol = 1,
+                         labels = c("C", "D"),
+                         rel_heights = c(2, 1.25))
+
+combined_ageGroup6_sty1
+```
+
+### 4.2. Serotype 7F
+
+Prevalence is higher in \<2 age group but not statistically significant.
+
+```{r}
+# Hereby it would be fine to combine data ver1 & ver3
+# load dat_sty7F
+
+ageGroup3_y_sty7F <- dplyr::left_join(
+  dat_sty7F %>% 
+    dplyr::group_by(year, ageGroup3) %>% 
+    dplyr::summarise(counts = sum(CountOfRevisedOPIEID)) %>% 
+    dplyr::ungroup()
+  ,
+  pop_l %>% 
+    dplyr::group_by(year, ageGroup3) %>% 
+    dplyr::summarise(PopSize = sum(PopSize)) %>% 
+    dplyr::ungroup()
+  ,
+  by = c("year", "ageGroup3")
+) %>% 
+  dplyr::filter(ageGroup3 != "Unknown") %>% 
+  dplyr::mutate(Conf_Int = epitools::binom.exact(counts, PopSize),
+                incid_per10e5 = Conf_Int$proportion*100000) # per-100,000 population
+
+ageGroup3_yM_sty7F <- dat_sty7F %>% 
+  dplyr::group_by(yearMonth, ageGroup3) %>% 
+  dplyr::summarise(counts = sum(CountOfRevisedOPIEID)) %>% 
+  dplyr::ungroup() %>% 
+  dplyr::mutate(yearMonth = as.Date(yearMonth))
+
+
+##### UKHSA 6 age bands #####
+ageGroup6_y_sty7F <- dplyr::left_join(
+  dat_sty7F %>% 
+    dplyr::group_by(year, ageGroup6) %>% 
+    dplyr::summarise(counts = sum(CountOfRevisedOPIEID)) %>% 
+    dplyr::ungroup()
+  ,
+  pop_l %>% 
+    dplyr::group_by(year, ageGroup6) %>% 
+    dplyr::summarise(PopSize = sum(PopSize)) %>% 
+    dplyr::ungroup()
+  ,
+  by = c("year", "ageGroup6")
+) %>% 
+  dplyr::filter(ageGroup6 != "Unknown") %>% 
+  dplyr::mutate(Conf_Int = epitools::binom.exact(counts, PopSize),
+                incid_per10e5 = Conf_Int$proportion*100000) # per-100,000 population
+
+ageGroup6_yM_sty7F <- dat_sty7F %>% 
+  dplyr::group_by(yearMonth, ageGroup6) %>% 
+  dplyr::summarise(counts = sum(CountOfRevisedOPIEID)) %>% 
+  dplyr::ungroup() %>% 
+  dplyr::mutate(yearMonth = as.Date(yearMonth))
+
+##### UKHSA 6 age bands #####
+
+
+```
+
+```{r}
+# Incidence stats analyses
+# cat("2 demographic groups")
+# print(kruskal.test(Conf_Int$proportion ~ ageGroup2, data = ageGroup2_y))
+# 
+cat("3 demographic groups")
+print(kruskal.test(Conf_Int$proportion ~ ageGroup3, data = ageGroup3_y_sty7F))
+dunn_age3_sty7F <- FSA::dunnTest(Conf_Int$proportion ~ ageGroup3, data = ageGroup3_y_sty7F, method = "bonferroni")
+dunn_age3_res_sty7F <- dunn_age3_sty7F$res %>% 
+  dplyr::mutate(Significant = case_when(
+    P.adj < 0.05 ~ "Yes",
+    P.adj >= 0.05 ~ "No"
+  ))
+
+print(dunn_age3_res_sty7F)
+# 
+# cat("5 demographic groups")
+# print(kruskal.test(Conf_Int$proportion ~ ageGroup5, data = ageGroup5_y))
+# print(FSA::dunnTest(Conf_Int$proportion ~ ageGroup5, data = ageGroup5_y, method = "bonferroni"))
+# 
+cat("6 demographic groups")
+print(kruskal.test(Conf_Int$proportion ~ ageGroup6, data = ageGroup6_y_sty7F))
+dunn_age6_sty7F <- FSA::dunnTest(Conf_Int$proportion ~ ageGroup6, data = ageGroup6_y_sty7F, method = "bonferroni")
+dunn_age6_res_sty7F <- dunn_age6_sty7F$res %>% 
+  dplyr::mutate(Significant = case_when(
+    P.adj < 0.05 ~ "Yes",
+    P.adj >= 0.05 ~ "No"
+  ))
+
+print(dunn_age6_res_sty7F)
+# 
+# cat("7 demographic groups")
+# print(kruskal.test(Conf_Int$proportion ~ ageGroup7, data = ageGroup7_y))
+# print(FSA::dunnTest(Conf_Int$proportion ~ ageGroup7, data = ageGroup7_y, method = "bonferroni"))
+```
+
+```{r}
+
+# Data viz!
+viz_agegroup3_y_sty7F <- ggplot(ageGroup3_y_sty7F, aes(x = year, y = counts, group = ageGroup3,
+                                           color = ageGroup3)) +
+  geom_line(size = 1.5) +
+  scale_color_manual(values = c(col_map),
+                     name = " ",
+                     breaks = c("<2", "2-64", "65+"),
+                     labels = c("<2", "2-64", "65+")
+  ) +
+  scale_x_continuous(breaks = ~ axisTicks(., log = FALSE)) + # delete weird decimals in Year
+  theme_bw() +
+  theme(legend.position = "none")
+
+viz_agegroup3_yM_sty7F <- ggplot(ageGroup3_yM_sty7F, aes(x = yearMonth, y = counts, group = ageGroup3,
+                                             color = ageGroup3)) +
+  geom_line(size = 1) +
+  scale_color_manual(values = c(col_map),
+                     name = " ",
+                     breaks = c("<2", "2-64", "65+"),
+                     labels = c("<2", "2-64", "65+")
+  ) +
+  scale_x_date(date_labels = "%Y", date_breaks = "1 year"
+               # limits = c(as.Date("2015-12-01"), as.Date("2022-04-01"))
+               ) +
+  theme_bw() +
+  theme(
+    legend.text = element_text(size=10),
+    legend.title = element_text(size=11),
+    legend.key.size = unit(0.25, "cm")
+  )
+
+viz_agegroup6_y_sty7F <- ggplot(ageGroup6_y_sty7F, aes(x = year, y = counts, group = ageGroup6,
+                                           color = ageGroup6)) +
+  geom_line(size = 1.5) +
+  scale_color_manual(values = c(col_map),
+                     name = " ",
+                     breaks = c("<2", "2-4", "5-14", "15-44", "45-64", "65+"),
+                     labels = c("<2", "2-4", "5-14", "15-44", "45-64", "65+")
+  ) +
+  scale_x_continuous(breaks = ~ axisTicks(., log = FALSE)) + # delete weird decimals in Year
+  theme_bw() +
+  theme(legend.position = "none")
+
+viz_agegroup6_yM_sty7F <- ggplot(ageGroup6_yM_sty7F, aes(x = yearMonth, y = counts, group = ageGroup6,
+                                             color = ageGroup6)) +
+  geom_line(size = 1) +
+  scale_color_manual(values = c(col_map),
+                     name = " ",
+                     breaks = c("<2", "2-4", "5-14", "15-44", "45-64", "65+"),
+                     labels = c("<2", "2-4", "5-14", "15-44", "45-64", "65+")
+  ) +
+  scale_x_date(date_labels = "%Y", date_breaks = "1 year"
+               # limits = c(as.Date("2015-12-01"), as.Date("2022-04-01"))
+               ) +
+  theme_bw() +
+  theme(
+    legend.text = element_text(size=10),
+    legend.title = element_text(size=11),
+    legend.key.size = unit(0.25, "cm")
+  )
+
+
+viz_agegroup3_y_incid_sty7F <- ggplot(ageGroup3_y_sty7F, aes(x = year, y = Conf_Int$proportion*100000,
+                                                 group = ageGroup3, color = ageGroup3)) +
+  geom_line(size = 1.5) +
+  geom_errorbar(aes(ymin = Conf_Int$lower*100000, ymax = Conf_Int$upper*100000),
+                width = .1) +
+  scale_color_manual(values = c(col_map),
+                     name = " ",
+                     breaks = c("<2", "2-64", "65+"),
+                     labels = c("<2", "2-64", "65+")
+  ) +
+  scale_x_continuous(breaks = ~ axisTicks(., log = FALSE)) + # delete weird decimals in Year
+  labs(y = "incidence (100,000)",
+       title = "3 age bands") +
+  theme_bw() +
+  theme(
+    legend.text = element_text(size=10),
+    legend.title = element_text(size=11),
+    legend.key.size = unit(0.25, "cm")
+  )
+
+viz_agegroup6_y_incid_sty7F <- ggplot(ageGroup6_y_sty7F, aes(x = year, y = Conf_Int$proportion*100000,
+                                                 group = ageGroup6, color = ageGroup6)) +
+  geom_line(size = 1.5) +
+  geom_errorbar(aes(ymin = Conf_Int$lower*100000, ymax = Conf_Int$upper*100000),
+                width = .1) +
+  scale_color_manual(values = c(col_map),
+                     name = " "
+  ) +
+  scale_x_continuous(breaks = ~ axisTicks(., log = FALSE)) + # delete weird decimals in Year
+  labs(y = "incidence (100,000)",
+       title = "6 age bands") +
+  theme_bw() +
+  theme(
+    legend.text = element_text(size=10),
+    legend.title = element_text(size=11),
+    legend.key.size = unit(0.25, "cm")
+  )
+
+
+viz_agegroup3_y_incid_sty7F <- cowplot::plot_grid(NULL, viz_agegroup3_y_incid_sty7F,
+                                            ncol = 1,
+                                            rel_heights = c(0.1, 2),
+                                            labels = c("", "A"))
+
+p5_y_sty7F <- cowplot::plot_grid(viz_agegroup3_y_sty7F, viz_agegroup6_y_sty7F,
+                           ncol = 1,
+                           labels = c("A", "B"))
+
+p5_yM_sty7F <- cowplot::plot_grid(viz_agegroup3_yM_sty7F, viz_agegroup6_yM_sty7F,
+                            ncol = 1)
+
+p5_sty7F <- cowplot::plot_grid(p5_y_sty7F, p5_yM_sty7F,
+                         ncol = 2,
+                         rel_widths = c(0.65, 1.25))
+
+# Focused on age group 3 only
+p_ageGroup3_only_sty7F <- cowplot::plot_grid(viz_agegroup3_y_sty7F, viz_agegroup3_yM_sty7F,
+                         ncol = 2,
+                         rel_widths = c(0.65, 1.25))
+
+combined_ageGroup3_sty7F <- cowplot::plot_grid(viz_agegroup3_y_incid_sty7F, p_ageGroup3_only_sty7F,
+                         ncol = 1,
+                         labels = c("", "B"),
+                         rel_heights = c(2, 1.25))
+
+combined_ageGroup3_sty7F
+```
+
+```{r}
+# Focused on age group 6 only
+p_ageGroup6_only_sty7F <- cowplot::plot_grid(viz_agegroup6_y_sty7F, viz_agegroup6_yM_sty7F,
+                         ncol = 2,
+                         rel_widths = c(0.65, 1.25))
+
+combined_ageGroup6_sty7F <- cowplot::plot_grid(viz_agegroup6_y_incid_sty7F, p_ageGroup6_only_sty7F,
+                         ncol = 1,
+                         labels = c("C", "D"),
+                         rel_heights = c(2, 1.25))
+
+combined_ageGroup6_sty7F
+```
