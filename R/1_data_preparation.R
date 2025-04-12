@@ -246,17 +246,91 @@ vir_combined_results <- dplyr::left_join(
   # view() %>% 
   glimpse()
 
+# nanA is not included in VFDB pro list -_-)
 test <- vir_combined_results %>% 
-  select(nt_pident, aa_pident, aa_mismatch, aa_gapopen, gene.x, species.x,
+  select(nt_pident, nt_mismatch,
+         aa_pident, aa_mismatch, aa_gapopen, gene.x, species.x,
          gene_present, protein_function, bacwgs_check) %>% 
   view()
 
 
 # competence genes profile
+com_combined_results <- dplyr::left_join(
+  read.table("outputs/result_blast_competence/blastn_tabular_nt.txt",
+             header = F, sep = "\t") %>% 
+    stats::setNames(c("file_name", "qseqid", "temporary_sseqid",
+                      "nt_pident", "nt_length", "nt_mismatch",
+                      "nt_gapopen", "nt_qstart", "nt_qend",
+                      "nt_sstart", "nt_send",
+                      "nt_evalue", "nt_bitscore")) %>% 
+    dplyr::left_join(
+      read.table("inputs/prepare_competence_genes/competence_headers_nt.txt",
+                 header = F, sep = "\t") %>% 
+        dplyr::rename(header = V1) %>% 
+        dplyr::mutate(gene    = str_extract(header, "(?<=\\[gene=)[^\\]]+(?=\\])"), # "[gene=" & "]"
+                      gene_id = str_extract(header, "^[^ ]+"), # begin & " "
+                      prot_id = str_extract(header, "(?<=cds_)[^.]+"), # "cds_" & "_"
+                      strain  = str_extract(header, "(?<=\\] \\[)[^\\]]+(?=\\])") # "] [" and "]"
+        ) %>% 
+        dplyr::mutate(prot_id = paste0(prot_id, ".1")) # correction
+      ,
+      by = c("temporary_sseqid" = "gene_id")
+    ) %>% 
+    dplyr::filter(file_name == "Streptococcus_pneumoniae_RMD131_contigs_from_YM")
+  ,
+  read.table("outputs/result_blast_competence/blastx_tabular_aa.txt",
+             header = F, sep = "\t") %>% 
+    stats::setNames(c("file_name", "qseqid", "temporary_sseqid",
+                      "aa_pident", "aa_length", "aa_mismatch",
+                      "aa_gapopen", "aa_qstart", "aa_qend",
+                      "aa_sstart", "aa_send",
+                      "aa_evalue", "aa_bitscore")) %>% 
+    dplyr::left_join(
+      read.table("inputs/prepare_competence_genes/competence_headers_aa.txt",
+                 header = F, sep = "\t") %>% 
+        dplyr::rename(header = V1) %>% 
+        dplyr::mutate(gene    = str_extract(header, "(?<= )[^\"]+?(?= )"), # " " & " "
+                      prot_id = str_extract(header, "^[^ ]+"), # begin & " "
+                      strain  = str_extract(header, "(?<=\\[)[^\\]]+(?=\\])") # "[" and "]"
+        )
+      ,
+      by = c("temporary_sseqid" = "prot_id")
+    ) %>% 
+    dplyr::filter(file_name == "Streptococcus_pneumoniae_RMD131_contigs_from_YM")
+  ,
+  by = c("file_name", "qseqid", "prot_id" = "temporary_sseqid"),
+  relationship = "many-to-many"
+) %>% 
+  dplyr::arrange(dplyr::desc(aa_pident)) %>% 
+  dplyr::distinct(file_name, temporary_sseqid, .keep_all = T) %>% 
+  dplyr::select(-contains(".y")) %>% 
+  dplyr::mutate(
+    gene_present = case_when(
+      nt_pident >= 80 ~ "present",
+      TRUE ~ "absent"
+    ),
+    protein_function = case_when(
+      aa_pident >= 95 & aa_gapopen == 0 ~ "functional",
+      aa_pident >= 90 & aa_gapopen <= 5 & aa_mismatch <= 30 ~ "variant",
+      aa_pident <= 85 & aa_mismatch >= 25 ~ "possibly defective",
+      TRUE ~ "possibly defective"
+    )
+  ) %>% 
+  view() %>%
+  glimpse()
 
+test <- com_combined_results %>% 
+  select(nt_pident, nt_mismatch, nt_length,
+         aa_pident, aa_mismatch, aa_length,
+         aa_gapopen, gene.x, strain.x,
+         gene_present, protein_function) %>% 
+  view()
 
-
-
+test_gene_distinction <- com_combined_results %>% 
+  dplyr::arrange(dplyr::desc(aa_pident)) %>% 
+  dplyr::distinct(gene.x, .keep_all = T) %>% 
+  view()
+# comCDE are closely related to R6. Interesting.
 
 
 
