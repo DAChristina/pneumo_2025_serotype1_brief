@@ -32,7 +32,7 @@ GPSC, MLST, AMR, virulence factors, etc
 ```{r}
 # Genome analyses from Prokka
 options(dplyr.summarise.inform = FALSE) # supress annoying messages & warnings
-prokka_folder = "/home/ron/Strep_Indo/raw_data/serotype_1/result_prokka_combined_pathogenWatch_monocle/"
+prokka_folder = "../outputs/result_prokka_combined_pathogenWatch_monocle/"
 
 # Genome (*.fna)
 genome <- Biostrings::readDNAStringSet(paste0(prokka_folder, "Streptococcus_pneumoniae_RMD131.fna"))
@@ -96,8 +96,8 @@ p_gene_prot
 #### 1.2.2. Mixed infection, GPSC and MLST profile
 
 ```{r}
-kity_folder = "/home/ron/Strep_Indo/raw_data/serotype_1/result_pneumokity/fastq_mix/"
-mlst_folder = "/home/ron/Strep_Indo/raw_data/serotype_1/result_mlst/"
+kity_folder = "../outputs/result_pneumokity/fastq_mix/"
+mlst_folder = "../outputs/result_mlst/"
 
 pneumokity_result <- read.csv(paste0(kity_folder, "Collated_result_data.csv"))
 cat("Predicted serotype\n")
@@ -106,7 +106,7 @@ print(pneumokity_result$predicted_serotype)
 mlst_result <- read.csv(paste0(mlst_folder, "mlst_results.csv"), sep = "\t", header = FALSE,
                         col.names = c("name", "species", "mlst",
                                       "aroE", "gdh", "gki", "recP", "spi", "xpt", "ddl")) %>% 
-  dplyr::mutate(name = gsub("/home/ron/Strep_Indo/raw_data/serotype_1/prepare_choosen_fasta_pathogenWatch_monocle/", "", name),
+  dplyr::mutate(name = gsub("../outputs/prepare_choosen_fasta_pathogenWatch_monocle/", "", name),
                 aroE = substr(aroE, 6, nchar(aroE) - 1),
                 gdh = substr(gdh, 5, nchar(gdh) - 1),
                 gki = substr(gki, 5, nchar(gki) - 1),
@@ -125,7 +125,7 @@ knitr::kable(mlst_result)
 #### 1.2.3. Antimicrobial profile
 
 ```{r}
-cdc_folder = "/home/ron/Strep_Indo/raw_data/serotype_1/result_cdc_amr/"
+cdc_folder = "../outputs/result_cdc_amr/"
 
 # Penicillin-related genes mutation type
 cdc_result_pen <- read.table(paste0(cdc_folder, "TABLE_Isolate_Typing_results.txt"),
