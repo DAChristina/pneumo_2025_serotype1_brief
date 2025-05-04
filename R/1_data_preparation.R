@@ -5,13 +5,13 @@ prokka_folder = "outputs/result_prokka_combined_pathogenWatch_monocle/"
 # Genome (*.fna)
 genome <- Biostrings::readDNAStringSet(paste0(prokka_folder, "Streptococcus_pneumoniae_RMD131.fna"))
 cat("Genome width\n")
-print(width(genome))
+print(Biostrings::width(genome))
 
 # Predicted genes (*.ffn)
 genes <- Biostrings::readDNAStringSet(paste0(prokka_folder, "Streptococcus_pneumoniae_RMD131.ffn"))
-gene_lengths <- width(genes)
+gene_lengths <- Biostrings::width(genes)
 genes_plot <- ggplot(data = data.frame(gene_lengths), aes(x = gene_lengths)) +
-  geom_histogram(binwidth = 50, fill = "steelblue", color = "black") + 
+  geom_histogram(binwidth = 50, fill = "steelblue", color = "white") + 
   labs(title = "Gene Length Distribution",
        x = "Gene Length (bp)",
        y = "Count") +
@@ -20,9 +20,9 @@ genes_plot <- ggplot(data = data.frame(gene_lengths), aes(x = gene_lengths)) +
 
 # Predicted proteins (*.faa)
 proteins <- Biostrings::readAAStringSet(paste0(prokka_folder, "Streptococcus_pneumoniae_RMD131.faa"))
-protein_lengths <- width(proteins)
+protein_lengths <- Biostrings::width(proteins)
 prot_plot <- ggplot(data = data.frame(protein_lengths), aes(x = protein_lengths)) +
-  geom_histogram(binwidth = 50, fill = "steelblue", color = "black") + 
+  geom_histogram(binwidth = 50, fill = "steelblue", color = "white") + 
   labs(title = "Protein Length Distribution",
        x = "Protein Length (aa)",
        y = "Count") +
@@ -30,22 +30,26 @@ prot_plot <- ggplot(data = data.frame(protein_lengths), aes(x = protein_lengths)
   theme_bw()
 
 # Functional annotation (*.tsv)
-annotations <- read.delim(paste0(prokka_folder, "Streptococcus_pneumoniae_RMD131.tsv"), header = TRUE, sep = "\t")
+annotations <- read.delim(paste0(prokka_folder, "Streptococcus_pneumoniae_RMD131.tsv"), header = TRUE, sep = "\t") %>% 
+  dplyr::count(product) %>% 
+  dplyr::top_n(10)
 # head(annotations)
-fun_plot <- annotations %>%
-  count(product) %>%
-  top_n(10) %>%
-  ggplot(aes(x = reorder(product, n), y = n)) +
+
+fun_plot <- ggplot(annotations, aes(x = reorder(product, n), y = n)) +
   geom_col(fill = "steelblue") +
-  geom_text(aes(label = n), hjust = -0.1) +  # Add text labels slightly outside the bars
+  geom_text(aes(label = n), hjust = -0.1, size = 1.5) +
   coord_flip() +
   theme_bw() +
-  labs(title = "Top 10\nGene Functions", x = "Function", y = "Count")
+  theme(axis.text.y = element_text(size = 6)) +
+  scale_y_continuous(limits = c(0, max(annotations$n) + 2)) + 
+  labs(title = "Top 10 Gene Functions",
+       x = "Function",
+       y = "Count",
+       )
 
-p_genes <- cowplot::plot_grid(NULL, plot(genes_plot),
+p_genes <- cowplot::plot_grid(plot(genes_plot),
                               ncol = 1,
-                              rel_heights = c(0.1, 2),
-                              labels = c("", "A"))
+                              labels = c("A"))
 
 p_proteins <- cowplot::plot_grid(prot_plot, fun_plot,
                                  ncol = 1,
@@ -54,11 +58,15 @@ p_proteins <- cowplot::plot_grid(prot_plot, fun_plot,
 p_gene_prot <- cowplot::plot_grid(p_genes, p_proteins,
                                   ncol = 2)
 
+png("pictures/genomes.png",
+    width = 24, height = 10, unit = "cm", res = 600)
 p_gene_prot
+dev.off()
 
 # mixed infection, GPSC and MLST profile
 kity_folder = "outputs/result_pneumokity/fastq_mix/"
 mlst_folder = "outputs/result_mlst/"
+poppunk_folder = "outputs/result_poppunk/"
 
 pneumokity_result <- read.csv(paste0(kity_folder, "Collated_result_data.csv"))
 cat("Predicted serotype\n")
@@ -77,6 +85,9 @@ mlst_result <- read.csv(paste0(mlst_folder, "mlst_results.csv"), sep = "\t", hea
                 ddl = substr(ddl, 5, nchar(ddl) - 1)) %>% 
   dplyr::select(-species) %>% 
   dplyr::filter(name == "Streptococcus_pneumoniae_RMD131.fasta") %>% 
+  glimpse()
+
+poppunk_result <- read.csv(paste0(poppunk_folder, "result_poppunk_clusters.csv"), sep = ",") %>% 
   glimpse()
 
 # antimicrobial profile
@@ -194,11 +205,21 @@ vir_combined_results <- dplyr::left_join(
         dplyr::rename(header = V1) %>% 
         dplyr::mutate(gene    = str_extract(header, "(?<= \\()[^\\)]+(?=\\) )"), # " (" & ") "
                       gene_id = str_extract(header, "^[^)]*\\)"), # begin & ")"
-                      species = str_extract(header, "(?<=\\] \\[)[^\\]]+(?=\\])") # "] [" and "]"
+                      gene_class = str_extract(header, "(?<= - )[^\\(]+(?= \\()"),  # " - " & " ("
+                      species = str_extract(header, "(?<=\\] \\[)[^\\]]+(?=\\])") # "] [" & "]"
         )
       ,
       by = c("temporary_sseqid" = "gene_id")
     ) %>% 
+    dplyr::mutate(
+      temporary_sseqid = case_when(
+        temporary_sseqid == "VFG005653" ~ "VFG005653(gb|WP_142355754.1)", # different ID for nanA from VFDB (gene) and NCBI (amino acids)
+        TRUE ~ temporary_sseqid
+        ),
+      # nt_sdiff = abs(nt_sstart-nt_send),
+      # nt_qdiff = abs(nt_qstart-nt_qend),
+      nt_lengthdiff = abs(abs(nt_sstart-nt_send) - abs(nt_qstart-nt_qend))
+    )%>% 
     dplyr::filter(file_name == "Streptococcus_pneumoniae_RMD131_contigs_from_YM")
   ,
   read.table("outputs/result_blast_virulences/blastx_tabular_setA_aa_VFDB.txt",
@@ -228,15 +249,16 @@ vir_combined_results <- dplyr::left_join(
   dplyr::select(-contains(".y")) %>% 
   dplyr::mutate(
     gene_present = case_when(
-      nt_pident >= 80 ~ "present",
+      nt_pident >= 70 ~ "present",
       TRUE ~ "absent"
     ),
-    protein_function = case_when(
-      aa_pident >= 95 & aa_gapopen == 0 ~ "functional",
-      aa_pident >= 90 & aa_gapopen <= 5 & aa_mismatch <= 30 ~ "variant",
-      aa_pident <= 85 & aa_mismatch >= 25 ~ "possibly defective",
-      TRUE ~ "possibly defective"
-    ),
+    aa_lengthdiff = abs(abs(aa_sstart-aa_send) - abs(aa_qstart-aa_qend)),
+    # protein_function = case_when(
+    #   aa_pident >= 95 & aa_gapopen == 0 ~ "functional",
+    #   aa_pident >= 90 & aa_gapopen <= 5 & aa_mismatch <= 30 ~ "variant",
+    #   aa_pident <= 85 & aa_mismatch >= 25 ~ "possibly defective",
+    #   TRUE ~ "possibly defective"
+    # ),
     bacwgs_check = case_when(
       gene.x %in% c("cbpD", "cps4A", "cps4B", "cps4D", "hysA", "lytA", "lytC", 
                     "nanA", "nanB", "pavA", "pce/cbpE", "pfbA", "ply", "psaA") ~ "detected",
@@ -248,10 +270,13 @@ vir_combined_results <- dplyr::left_join(
 
 # nanA is not included in VFDB pro list -_-)
 test <- vir_combined_results %>% 
-  select(nt_pident, nt_mismatch,
-         aa_pident, aa_mismatch, aa_gapopen, gene.x, species.x,
-         gene_present, protein_function, bacwgs_check) %>% 
-  view()
+  select(nt_pident, nt_length, nt_lengthdiff,
+         nt_mismatch, aa_lengthdiff,
+         aa_pident, aa_mismatch, aa_gapopen, gene.x, species.x, gene_class,
+         gene_present, #protein_function, 
+         bacwgs_check) %>% 
+  view() %>% 
+  glimpse()
 
 
 # competence genes profile
@@ -276,6 +301,7 @@ com_combined_results <- dplyr::left_join(
       ,
       by = c("temporary_sseqid" = "gene_id")
     ) %>% 
+    dplyr::mutate(nt_lengthdiff = abs(abs(nt_sstart-nt_send) - abs(nt_qstart-nt_qend))) %>% 
     dplyr::filter(file_name == "Streptococcus_pneumoniae_RMD131_contigs_from_YM")
   ,
   read.table("outputs/result_blast_competence/blastx_tabular_aa.txt",
@@ -309,22 +335,25 @@ com_combined_results <- dplyr::left_join(
       nt_pident >= 80 ~ "present",
       TRUE ~ "absent"
     ),
-    protein_function = case_when(
-      aa_pident >= 95 & aa_gapopen == 0 ~ "functional",
-      aa_pident >= 90 & aa_gapopen <= 5 & aa_mismatch <= 30 ~ "variant",
-      aa_pident <= 85 & aa_mismatch >= 25 ~ "possibly defective",
-      TRUE ~ "possibly defective"
-    )
+    aa_lengthdiff = abs(abs(aa_sstart-aa_send) - abs(aa_qstart-aa_qend))
+    # protein_function = case_when(
+    #   aa_pident >= 95 & aa_gapopen == 0 ~ "functional",
+    #   aa_pident >= 90 & aa_gapopen <= 5 & aa_mismatch <= 30 ~ "variant",
+    #   aa_pident <= 85 & aa_mismatch >= 25 ~ "possibly defective",
+    #   TRUE ~ "possibly defective"
+    # )
   ) %>% 
-  view() %>%
+  # view() %>%
   glimpse()
 
 test <- com_combined_results %>% 
-  select(nt_pident, nt_mismatch, nt_length,
-         aa_pident, aa_mismatch, aa_length,
+  select(nt_pident, nt_mismatch, nt_lengthdiff,
+         aa_pident, aa_mismatch, aa_lengthdiff,
          aa_gapopen, gene.x, strain.x,
-         gene_present, protein_function) %>% 
-  view()
+         gene_present, #protein_function
+         ) %>% 
+  view() %>% 
+  glimpse()
 
 test_gene_distinction <- com_combined_results %>% 
   dplyr::arrange(dplyr::desc(aa_pident)) %>% 
