@@ -1,0 +1,21 @@
+"temporary_sseqid","gene_class","gene","species","hits","avg_identity","max_bitscore"
+"VFG001358(gb|WP_000405234)","Exoenzyme","lytA","Streptococcus pneumoniae TIGR4",2,"94.969 (90.252-99.686)",660
+"VFG001357(gb|WP_000458188)","Adherence","cbpA/pspC","Streptococcus pneumoniae TIGR4",1,"84.906",629
+"VFG001355(gb|WP_000698569)","Exoenzyme","cbpD","Streptococcus pneumoniae TIGR4",1,"97.991",892
+"VFG001353(gb|WP_001100143)","Adherence","cbpG","Streptococcus pneumoniae TIGR4",1,"98.985",398
+"VFG001365(gb|WP_000091082)","Immune modulation","cps4A","Streptococcus pneumoniae TIGR4",1,"93.555",842
+"VFG001366(gb|WP_000565352)","Immune modulation","cps4B","Streptococcus pneumoniae TIGR4",1,"86.831",445
+"VFG001368(gb|WP_001142502)","Immune modulation","cps4D","Streptococcus pneumoniae TIGR4",1,"94.521",426
+"VFG001367(gb|WP_000664160)","Immune modulation","cpsC","Streptococcus pneumoniae TIGR4",1,"89.13",417
+"VFG005185(gb|WP_002991968)",NA,"fbp54","Streptococcus pyogenes MGAS6180",1,"70.962",810
+"VFG000964(gb|WP_010922799)",NA,"hasC","Streptococcus pyogenes M1 GAS",1,"86.689",528
+"VFG001364(gb|WP_001193686)","Exoenzyme","hysA","Streptococcus pneumoniae TIGR4",1,"98.5",2157
+"VFG005486(gb|WP_000417180)","Immune modulation","iga","Streptococcus pneumoniae TIGR4",1,"81.458",3298
+"VFG005653(gb|WP_142355754.1)","Exoenzyme","nanA","Streptococcus pneumoniae NCTC7465 (serotype 1)",1,"99.067",1977
+"VFG001360(gb|WP_001042179)","Exoenzyme","nanB","Streptococcus pneumoniae TIGR4",1,"99.283",1419
+"VFG005197(gb|WP_000006706)","Adherence","pavA","Streptococcus pneumoniae R6",1,"98.911",1118
+"VFG043504(gb|WP_000671444)","Adherence","pavB/pfbB","Streptococcus pneumoniae R6",1,"99.332",1500
+"VFG001354(gb|WP_000728269)","Adherence","pce/cbpE","Streptococcus pneumoniae TIGR4",1,"96.651",1236
+"VFG043465(gb|WP_010976622)","Adherence","pfbA","Streptococcus pneumoniae R6",1,"99.576",1413
+"VFG001363(gb|WP_001284361)","Exotoxin","ply","Streptococcus pneumoniae TIGR4",1,"98.726",956
+"VFG001359(gb|WP_000733059)","Nutritional/Metabolic factor","psaA","Streptococcus pneumoniae TIGR4",1,"99.676",623

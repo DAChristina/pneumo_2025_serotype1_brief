@@ -265,18 +265,122 @@ vir_combined_results <- dplyr::left_join(
       TRUE ~ "no"
     )
   ) %>% 
-  # view() %>% 
+  # nanA
+  dplyr::mutate(
+    gene.x = ifelse(is.na(gene.x), "nanA", gene.x),
+    gene_class = ifelse(is.na(gene_class), "Exoenzyme", gene_class),
+    species.x = ifelse(is.na(species.x), "Streptococcus pneumoniae NCTC7465 (serotype 1)", species.x)
+  ) %>% 
+  view() %>%
+  glimpse()
+
+vir_blastp <- read.table("outputs/result_blastp_virulences_additional_analysis/Streptococcus_pneumoniae_RMD131_contigs_from_YM_setA_blastp_results.txt",
+                         header = F, sep = "\t") %>% 
+  stats::setNames(c("qseqid", "temporary_sseqid",
+                    "aap_pident", "aap_length", "aap_mismatch",
+                    "aap_gapopen", "aap_qstart", "aap_qend",
+                    "aap_sstart", "aap_send",
+                    "aap_evalue", "aap_bitscore")) %>% 
+  dplyr::left_join(
+    read.table("inputs/prepare_vfdb_database/VFDB_setA_compiled_headers_pro.txt",
+               header = F, sep = "\t") %>% 
+      dplyr::rename(header = V1) %>% 
+      dplyr::mutate(gene    = str_extract(header, "(?<= \\()[^\\)]+(?=\\) )"), # " (" & ") "
+                    gene_id = str_extract(header, "^[^)]*\\)"), # begin & ")"
+                    gene_class = str_extract(header, "(?<= - )[^\\(]+(?= \\()"),  # " - " & " ("
+                    species = str_extract(header, "(?<=\\] \\[)[^\\]]+(?=\\])") # "] [" & "]"
+      )
+    ,
+    by = c("temporary_sseqid" = "gene_id")
+  ) %>% 
+  dplyr::mutate(
+    temporary_sseqid = case_when(
+      temporary_sseqid == "VFG005653" ~ "VFG005653(gb|WP_142355754.1)", # different ID for nanA from VFDB (gene) and NCBI (amino acids)
+      TRUE ~ temporary_sseqid
+    ),
+    # aap_sdiff = abs(aap_sstart-aap_send),
+    # aap_qdiff = abs(aap_qstart-aap_qend),
+    aap_lengthdiff = abs(abs(aap_sstart-aap_send) - abs(aap_qstart-aap_qend))
+  ) %>% 
+  dplyr::mutate(
+    gene = ifelse(is.na(gene), "nanA", gene),
+    gene_class = ifelse(is.na(gene_class), "Exoenzyme", gene_class),
+    species = ifelse(is.na(species), "Streptococcus pneumoniae NCTC7465 (serotype 1)", species)
+  ) %>% 
+  # dplyr::filter(
+  #   gene == "pspA"
+  # ) %>% 
+  dplyr::filter(aap_evalue <= 1e-3,
+                aap_lengthdiff <= 70,
+                aap_bitscore >= 50,
+                aap_pident >= 70
+                ) %>%
+  dplyr::group_by(gene, temporary_sseqid, species) %>%
+  dplyr::summarise(
+    hits = n(),
+    mean_identity = mean(aap_pident),
+    min_identity = min(aap_pident),
+    max_identity = max(aap_pident),
+    
+    max_bitscore = max(aap_bitscore),
+    mean_evalue = mean(aap_evalue),
+    min_evalue = min(aap_evalue),
+    max_evalue = max(aap_evalue),
+  ) %>%
+  dplyr::arrange(desc(hits)) %>%
+  dplyr::mutate(
+    avg_identity = ifelse(
+      hits > 1, 
+      paste0(round(mean_identity, 3), " (", min_identity, "-", max_identity, ")"), 
+      paste0(round(mean_identity, 3))
+    ),
+    avg_evalue = paste0(round(mean_evalue, 3), " (", min_evalue, "-", max_evalue, ")")
+  ) %>% 
+  dplyr::select(gene, temporary_sseqid, species, hits,
+                avg_identity,
+                # avg_evalue,
+                max_bitscore) %>% 
+  view() %>%
+  glimpse()
+
+# test length
+length <- vir_combined_results %>% 
+  dplyr::select(contains(c("gene", "start", "end"))) %>% 
+  dplyr::transmute(
+    q_nt_diff = abs(nt_qstart - nt_qend),
+    s_nt_diff = abs(nt_sstart - nt_send),
+    q_aa_diff = abs(aa_qstart - aa_qend),
+    s_aa_diff = abs(aa_sstart - aa_send),
+    
+    test_nt_diff = abs(q_nt_diff - s_nt_diff),
+    test_aa_diff = abs(q_aa_diff - s_aa_diff)
+  ) %>% 
+  view() %>% 
   glimpse()
 
 # nanA is not included in VFDB pro list -_-)
-test <- vir_combined_results %>% 
-  select(nt_pident, nt_length, nt_lengthdiff,
-         nt_mismatch, aa_lengthdiff,
-         aa_pident, aa_mismatch, aa_gapopen, gene.x, species.x, gene_class,
-         gene_present, #protein_function, 
-         bacwgs_check) %>% 
-  view() %>% 
+report_blastp <- dplyr::left_join(
+  vir_blastp
+  ,
+  vir_combined_results %>% 
+    select(gene_class, gene.x, #species.x,
+           # nt_pident, nt_lengthdiff, nt_mismatch, nt_evalue,
+           # aa_pident, aa_lengthdiff, aa_mismatch, aa_gapopen, aa_evalue,
+           # gene_present, #protein_function, 
+           # bacwgs_check
+    ) #%>% 
+    # dplyr::distinct(gene.x, .keep_all = T)
+  ,
+  by = c("gene" = "gene.x")
+) %>% 
+  dplyr::select(gene_class, gene, species,
+                hits, avg_identity, max_bitscore
+                ) %>% 
+  # view() %>%
   glimpse()
+
+# use blastp result instead
+write.csv(report_blastp, "report/report_blastp_virulence.csv", row.names = F)
 
 
 # competence genes profile
@@ -317,6 +421,7 @@ com_combined_results <- dplyr::left_join(
         dplyr::rename(header = V1) %>% 
         dplyr::mutate(gene    = str_extract(header, "(?<= )[^\"]+?(?= )"), # " " & " "
                       prot_id = str_extract(header, "^[^ ]+"), # begin & " "
+                      gene_class = "Competence",
                       strain  = str_extract(header, "(?<=\\[)[^\\]]+(?=\\])") # "[" and "]"
         )
       ,
@@ -346,6 +451,74 @@ com_combined_results <- dplyr::left_join(
   # view() %>%
   glimpse()
 
+com_blastp <- read.table("outputs/result_blastp_comptence_additional_analysis/Streptococcus_pneumoniae_RMD131_contigs_from_YM_setA_blastp_results.txt",
+                         header = F, sep = "\t") %>% 
+  stats::setNames(c("qseqid", "temporary_sseqid",
+                    "aap_pident", "aap_length", "aap_mismatch",
+                    "aap_gapopen", "aap_qstart", "aap_qend",
+                    "aap_sstart", "aap_send",
+                    "aap_evalue", "aap_bitscore")) %>% 
+  dplyr::left_join(
+    read.table("inputs/prepare_competence_genes/competence_headers_aa.txt",
+               header = F, sep = "\t") %>% 
+      dplyr::rename(header = V1) %>% 
+      dplyr::mutate(gene    = str_extract(header, "(?<= )[^\"]+?(?= )"), # " " & " "
+                    prot_id = str_extract(header, "^[^ ]+"), # begin & " "
+                    species  = str_extract(header, "(?<=\\[)[^\\]]+(?=\\])") # "[" and "]"
+      )
+    ,
+    by = c("temporary_sseqid" = "prot_id")
+  ) %>%
+  dplyr::mutate(
+    # aap_sdiff = abs(aap_sstart-aap_send),
+    # aap_qdiff = abs(aap_qstart-aap_qend),
+    aap_lengthdiff = abs(abs(aap_sstart-aap_send) - abs(aap_qstart-aap_qend))
+  ) %>%  
+  dplyr::filter(aap_evalue <= 1e-3,
+                aap_lengthdiff <= 70,
+                aap_bitscore >= 50,
+                aap_pident >= 70
+  ) %>%
+  dplyr::group_by(gene, temporary_sseqid, species) %>%
+  dplyr::summarise(
+    hits = n(),
+    mean_identity = mean(aap_pident),
+    min_identity = min(aap_pident),
+    max_identity = max(aap_pident),
+    
+    max_bitscore = max(aap_bitscore),
+    mean_evalue = mean(aap_evalue),
+    min_evalue = min(aap_evalue),
+    max_evalue = max(aap_evalue),
+  ) %>%
+  dplyr::arrange(desc(hits)) %>%
+  dplyr::mutate(
+    avg_identity = ifelse(
+      hits > 1, 
+      paste0(round(mean_identity, 3), " (", min_identity, "-", max_identity, ")"), 
+      paste0(round(mean_identity, 3))
+    ),
+    avg_evalue = paste0(round(mean_evalue, 3), " (", min_evalue, "-", max_evalue, ")")
+  ) %>% 
+  dplyr::select(gene, temporary_sseqid, species, hits,
+                avg_identity,
+                # avg_evalue,
+                max_bitscore) %>% 
+  view() %>%
+  glimpse()
+
+report_blastp_com <- com_blastp %>% 
+  dplyr::mutate(
+    gene_class = "Competence"
+  ) %>% 
+  dplyr::select(gene_class, gene, species,
+                hits, avg_identity, max_bitscore
+  ) %>% 
+  # view() %>%
+  glimpse()
+
+
+
 test <- com_combined_results %>% 
   select(nt_pident, nt_mismatch, nt_lengthdiff,
          aa_pident, aa_mismatch, aa_lengthdiff,
@@ -360,6 +533,7 @@ test_gene_distinction <- com_combined_results %>%
   dplyr::distinct(gene.x, .keep_all = T) %>% 
   view()
 # comCDE are closely related to R6. Interesting.
+
 
 
 
