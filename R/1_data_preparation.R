@@ -277,10 +277,12 @@ vir_combined_results <- dplyr::left_join(
 vir_blastp <- read.table("outputs/result_blastp_virulences_additional_analysis/Streptococcus_pneumoniae_RMD131_contigs_from_YM_setA_blastp_results.txt",
                          header = F, sep = "\t") %>% 
   stats::setNames(c("qseqid", "temporary_sseqid",
-                    "aap_pident", "aap_length", "aap_mismatch",
-                    "aap_gapopen", "aap_qstart", "aap_qend",
+                    "aap_pident", "aap_length",
+                    # "aap_mismatch",
+                    # "aap_gapopen", 
+                    "aap_qstart", "aap_qend",
                     "aap_sstart", "aap_send",
-                    "aap_evalue", "aap_bitscore")) %>% 
+                    "aap_evalue", "aap_bitscore", "qlen")) %>% 
   dplyr::left_join(
     read.table("inputs/prepare_vfdb_database/VFDB_setA_compiled_headers_pro.txt",
                header = F, sep = "\t") %>% 
@@ -300,7 +302,10 @@ vir_blastp <- read.table("outputs/result_blastp_virulences_additional_analysis/S
     ),
     # aap_sdiff = abs(aap_sstart-aap_send),
     # aap_qdiff = abs(aap_qstart-aap_qend),
-    aap_lengthdiff = abs(abs(aap_sstart-aap_send) - abs(aap_qstart-aap_qend))
+    aap_lengthdiff = abs(abs(aap_sstart-aap_send) - abs(aap_qstart-aap_qend)),
+    
+    alignment_length = abs(aap_qstart-aap_qend) + 1,
+    query_coverage = alignment_length / qlen
   ) %>% 
   dplyr::mutate(
     gene = ifelse(is.na(gene), "nanA", gene),
@@ -313,33 +318,53 @@ vir_blastp <- read.table("outputs/result_blastp_virulences_additional_analysis/S
   dplyr::filter(aap_evalue <= 1e-3,
                 aap_lengthdiff <= 70,
                 aap_bitscore >= 50,
-                aap_pident >= 70
+                aap_pident >= 70,
+                query_coverage >= 0.7
                 ) %>%
-  dplyr::group_by(gene, temporary_sseqid, species) %>%
+  dplyr::group_by(gene, temporary_sseqid, species, query_coverage) %>%
   dplyr::summarise(
     hits = n(),
+    mean_coverage = mean(query_coverage)*100,
+    min_coverage = min(query_coverage)*100,
+    max_coverage = max(query_coverage)*100,
+    
     mean_identity = mean(aap_pident),
     min_identity = min(aap_pident),
     max_identity = max(aap_pident),
     
+    mean_bitscore = mean(aap_bitscore),
+    min_bitscore = min(aap_bitscore),
     max_bitscore = max(aap_bitscore),
+    
     mean_evalue = mean(aap_evalue),
     min_evalue = min(aap_evalue),
     max_evalue = max(aap_evalue),
   ) %>%
   dplyr::arrange(desc(hits)) %>%
   dplyr::mutate(
+    coverage = ifelse(
+      hits > 1, 
+      paste0(round(mean_coverage, 3), "% (", min_coverage, "%-", max_coverage, "%)"), 
+      paste0(round(mean_coverage, 3), "%")
+    ),
     avg_identity = ifelse(
       hits > 1, 
-      paste0(round(mean_identity, 3), " (", min_identity, "-", max_identity, ")"), 
-      paste0(round(mean_identity, 3))
+      paste0(round(mean_identity, 3), "% (", min_identity, "%-", max_identity, "%)"), 
+      paste0(round(mean_identity, 3), "%")
     ),
     avg_evalue = paste0(round(mean_evalue, 3), " (", min_evalue, "-", max_evalue, ")")
+    ,
+    bitscore = ifelse(
+      hits > 1, 
+      paste0(round(mean_bitscore, 3), " (", min_bitscore, "-", max_bitscore, ")"), 
+      paste0(round(mean_bitscore, 3), "")
+    )
   ) %>% 
   dplyr::select(gene, temporary_sseqid, species, hits,
+                coverage,
                 avg_identity,
                 # avg_evalue,
-                max_bitscore) %>% 
+                bitscore) %>% 
   view() %>%
   glimpse()
 
@@ -355,7 +380,7 @@ length <- vir_combined_results %>%
     test_nt_diff = abs(q_nt_diff - s_nt_diff),
     test_aa_diff = abs(q_aa_diff - s_aa_diff)
   ) %>% 
-  view() %>% 
+  # view() %>% 
   glimpse()
 
 # nanA is not included in VFDB pro list -_-)
@@ -373,15 +398,36 @@ report_blastp <- dplyr::left_join(
   ,
   by = c("gene" = "gene.x")
 ) %>% 
+  dplyr::ungroup() %>%
   dplyr::select(gene_class, gene, species,
-                hits, avg_identity, max_bitscore
+                hits, coverage, avg_identity, bitscore
                 ) %>% 
+  dplyr::arrange(gene_class) %>% 
   # view() %>%
   glimpse()
 
 # use blastp result instead
 write.csv(report_blastp, "report/report_blastp_virulence.csv", row.names = F)
 
+# crosscheck with panvita result
+vir_mtx <- read.csv("outputs/result_panvita/Results_vfdb_25-04-2025_14-48-16/matriz_vfdb.csv", sep = ";") %>% 
+  dplyr::select(-X) %>% 
+  tidyr::pivot_longer(cols = 2:ncol(.),
+                      names_to = "gene",
+                      values_to = "aa_percent") %>% 
+  dplyr::mutate(gene = gene %>%
+                  str_replace("srtC", "srtC-") %>%
+                  str_replace("-.", "-") %>%
+                  str_replace("\\.", "/"),
+                panvita_check = "detected"
+  ) %>% 
+  dplyr::full_join(
+    report_blastp
+    ,
+    by = "gene"
+  ) %>% 
+  # view() %>% 
+  glimpse()
 
 # competence genes profile
 com_combined_results <- dplyr::left_join(
@@ -454,10 +500,12 @@ com_combined_results <- dplyr::left_join(
 com_blastp <- read.table("outputs/result_blastp_comptence_additional_analysis/Streptococcus_pneumoniae_RMD131_contigs_from_YM_setA_blastp_results.txt",
                          header = F, sep = "\t") %>% 
   stats::setNames(c("qseqid", "temporary_sseqid",
-                    "aap_pident", "aap_length", "aap_mismatch",
-                    "aap_gapopen", "aap_qstart", "aap_qend",
+                    "aap_pident", "aap_length",
+                    # "aap_mismatch",
+                    # "aap_gapopen", 
+                    "aap_qstart", "aap_qend",
                     "aap_sstart", "aap_send",
-                    "aap_evalue", "aap_bitscore")) %>% 
+                    "aap_evalue", "aap_bitscore", "qlen")) %>% 
   dplyr::left_join(
     read.table("inputs/prepare_competence_genes/competence_headers_aa.txt",
                header = F, sep = "\t") %>% 
@@ -472,38 +520,60 @@ com_blastp <- read.table("outputs/result_blastp_comptence_additional_analysis/St
   dplyr::mutate(
     # aap_sdiff = abs(aap_sstart-aap_send),
     # aap_qdiff = abs(aap_qstart-aap_qend),
-    aap_lengthdiff = abs(abs(aap_sstart-aap_send) - abs(aap_qstart-aap_qend))
+    aap_lengthdiff = abs(abs(aap_sstart-aap_send) - abs(aap_qstart-aap_qend)),
+    alignment_length = abs(aap_qstart-aap_qend) + 1,
+    query_coverage = alignment_length / qlen
   ) %>%  
   dplyr::filter(aap_evalue <= 1e-3,
                 aap_lengthdiff <= 70,
                 aap_bitscore >= 50,
-                aap_pident >= 70
+                aap_pident >= 70,
+                query_coverage >= 0.7
   ) %>%
-  dplyr::group_by(gene, temporary_sseqid, species) %>%
+  dplyr::group_by(gene, temporary_sseqid, species, query_coverage) %>%
   dplyr::summarise(
     hits = n(),
+    mean_coverage = mean(query_coverage)*100,
+    min_coverage = min(query_coverage)*100,
+    max_coverage = max(query_coverage)*100,
+    
     mean_identity = mean(aap_pident),
     min_identity = min(aap_pident),
     max_identity = max(aap_pident),
     
+    mean_bitscore = mean(aap_bitscore),
+    min_bitscore = min(aap_bitscore),
     max_bitscore = max(aap_bitscore),
+    
     mean_evalue = mean(aap_evalue),
     min_evalue = min(aap_evalue),
     max_evalue = max(aap_evalue),
   ) %>%
   dplyr::arrange(desc(hits)) %>%
   dplyr::mutate(
+    coverage = ifelse(
+      hits > 1, 
+      paste0(round(mean_coverage, 3), "% (", min_coverage, "%-", max_coverage, "%)"), 
+      paste0(round(mean_coverage, 3), "%")
+    ),
     avg_identity = ifelse(
       hits > 1, 
-      paste0(round(mean_identity, 3), " (", min_identity, "-", max_identity, ")"), 
-      paste0(round(mean_identity, 3))
+      paste0(round(mean_identity, 3), "% (", min_identity, "%-", max_identity, "%)"), 
+      paste0(round(mean_identity, 3), "%")
     ),
     avg_evalue = paste0(round(mean_evalue, 3), " (", min_evalue, "-", max_evalue, ")")
+    ,
+    bitscore = ifelse(
+      hits > 1, 
+      paste0(round(mean_bitscore, 3), " (", min_bitscore, "-", max_bitscore, ")"), 
+      paste0(round(mean_bitscore, 3), "")
+    )
   ) %>% 
   dplyr::select(gene, temporary_sseqid, species, hits,
+                coverage,
                 avg_identity,
                 # avg_evalue,
-                max_bitscore) %>% 
+                bitscore) %>% 
   view() %>%
   glimpse()
 
