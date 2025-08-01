@@ -23,6 +23,8 @@ tre <- ape::read.tree("outputs/result_tree_no_outgroup/GPSC2.node_labelled.final
 tre$tip.label <- gsub("^Streptococcus_pneumoniae_", "", tre$tip.label)
 tre$tip.label <- gsub(".contigs_velvet$", "", tre$tip.label)
 
+ape::write.tree(tre, "outputs/result_tree_no_outgroup/GPSC2.node_labelled.final_tree_shortened_ID.tre")
+
 # test node
 ggtree(tre) + 
   geom_tiplab(size = 2) +
@@ -77,6 +79,9 @@ metadata_final <- dplyr::left_join(
   ) %>% 
   glimpse()
 rownames(metadata_final) <- tre$tip.label
+
+write.csv(metadata_final,
+          "outputs/result_tree_no_outgroup/metadata_final.csv")
 
 # basic
 show_pp <- ggtree(tre,
@@ -208,15 +213,16 @@ tree_gen_country_tree <- show_pp3 %<+%
   ) 
 tree_gen_country_tree
 
-# AMR chosen for COT & TET
+# AMR chosen for transposon-mediated AMR COT, TET, cat, ermB, mefA
 filtered_df <- metadata_final %>% 
   dplyr::select(
     contains("autocolour"),
-    -PBP1A_2B_2X__autocolour
+    -PBP1A_2B_2X__autocolour,
+    ermB, mefA, cat
   ) %>% 
   dplyr::rename(
     Tetracycline = Tet__autocolour,
-    Sulfamethoxazole = folP__autocolour
+    Sulfamethoxazole = folP__autocolour,
   ) %>% 
   dplyr::mutate(
     Tetracycline = case_when(
@@ -227,8 +233,23 @@ filtered_df <- metadata_final %>%
     Sulfamethoxazole = case_when(
       Sulfamethoxazole == "FOLP_169_INS" | Sulfamethoxazole == "FOLP_AE007317 INS AT 169" ~ "FolP 169 insertion",
       Sulfamethoxazole == "FOLP_178_INS" ~ "FolP 178 insertion",
+    ),
+    Erythromycin = case_when(
+      ermB == "POS" ~ "ermB",
+      mefA == "POS" ~ "mefA",
+      ermB == "POS" & mefA == "POS" ~ "ermB & mefA",
+      TRUE ~ "Not found"
+    ),
+    Chloramphenicol = case_when(
+      cat == "POS" ~ "cat",
+      TRUE ~ "Not found"
     )
   ) %>% 
+  dplyr::select(Chloramphenicol,
+                Erythromycin,
+                Sulfamethoxazole,
+                Tetracycline,
+                -c(ermB, mefA, cat)) %>% 
   glimpse()
 
 all_labels <- unique(unlist(filtered_df))
@@ -244,6 +265,8 @@ final_col <- c(manual, auto_col)
 factor_levels <- c("FolP 169 insertion", 
                    "FolP 178 insertion", 
                    "Tet(M)", 
+                   "cat",
+                   "mefA",
                    "Not found", 
                    "NA")
 
@@ -256,13 +279,13 @@ filtered_df <- filtered_df %>%
 png(file = "pictures/tree.png",
     width = 25, height = 12, unit = "cm", res = 600)
 ggtree::gheatmap(tree_gen_country_tree, filtered_df,
-                 offset=70, width=0.25, font.size=3, 
+                 offset=70, width=0.5, font.size=3, 
                  colnames_angle=-60, hjust=0,
                  legend_title = "Antimicrobial resistance") +
   scale_fill_manual(
     values = final_col,
     na.translate = FALSE,
     name = "Antimicrobial resistance",
-    guide = guide_legend(ncol = 3)
+    guide = guide_legend(ncol = 2)
   )
 dev.off()

@@ -605,7 +605,29 @@ test_gene_distinction <- com_combined_results %>%
 # comCDE are closely related to R6. Interesting.
 
 
-
+# re-blast transposon genes
+transposon_results <- read.table("outputs/result_blast_transposon/blastn_tabular_nt.txt",
+                                   header = F, sep = "\t") %>% 
+  stats::setNames(c("file_name", "qseqid", "temporary_sseqid",
+                    "nt_pident", "nt_length", "nt_mismatch",
+                    "nt_gapopen", "nt_qstart", "nt_qend",
+                    "nt_sstart", "nt_send",
+                    "nt_evalue", "nt_bitscore")) %>% 
+  dplyr::filter(
+    file_name == "Streptococcus_pneumoniae_RMD131_contigs_from_YM",
+    !str_detect(temporary_sseqid, "Tn5253")
+    ) %>% 
+  dplyr::mutate(
+    nt_lengthdiff = abs(abs(nt_sstart-nt_send) - abs(nt_qstart-nt_qend))
+    ) %>% 
+  dplyr::select(
+    temporary_sseqid,
+    nt_qstart,
+    nt_qend,
+    nt_lengthdiff
+  ) %>% 
+  view() %>% 
+  glimpse()
 
 
 
