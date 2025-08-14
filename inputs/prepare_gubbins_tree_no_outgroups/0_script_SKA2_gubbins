@@ -3,16 +3,6 @@ find "$(pwd)" -type f -name "*.fa" | while IFS= read -r f; do
     done > "$(pwd)/AllTarget_isolates.list"
 cat AllTarget_isolates.list | wc -l
 
-# instead of using all of the available 19F contigs, I use 1 contigs as outgroup
-(AllTarget_isolates.list was generated using metadata file in R)
-
-# for all fasta file names that contains "#", I replace it with "_"
-find . -depth -name "*#*" -execdir rename 's/#/_/g' {} \;
-
-Using 19F as outgroup failed because tree distance is too far.
-I use INV104 (serotype 1, GPSC31); also failed (too far tree distance).
-I decided to not using outgroup.
-
 # go to pwd
 generate_ska_alignment.py \
     --reference Strep_P1031_Ref.fasta \

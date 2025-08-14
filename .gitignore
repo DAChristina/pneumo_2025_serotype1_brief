@@ -20,6 +20,7 @@ vignettes/*.html
 inst/web
 # Additional info I don't want to upload the data into gitHub
 raw_data/
+inputs/prepare_gubbins_tree_no_outgroups/old/
 hipercow/
 renv/
 outputs/
