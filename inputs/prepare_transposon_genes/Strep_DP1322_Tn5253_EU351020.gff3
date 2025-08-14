@@ -1,0 +1,213 @@
+##gff-version 3
+#!gff-spec-version 1.21
+#!processor NCBI annotwriter
+##sequence-region EU351020.1 1 66192
+##species https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?id=1313
+EU351020.1	Genbank	region	1	66192	.	+	.	ID=EU351020.1:1..66192;Dbxref=taxon:1313;gbkey=Src;mol_type=genomic DNA;strain=DP1322
+EU351020.1	Genbank	gene	1	353	.	+	.	ID=gene-spr1042;Name=spr1042;gbkey=Gene;gene=spr1042;gene_biotype=protein_coding;partial=true;start_range=.,1
+EU351020.1	Genbank	CDS	1	353	.	+	2	ID=cds-ACC59205.1;Parent=gene-spr1042;Dbxref=NCBI_GP:ACC59205.1;Name=ACC59205.1;gbkey=CDS;gene=spr1042;partial=true;product=IgA-specific zinc metalloproteinase;protein_id=ACC59205.1;start_range=.,1;transl_table=11
+EU351020.1	Genbank	direct_repeat	611	646	.	+	.	ID=id-EU351020.1:611..646;gbkey=repeat_region;rpt_type=direct;rpt_unit_range=611..622
+EU351020.1	Genbank	recombination_feature	749	832	.	+	.	ID=id-EU351020.1:749..832;Note=Tn5253 insertion site attL;gbkey=misc_recomb
+EU351020.1	Genbank	mobile_genetic_element	833	65360	.	+	.	ID=id-EU351020.1:833..65360;Note=conjugative transposon;gbkey=mobile_element;mobile_element_type=transposon:Tn5253
+EU351020.1	Genbank	inverted_repeat	883	894	.	+	.	ID=id-EU351020.1:883..894;Note=left inverted repeat;gbkey=repeat_region;rpt_type=inverted
+EU351020.1	Genbank	inverted_repeat	896	907	.	+	.	ID=id-EU351020.1:896..907;Note=right inverted repeat;gbkey=repeat_region;rpt_type=inverted
+EU351020.1	Genbank	region	1063	1066	.	+	.	ID=id-EU351020.1:1063..1066;gbkey=RBS
+EU351020.1	Genbank	CDS	1070	1243	.	+	0	ID=cds-ACC59206.1;Dbxref=NCBI_GP:ACC59206.1;Name=ACC59206.1;gbkey=CDS;product=unknown;protein_id=ACC59206.1;transl_table=11
+EU351020.1	Genbank	gene	1231	2019	.	+	.	ID=gene-repA;Name=repA;gbkey=Gene;gene=repA;gene_biotype=protein_coding
+EU351020.1	Genbank	CDS	1240	2019	.	+	0	ID=cds-ACC59207.1;Parent=gene-repA;Dbxref=NCBI_GP:ACC59207.1;Name=ACC59207.1;gbkey=CDS;gene=repA;product=RepA;protein_id=ACC59207.1;transl_table=11
+EU351020.1	Genbank	region	1231	1234	.	+	.	ID=id-repA;gbkey=RBS;gene=repA
+EU351020.1	Genbank	region	2010	2013	.	+	.	ID=id-repA-2;gbkey=RBS;gene=repA
+EU351020.1	Genbank	CDS	2020	2121	.	+	0	ID=cds-ACC59208.1;Dbxref=NCBI_GP:ACC59208.1;Name=ACC59208.1;gbkey=CDS;product=unknown;protein_id=ACC59208.1;transl_table=11
+EU351020.1	Genbank	region	2103	2106	.	+	.	ID=id-EU351020.1:2103..2106;gbkey=RBS
+EU351020.1	Genbank	CDS	2118	3476	.	+	0	ID=cds-ACC59209.1;Dbxref=NCBI_GP:ACC59209.1;Name=ACC59209.1;gbkey=CDS;product=methyltransferase;protein_id=ACC59209.1;transl_table=11
+EU351020.1	Genbank	region	3451	3454	.	+	.	ID=id-EU351020.1:3451..3454;gbkey=RBS
+EU351020.1	Genbank	CDS	3460	3909	.	+	0	ID=cds-ACC59210.1;Dbxref=NCBI_GP:ACC59210.1;Name=ACC59210.1;gbkey=CDS;product=unknown;protein_id=ACC59210.1;transl_table=11
+EU351020.1	Genbank	region	3893	3896	.	+	.	ID=id-EU351020.1:3893..3896;gbkey=RBS
+EU351020.1	Genbank	CDS	3902	4282	.	+	0	ID=cds-ACC59211.1;Dbxref=NCBI_GP:ACC59211.1;Name=ACC59211.1;gbkey=CDS;product=unknown;protein_id=ACC59211.1;transl_table=11
+EU351020.1	Genbank	region	4283	4286	.	+	.	ID=id-EU351020.1:4283..4286;gbkey=RBS
+EU351020.1	Genbank	CDS	4295	4528	.	+	0	ID=cds-ACC59212.1;Dbxref=NCBI_GP:ACC59212.1;Name=ACC59212.1;gbkey=CDS;product=unknown;protein_id=ACC59212.1;transl_table=11
+EU351020.1	Genbank	region	4523	4526	.	+	.	ID=id-EU351020.1:4523..4526;gbkey=RBS
+EU351020.1	Genbank	CDS	4531	5118	.	+	0	ID=cds-ACC59213.1;Dbxref=NCBI_GP:ACC59213.1;Name=ACC59213.1;gbkey=CDS;product=putative protease;protein_id=ACC59213.1;transl_table=11
+EU351020.1	Genbank	region	5235	5238	.	+	.	ID=id-EU351020.1:5235..5238;gbkey=RBS
+EU351020.1	Genbank	CDS	5246	5836	.	+	0	ID=cds-ACC59214.1;Dbxref=NCBI_GP:ACC59214.1;Name=ACC59214.1;gbkey=CDS;product=abortive infection protein AbiEi;protein_id=ACC59214.1;transl_table=11
+EU351020.1	Genbank	region	5823	5826	.	+	.	ID=id-EU351020.1:5823..5826;gbkey=RBS
+EU351020.1	Genbank	CDS	5836	6672	.	+	0	ID=cds-ACC59215.1;Dbxref=NCBI_GP:ACC59215.1;Name=ACC59215.1;gbkey=CDS;product=abortive infection protein AbiEii;protein_id=ACC59215.1;transl_table=11
+EU351020.1	Genbank	region	6944	6947	.	+	.	ID=id-EU351020.1:6944..6947;gbkey=RBS
+EU351020.1	Genbank	CDS	6955	7254	.	+	0	ID=cds-ACC59216.1;Dbxref=NCBI_GP:ACC59216.1;Name=ACC59216.1;gbkey=CDS;product=unknown;protein_id=ACC59216.1;transl_table=11
+EU351020.1	Genbank	region	7235	7238	.	+	.	ID=id-EU351020.1:7235..7238;gbkey=RBS
+EU351020.1	Genbank	CDS	7244	7732	.	+	0	ID=cds-ACC59217.1;Dbxref=NCBI_GP:ACC59217.1;Name=ACC59217.1;gbkey=CDS;product=unknown;protein_id=ACC59217.1;transl_table=11
+EU351020.1	Genbank	gene	7717	9609	.	+	.	ID=gene-traG;Name=traG;gbkey=Gene;gene=traG;gene_biotype=protein_coding
+EU351020.1	Genbank	CDS	7732	9609	.	+	0	ID=cds-ACC59218.1;Parent=gene-traG;Dbxref=NCBI_GP:ACC59218.1;Name=ACC59218.1;gbkey=CDS;gene=traG;product=TraG protein;protein_id=ACC59218.1;transl_table=11
+EU351020.1	Genbank	region	7717	7721	.	+	.	ID=id-traG;gbkey=RBS;gene=traG
+EU351020.1	Genbank	region	9621	9624	.	+	.	ID=id-EU351020.1:9621..9624;gbkey=RBS
+EU351020.1	Genbank	CDS	9630	9872	.	+	0	ID=cds-ACC59219.1;Dbxref=NCBI_GP:ACC59219.1;Name=ACC59219.1;gbkey=CDS;product=unknown;protein_id=ACC59219.1;transl_table=11
+EU351020.1	Genbank	region	9874	9877	.	+	.	ID=id-EU351020.1:9874..9877;gbkey=RBS
+EU351020.1	Genbank	CDS	9889	10743	.	+	0	ID=cds-ACC59220.1;Dbxref=NCBI_GP:ACC59220.1;Name=ACC59220.1;gbkey=CDS;product=unknown;protein_id=ACC59220.1;transl_table=11
+EU351020.1	Genbank	region	10788	10791	.	+	.	ID=id-EU351020.1:10788..10791;gbkey=RBS
+EU351020.1	Genbank	CDS	10797	11156	.	+	0	ID=cds-ACC59221.1;Dbxref=NCBI_GP:ACC59221.1;Name=ACC59221.1;gbkey=CDS;product=unknown;protein_id=ACC59221.1;transl_table=11
+EU351020.1	Genbank	gene	11096	13464	.	+	.	ID=gene-virB4;Name=virB4;Note=orf17;gbkey=Gene;gene=virB4;gene_biotype=protein_coding
+EU351020.1	Genbank	CDS	11107	13464	.	+	0	ID=cds-ACC59222.1;Parent=gene-virB4;Dbxref=NCBI_GP:ACC59222.1;Name=ACC59222.1;gbkey=CDS;gene=virB4;product=type IV secretion protein VirB4;protein_id=ACC59222.1;transl_table=11
+EU351020.1	Genbank	region	11096	11099	.	+	.	ID=id-virB4;gbkey=RBS;gene=virB4
+EU351020.1	Genbank	region	13470	13473	.	+	.	ID=id-EU351020.1:13470..13473;gbkey=RBS
+EU351020.1	Genbank	CDS	13476	16289	.	+	0	ID=cds-ACC59223.1;Dbxref=NCBI_GP:ACC59223.1;Name=ACC59223.1;gbkey=CDS;product=putative peptidoglycan hydrolase;protein_id=ACC59223.1;transl_table=11
+EU351020.1	Genbank	region	16321	16324	.	+	.	ID=id-EU351020.1:16321..16324;gbkey=RBS
+EU351020.1	Genbank	CDS	16341	16469	.	+	0	ID=cds-ACC59224.1;Dbxref=NCBI_GP:ACC59224.1;Name=ACC59224.1;gbkey=CDS;product=unknown;protein_id=ACC59224.1;transl_table=11
+EU351020.1	Genbank	CDS	16591	16785	.	-	0	ID=cds-ACC59225.1;Dbxref=NCBI_GP:ACC59225.1;Name=ACC59225.1;gbkey=CDS;product=truncated ISSth5 transposase;protein_id=ACC59225.1;transl_table=11
+EU351020.1	Genbank	region	16793	16796	.	-	.	ID=id-EU351020.1:16793..16796;gbkey=RBS
+EU351020.1	Genbank	direct_repeat	16848	16912	.	+	.	ID=id-EU351020.1:16848..16912;Note=65-bp imperfect direct repeat;gbkey=repeat_region;rpt_type=direct
+EU351020.1	Genbank	sequence_feature	17126	17131	.	+	.	ID=id-EU351020.1:17126..17131;Note=coupling sequence Tn5251;gbkey=misc_feature
+EU351020.1	Genbank	mobile_genetic_element	17306	34938	.	+	.	ID=id-EU351020.1:17306..34938;end_range=34938,.;gbkey=mobile_element;mobile_element_type=transposon:Tn5251;partial=true;start_range=.,17306
+EU351020.1	Genbank	gene	17306	18536	.	-	.	ID=gene-int;Name=int;description=orf21;gbkey=Gene;gene=int;gene_biotype=protein_coding
+EU351020.1	Genbank	CDS	17306	18523	.	-	0	ID=cds-ACC59226.1;Parent=gene-int;Dbxref=NCBI_GP:ACC59226.1;Name=ACC59226.1;gbkey=CDS;gene=int;product=integrase;protein_id=ACC59226.1;transl_table=11
+EU351020.1	Genbank	region	18533	18536	.	-	.	ID=id-int;gbkey=RBS;gene=int
+EU351020.1	Genbank	gene	18605	18816	.	-	.	ID=gene-xis;Name=xis;description=orf22;gbkey=Gene;gene=xis;gene_biotype=protein_coding
+EU351020.1	Genbank	CDS	18605	18808	.	-	0	ID=cds-ACC59227.1;Parent=gene-xis;Dbxref=NCBI_GP:ACC59227.1;Name=ACC59227.1;gbkey=CDS;gene=xis;product=excisionase;protein_id=ACC59227.1;transl_table=11
+EU351020.1	Genbank	region	18813	18816	.	-	.	ID=id-xis;gbkey=RBS;gene=xis
+EU351020.1	Genbank	region	18788	18791	.	+	.	ID=id-EU351020.1:18788..18791;gbkey=RBS
+EU351020.1	Genbank	CDS	18792	19043	.	+	0	ID=cds-ACC59228.1;Dbxref=NCBI_GP:ACC59228.1;Name=ACC59228.1;gbkey=CDS;product=unknown;protein_id=ACC59228.1;transl_table=11
+EU351020.1	Genbank	CDS	19269	19499	.	-	0	ID=cds-ACC59229.1;Dbxref=NCBI_GP:ACC59229.1;Name=ACC59229.1;gbkey=CDS;product=unknown;protein_id=ACC59229.1;transl_table=11
+EU351020.1	Genbank	CDS	19496	19918	.	-	0	ID=cds-ACC59230.1;Dbxref=NCBI_GP:ACC59230.1;Name=ACC59230.1;gbkey=CDS;product=putative sigma factor;protein_id=ACC59230.1;transl_table=11
+EU351020.1	Genbank	region	19509	19512	.	-	.	ID=id-EU351020.1:19509..19512;gbkey=RBS
+EU351020.1	Genbank	region	19921	19924	.	-	.	ID=id-EU351020.1:19921..19924;gbkey=RBS
+EU351020.1	Genbank	CDS	20147	20293	.	-	0	ID=cds-ACC59231.1;Dbxref=NCBI_GP:ACC59231.1;Name=ACC59231.1;gbkey=CDS;product=unknown;protein_id=ACC59231.1;transl_table=11
+EU351020.1	Genbank	region	20411	20414	.	+	.	ID=id-EU351020.1:20411..20414;gbkey=RBS
+EU351020.1	Genbank	CDS	20423	20776	.	+	0	ID=cds-ACC59232.1;Dbxref=NCBI_GP:ACC59232.1;Name=ACC59232.1;gbkey=CDS;product=putative transcriptional regulator;protein_id=ACC59232.1;transl_table=11
+EU351020.1	Genbank	inverted_repeat	20802	20821	.	+	.	ID=id-EU351020.1:20802..20821;Note=left inverted repeat;gbkey=repeat_region;rpt_type=inverted
+EU351020.1	Genbank	inverted_repeat	20827	20846	.	+	.	ID=id-EU351020.1:20827..20846;Note=right inverted repeat;gbkey=repeat_region;rpt_type=inverted
+EU351020.1	Genbank	CDS	20836	21024	.	-	0	ID=cds-ACC59233.1;Dbxref=NCBI_GP:ACC59233.1;Name=ACC59233.1;Note=translational start site not determined%3B similar to ORF6 of Tn916;end_range=21024,.;gbkey=CDS;partial=true;product=unknown;protein_id=ACC59233.1;transl_table=11
+EU351020.1	Genbank	region	21032	21035	.	-	.	ID=id-EU351020.1:21032..21035;gbkey=RBS
+EU351020.1	Genbank	gene	21122	23052	.	-	.	ID=gene-tet(M);Name=tet(M);gbkey=Gene;gene=tet(M);gene_biotype=protein_coding
+EU351020.1	Genbank	CDS	21122	23041	.	-	0	ID=cds-ACC59234.1;Parent=gene-tet(M);Dbxref=NCBI_GP:ACC59234.1;Name=ACC59234.1;gbkey=CDS;gene=tet(M);product=tetracycline resistance protein Tet(M);protein_id=ACC59234.1;transl_table=11
+EU351020.1	Genbank	region	23049	23052	.	-	.	ID=id-tet(M);gbkey=RBS;gene=tet(M)
+EU351020.1	Genbank	CDS	23057	23143	.	-	0	ID=cds-ADB27150.1;Dbxref=NCBI_GP:ADB27150.1;Name=ADB27150.1;gbkey=CDS;product=tet(M) leader peptide;protein_id=ADB27150.1;transl_table=11
+EU351020.1	Genbank	inverted_repeat	23073	23093	.	+	.	ID=id-EU351020.1:23073..23093;Note=left inverted repeat;gbkey=repeat_region;rpt_type=inverted
+EU351020.1	Genbank	inverted_repeat	23100	23120	.	+	.	ID=id-EU351020.1:23100..23120;Note=right inverted repeat;gbkey=repeat_region;rpt_type=inverted
+EU351020.1	Genbank	region	23151	23154	.	-	.	ID=id-EU351020.1:23151..23154;gbkey=RBS
+EU351020.1	Genbank	CDS	23418	24350	.	-	0	ID=cds-ACC59235.1;Dbxref=NCBI_GP:ACC59235.1;Name=ACC59235.1;gbkey=CDS;product=unknown;protein_id=ACC59235.1;transl_table=11
+EU351020.1	Genbank	CDS	24347	25348	.	-	0	ID=cds-ACC59236.1;Dbxref=NCBI_GP:ACC59236.1;Name=ACC59236.1;gbkey=CDS;product=putative cell wall hydrolase;protein_id=ACC59236.1;transl_table=11
+EU351020.1	Genbank	region	24362	24365	.	-	.	ID=id-EU351020.1:24362..24365;gbkey=RBS
+EU351020.1	Genbank	CDS	25345	27522	.	-	0	ID=cds-ACC59237.1;Dbxref=NCBI_GP:ACC59237.1;Name=ACC59237.1;gbkey=CDS;product=unknown;protein_id=ACC59237.1;transl_table=11
+EU351020.1	Genbank	region	25353	25356	.	-	.	ID=id-EU351020.1:25353..25356;gbkey=RBS
+EU351020.1	Genbank	gene	27525	29985	.	-	.	ID=gene-virB4-2;Name=virB4;description=orf34;gbkey=Gene;gene=virB4;gene_biotype=protein_coding
+EU351020.1	Genbank	CDS	27525	29972	.	-	0	ID=cds-ACC59238.1;Parent=gene-virB4-2;Dbxref=NCBI_GP:ACC59238.1;Name=ACC59238.1;gbkey=CDS;gene=virB4;product=type IV secretion protein VirB4;protein_id=ACC59238.1;transl_table=11
+EU351020.1	Genbank	region	29982	29985	.	-	.	ID=id-virB4-2;gbkey=RBS;gene=virB4
+EU351020.1	Genbank	region	27529	27531	.	-	.	ID=id-EU351020.1:27529..27531;gbkey=RBS
+EU351020.1	Genbank	CDS	29956	30462	.	-	0	ID=cds-ACC59239.1;Dbxref=NCBI_GP:ACC59239.1;Name=ACC59239.1;gbkey=CDS;product=unknown;protein_id=ACC59239.1;transl_table=11
+EU351020.1	Genbank	gene	30437	30947	.	-	.	ID=gene-ardA;Name=ardA;gbkey=Gene;gene=ardA;gene_biotype=protein_coding
+EU351020.1	Genbank	CDS	30437	30934	.	-	0	ID=cds-ACC59240.1;Parent=gene-ardA;Dbxref=NCBI_GP:ACC59240.1;Name=ACC59240.1;gbkey=CDS;gene=ardA;product=antirestriction protein ArdA;protein_id=ACC59240.1;transl_table=11
+EU351020.1	Genbank	region	30944	30947	.	-	.	ID=id-ardA;gbkey=RBS;gene=ardA
+EU351020.1	Genbank	region	30482	30485	.	-	.	ID=id-EU351020.1:30482..30485;gbkey=RBS
+EU351020.1	Genbank	CDS	31051	31272	.	-	0	ID=cds-ACC59241.1;Dbxref=NCBI_GP:ACC59241.1;Name=ACC59241.1;gbkey=CDS;product=unknown;protein_id=ACC59241.1;transl_table=11
+EU351020.1	Genbank	region	31283	31286	.	-	.	ID=id-EU351020.1:31283..31286;gbkey=RBS
+EU351020.1	Genbank	CDS	31315	32520	.	-	0	ID=cds-ACC59242.1;Dbxref=NCBI_GP:ACC59242.1;Name=ACC59242.1;gbkey=CDS;product=relaxase;protein_id=ACC59242.1;transl_table=11
+EU351020.1	Genbank	CDS	32698	34083	.	-	0	ID=cds-ACC59243.1;Dbxref=NCBI_GP:ACC59243.1;Name=ACC59243.1;gbkey=CDS;product=putative FtsK-SpoIIIE family protein;protein_id=ACC59243.1;transl_table=11
+EU351020.1	Genbank	region	34095	34098	.	-	.	ID=id-EU351020.1:34095..34098;gbkey=RBS
+EU351020.1	Genbank	CDS	34112	34495	.	-	0	ID=cds-ACC59244.1;Dbxref=NCBI_GP:ACC59244.1;Name=ACC59244.1;gbkey=CDS;product=unknown;protein_id=ACC59244.1;transl_table=11
+EU351020.1	Genbank	region	34502	34505	.	-	.	ID=id-EU351020.1:34502..34505;gbkey=RBS
+EU351020.1	Genbank	CDS	34514	34828	.	-	0	ID=cds-ACC59245.1;Dbxref=NCBI_GP:ACC59245.1;Name=ACC59245.1;gbkey=CDS;product=unknown;protein_id=ACC59245.1;transl_table=11
+EU351020.1	Genbank	CDS	34851	34970	.	-	0	ID=cds-ACC59246.1;Dbxref=NCBI_GP:ACC59246.1;Name=ACC59246.1;gbkey=CDS;product=unknown;protein_id=ACC59246.1;transl_table=11
+EU351020.1	Genbank	region	34935	34938	.	-	.	ID=id-EU351020.1:34935..34938;gbkey=RBS
+EU351020.1	Genbank	sequence_feature	35165	35170	.	+	.	ID=id-EU351020.1:35165..35170;Note=coupling sequence Tn5251;gbkey=misc_feature
+EU351020.1	Genbank	region	35257	35260	.	+	.	ID=id-EU351020.1:35257..35260;gbkey=RBS
+EU351020.1	Genbank	CDS	35267	35998	.	+	0	ID=cds-ACC59247.1;Dbxref=NCBI_GP:ACC59247.1;Name=ACC59247.1;Note=ABC transporter;gbkey=CDS;product=putative ATP-binding protein;protein_id=ACC59247.1;transl_table=11
+EU351020.1	Genbank	region	36003	36006	.	+	.	ID=id-EU351020.1:36003..36006;gbkey=RBS
+EU351020.1	Genbank	CDS	36016	37332	.	+	0	ID=cds-ACC59248.1;Dbxref=NCBI_GP:ACC59248.1;Name=ACC59248.1;Note=ABC transporter;gbkey=CDS;product=putative permease protein;protein_id=ACC59248.1;transl_table=11
+EU351020.1	Genbank	CDS	37388	37492	.	-	0	ID=cds-ACC59249.1;Dbxref=NCBI_GP:ACC59249.1;Name=ACC59249.1;gbkey=CDS;product=unknown;protein_id=ACC59249.1;transl_table=11
+EU351020.1	Genbank	direct_repeat	37556	37620	.	+	.	ID=id-EU351020.1:37556..37620;Note=65-bp imperfect direct repeat;gbkey=repeat_region;rpt_type=direct
+EU351020.1	Genbank	region	37754	37757	.	+	.	ID=id-EU351020.1:37754..37757;gbkey=RBS
+EU351020.1	Genbank	CDS	37763	38173	.	+	0	ID=cds-ACC59250.1;Dbxref=NCBI_GP:ACC59250.1;Name=ACC59250.1;gbkey=CDS;product=unknown;protein_id=ACC59250.1;transl_table=11
+EU351020.1	Genbank	region	38211	38214	.	+	.	ID=id-EU351020.1:38211..38214;gbkey=RBS
+EU351020.1	Genbank	CDS	38221	44307	.	+	0	ID=cds-ACC59251.1;Dbxref=NCBI_GP:ACC59251.1;Name=ACC59251.1;gbkey=CDS;product=putative restriction-modification protein;protein_id=ACC59251.1;transl_table=11
+EU351020.1	Genbank	region	44371	44374	.	+	.	ID=id-EU351020.1:44371..44374;gbkey=RBS
+EU351020.1	Genbank	CDS	44382	44666	.	+	0	ID=cds-ACC59252.1;Dbxref=NCBI_GP:ACC59252.1;Name=ACC59252.1;gbkey=CDS;product=unknown;protein_id=ACC59252.1;transl_table=11
+EU351020.1	Genbank	region	44669	44672	.	+	.	ID=id-EU351020.1:44669..44672;gbkey=RBS
+EU351020.1	Genbank	CDS	44680	44976	.	+	0	ID=cds-ACC59253.1;Dbxref=NCBI_GP:ACC59253.1;Name=ACC59253.1;gbkey=CDS;product=unknown;protein_id=ACC59253.1;transl_table=11
+EU351020.1	Genbank	CDS	44990	45187	.	-	0	ID=cds-ACC59254.1;Dbxref=NCBI_GP:ACC59254.1;Name=ACC59254.1;gbkey=CDS;product=unknown;protein_id=ACC59254.1;transl_table=11
+EU351020.1	Genbank	region	45338	45341	.	+	.	ID=id-EU351020.1:45338..45341;gbkey=RBS
+EU351020.1	Genbank	CDS	45347	45988	.	+	0	ID=cds-ACC59255.1;Dbxref=NCBI_GP:ACC59255.1;Name=ACC59255.1;gbkey=CDS;product=unknown;protein_id=ACC59255.1;transl_table=11
+EU351020.1	Genbank	region	45988	45991	.	+	.	ID=id-EU351020.1:45988..45991;gbkey=RBS
+EU351020.1	Genbank	CDS	45998	47083	.	+	0	ID=cds-ACC59256.1;Dbxref=NCBI_GP:ACC59256.1;Name=ACC59256.1;gbkey=CDS;product=unknown;protein_id=ACC59256.1;transl_table=11
+EU351020.1	Genbank	region	47124	47127	.	+	.	ID=id-EU351020.1:47124..47127;gbkey=RBS
+EU351020.1	Genbank	CDS	47134	47367	.	+	0	ID=cds-ACC59257.1;Dbxref=NCBI_GP:ACC59257.1;Name=ACC59257.1;gbkey=CDS;product=unknown;protein_id=ACC59257.1;transl_table=11
+EU351020.1	Genbank	region	47348	47351	.	+	.	ID=id-EU351020.1:47348..47351;gbkey=RBS
+EU351020.1	Genbank	CDS	47364	47747	.	+	0	ID=cds-ACC59258.1;Dbxref=NCBI_GP:ACC59258.1;Name=ACC59258.1;gbkey=CDS;product=unknown;protein_id=ACC59258.1;transl_table=11
+EU351020.1	Genbank	region	47776	47779	.	+	.	ID=id-EU351020.1:47776..47779;gbkey=RBS
+EU351020.1	Genbank	CDS	47785	48057	.	+	0	ID=cds-ACC59259.1;Dbxref=NCBI_GP:ACC59259.1;Name=ACC59259.1;gbkey=CDS;product=unknown;protein_id=ACC59259.1;transl_table=11
+EU351020.1	Genbank	inverted_repeat	48054	48065	.	+	.	ID=id-EU351020.1:48054..48065;Note=left inverted repeat;gbkey=repeat_region;rpt_type=inverted
+EU351020.1	Genbank	inverted_repeat	48068	48079	.	+	.	ID=id-EU351020.1:48068..48079;Note=right inverted repeat;gbkey=repeat_region;rpt_type=inverted
+EU351020.1	Genbank	region	48068	48073	.	+	.	ID=id-EU351020.1:48068..48073;gbkey=-35_signal
+EU351020.1	Genbank	gene	48092	48097	.	+	.	ID=id-EU351020.1:48092..48097;gbkey=-10_signal
+EU351020.1	Genbank	gene	48114	48601	.	+	.	ID=gene-pezA;Name=pezA;gbkey=Gene;gene=pezA;gene_biotype=protein_coding
+EU351020.1	Genbank	CDS	48125	48601	.	+	0	ID=cds-ACC59260.1;Parent=gene-pezA;Dbxref=NCBI_GP:ACC59260.1;Name=ACC59260.1;gbkey=CDS;gene=pezA;product=antitoxin PezA;protein_id=ACC59260.1;transl_table=11
+EU351020.1	Genbank	region	48114	48117	.	+	.	ID=id-pezA;gbkey=RBS;gene=pezA
+EU351020.1	Genbank	gene	48587	49359	.	+	.	ID=gene-pezT;Name=pezT;gbkey=Gene;gene=pezT;gene_biotype=protein_coding
+EU351020.1	Genbank	region	48587	48590	.	+	.	ID=id-pezT;gbkey=RBS;gene=pezT
+EU351020.1	Genbank	region	56214	56217	.	+	.	ID=id-pezT-2;gbkey=RBS;gene=pezT
+EU351020.1	Genbank	CDS	48601	49359	.	+	0	ID=cds-ACC59261.1;Parent=gene-pezT;Dbxref=NCBI_GP:ACC59261.1;Name=ACC59261.1;gbkey=CDS;gene=pezT;product=toxin PezT;protein_id=ACC59261.1;transl_table=11
+EU351020.1	Genbank	mobile_genetic_element	49314	56940	.	+	.	ID=id-EU351020.1:49314..56940;end_range=56940,.;gbkey=mobile_element;mobile_element_type=transposon:omega-cat(pC194);partial=true;start_range=.,49314
+EU351020.1	Genbank	direct_repeat	49314	49398	.	+	.	ID=id-EU351020.1:49314..49398;Note=85-bp imperfect direct repeat;gbkey=repeat_region;rpt_type=direct
+EU351020.1	Genbank	region	49823	49826	.	+	.	ID=id-EU351020.1:49823..49826;gbkey=RBS
+EU351020.1	Genbank	CDS	49835	50623	.	+	0	ID=cds-ACC59262.1;Dbxref=NCBI_GP:ACC59262.1;Name=ACC59262.1;gbkey=CDS;product=unknown;protein_id=ACC59262.1;transl_table=11
+EU351020.1	Genbank	region	50850	50853	.	+	.	ID=id-EU351020.1:50850..50853;gbkey=RBS
+EU351020.1	Genbank	CDS	50862	51110	.	+	0	ID=cds-ACC59263.1;Dbxref=NCBI_GP:ACC59263.1;Name=ACC59263.1;gbkey=CDS;product=unknown;protein_id=ACC59263.1;transl_table=11
+EU351020.1	Genbank	sequence_feature	51189	53646	.	+	.	ID=id-EU351020.1:51189..53646;Note=insertion of plasmid pC194;end_range=53646,.;gbkey=misc_feature;partial=true;start_range=.,51189
+EU351020.1	Genbank	region	51189	51194	.	+	.	ID=id-EU351020.1:51189..51194;gbkey=-35_signal
+EU351020.1	Genbank	gene	51212	51217	.	+	.	ID=id-EU351020.1:51212..51217;gbkey=-10_signal
+EU351020.1	Genbank	inverted_repeat	51237	51248	.	+	.	ID=id-EU351020.1:51237..51248;Note=left inverted repeat;gbkey=repeat_region;rpt_type=inverted
+EU351020.1	Genbank	inverted_repeat	51262	51273	.	+	.	ID=id-EU351020.1:51262..51273;Note=right inverted repeat;gbkey=repeat_region;rpt_type=inverted
+EU351020.1	Genbank	gene	51267	51270	.	+	.	ID=gene-cat;Name=cat;gbkey=Gene;gene=cat;gene_biotype=other
+EU351020.1	Genbank	region	51267	51270	.	+	.	ID=id-cat;gbkey=RBS;gene=cat
+EU351020.1	Genbank	CDS	51281	51931	.	+	0	ID=cds-ACC59264.1;Dbxref=NCBI_GP:ACC59264.1;Name=ACC59264.1;gbkey=CDS;product=chloramphenicol acetyl transferase CAT;protein_id=ACC59264.1;transl_table=11
+EU351020.1	Genbank	CDS	52236	52325	.	-	0	ID=cds-ACC59265.1;Dbxref=NCBI_GP:ACC59265.1;Name=ACC59265.1;gbkey=CDS;product=unknown;protein_id=ACC59265.1;transl_table=11
+EU351020.1	Genbank	region	52334	52337	.	-	.	ID=id-EU351020.1:52334..52337;gbkey=RBS
+EU351020.1	Genbank	CDS	52442	52666	.	-	0	ID=cds-ACC59266.1;Dbxref=NCBI_GP:ACC59266.1;Name=ACC59266.1;gbkey=CDS;product=unknown;protein_id=ACC59266.1;transl_table=11
+EU351020.1	Genbank	region	52681	52684	.	-	.	ID=id-EU351020.1:52681..52684;gbkey=RBS
+EU351020.1	Genbank	inverted_repeat	52731	52751	.	+	.	ID=id-EU351020.1:52731..52751;Note=left inverted repeat;gbkey=repeat_region;rpt_type=inverted
+EU351020.1	Genbank	inverted_repeat	52760	52780	.	+	.	ID=id-EU351020.1:52760..52780;Note=right inverted repeat;gbkey=repeat_region;rpt_type=inverted
+EU351020.1	Genbank	CDS	52796	53641	.	-	0	ID=cds-ACC59267.1;Dbxref=NCBI_GP:ACC59267.1;Name=ACC59267.1;gbkey=CDS;product=replication protein;protein_id=ACC59267.1;transl_table=11
+EU351020.1	Genbank	region	53646	53649	.	-	.	ID=id-EU351020.1:53646..53649;gbkey=RBS
+EU351020.1	Genbank	CDS	53657	53926	.	+	0	ID=cds-ACC59268.1;Dbxref=NCBI_GP:ACC59268.1;Name=ACC59268.1;gbkey=CDS;product=unknown;protein_id=ACC59268.1;transl_table=11
+EU351020.1	Genbank	region	54011	54014	.	+	.	ID=id-EU351020.1:54011..54014;gbkey=RBS
+EU351020.1	Genbank	CDS	54016	54753	.	+	0	ID=cds-ACC59269.1;Dbxref=NCBI_GP:ACC59269.1;Name=ACC59269.1;gbkey=CDS;product=truncated neopullulanase;protein_id=ACC59269.1;transl_table=11
+EU351020.1	Genbank	region	54820	54823	.	+	.	ID=id-EU351020.1:54820..54823;gbkey=RBS
+EU351020.1	Genbank	CDS	54832	55476	.	+	0	ID=cds-ACC59270.1;Dbxref=NCBI_GP:ACC59270.1;Name=ACC59270.1;gbkey=CDS;product=unknown;protein_id=ACC59270.1;transl_table=11
+EU351020.1	Genbank	inverted_repeat	55681	55692	.	+	.	ID=id-EU351020.1:55681..55692;Note=left inverted repeat;gbkey=repeat_region;rpt_type=inverted
+EU351020.1	Genbank	inverted_repeat	55695	55706	.	+	.	ID=id-EU351020.1:55695..55706;Note=right inverted repeat;gbkey=repeat_region;rpt_type=inverted
+EU351020.1	Genbank	region	55695	55700	.	+	.	ID=id-EU351020.1:55695..55700;gbkey=-35_signal
+EU351020.1	Genbank	gene	55719	55724	.	+	.	ID=id-EU351020.1:55719..55724;gbkey=-10_signal
+EU351020.1	Genbank	gene	55741	56228	.	+	.	ID=gene-pezA-2;Name=pezA;gbkey=Gene;gene=pezA;gene_biotype=protein_coding
+EU351020.1	Genbank	CDS	55752	56228	.	+	0	ID=cds-ACC59271.1;Parent=gene-pezA-2;Dbxref=NCBI_GP:ACC59271.1;Name=ACC59271.1;gbkey=CDS;gene=pezA;product=antitoxin PezA;protein_id=ACC59271.1;transl_table=11
+EU351020.1	Genbank	region	55741	55744	.	+	.	ID=id-pezA-2;gbkey=RBS;gene=pezA
+EU351020.1	Genbank	gene	56214	56998	.	+	.	ID=gene-pezT-2;Name=pezT;gbkey=Gene;gene=pezT;gene_biotype=protein_coding
+EU351020.1	Genbank	CDS	56228	56998	.	+	0	ID=cds-ACC59272.1;Parent=gene-pezT-2;Dbxref=NCBI_GP:ACC59272.1;Name=ACC59272.1;gbkey=CDS;gene=pezT;product=toxin PezT;protein_id=ACC59272.1;transl_table=11
+EU351020.1	Genbank	direct_repeat	56941	57025	.	+	.	ID=id-EU351020.1:56941..57025;Note=85-bp imperfect direct repeat;gbkey=repeat_region;rpt_type=direct
+EU351020.1	Genbank	gene	57245	57938	.	+	.	ID=gene-umuD;Name=umuD;gbkey=Gene;gene=umuD;gene_biotype=protein_coding
+EU351020.1	Genbank	CDS	57255	57938	.	+	0	ID=cds-ACC59273.1;Parent=gene-umuD;Dbxref=NCBI_GP:ACC59273.1;Name=ACC59273.1;gbkey=CDS;gene=umuD;product=UV resistance protein UmuD;protein_id=ACC59273.1;transl_table=11
+EU351020.1	Genbank	region	57245	57248	.	+	.	ID=id-umuD;gbkey=RBS;gene=umuD
+EU351020.1	Genbank	gene	57931	59356	.	+	.	ID=gene-umuC;Name=umuC;gbkey=Gene;gene=umuC;gene_biotype=protein_coding
+EU351020.1	Genbank	region	57931	57934	.	+	.	ID=id-umuC;gbkey=RBS;gene=umuC
+EU351020.1	Genbank	CDS	57941	59356	.	+	0	ID=cds-ACC59274.1;Parent=gene-umuC;Dbxref=NCBI_GP:ACC59274.1;Name=ACC59274.1;gbkey=CDS;gene=umuC;product=UV resistance protein UmuC;protein_id=ACC59274.1;transl_table=11
+EU351020.1	Genbank	region	59399	59402	.	+	.	ID=id-EU351020.1:59399..59402;gbkey=RBS
+EU351020.1	Genbank	CDS	59410	59718	.	+	0	ID=cds-ACC59275.1;Dbxref=NCBI_GP:ACC59275.1;Name=ACC59275.1;gbkey=CDS;product=unknown;protein_id=ACC59275.1;transl_table=11
+EU351020.1	Genbank	region	59699	59702	.	+	.	ID=id-EU351020.1:59699..59702;gbkey=RBS
+EU351020.1	Genbank	CDS	59708	59998	.	+	0	ID=cds-ACC59276.1;Dbxref=NCBI_GP:ACC59276.1;Name=ACC59276.1;gbkey=CDS;product=unknown;protein_id=ACC59276.1;transl_table=11
+EU351020.1	Genbank	region	60281	60284	.	+	.	ID=id-EU351020.1:60281..60284;gbkey=RBS
+EU351020.1	Genbank	CDS	60293	60649	.	+	0	ID=cds-ACC59277.1;Dbxref=NCBI_GP:ACC59277.1;Name=ACC59277.1;gbkey=CDS;product=unknown;protein_id=ACC59277.1;transl_table=11
+EU351020.1	Genbank	region	60644	60647	.	+	.	ID=id-EU351020.1:60644..60647;gbkey=RBS
+EU351020.1	Genbank	CDS	60654	61019	.	+	0	ID=cds-ACC59278.1;Dbxref=NCBI_GP:ACC59278.1;Name=ACC59278.1;gbkey=CDS;product=mobilization protein MobC;protein_id=ACC59278.1;transl_table=11
+EU351020.1	Genbank	region	60996	60999	.	+	.	ID=id-EU351020.1:60996..60999;gbkey=RBS
+EU351020.1	Genbank	CDS	61006	62835	.	+	0	ID=cds-ACC59279.1;Dbxref=NCBI_GP:ACC59279.1;Name=ACC59279.1;gbkey=CDS;product=relaxase;protein_id=ACC59279.1;transl_table=11
+EU351020.1	Genbank	region	62927	62930	.	+	.	ID=id-EU351020.1:62927..62930;gbkey=RBS
+EU351020.1	Genbank	CDS	62939	63166	.	+	0	ID=cds-ACC59280.1;Dbxref=NCBI_GP:ACC59280.1;Name=ACC59280.1;gbkey=CDS;product=putative transcriptional regulator;protein_id=ACC59280.1;transl_table=11
+EU351020.1	Genbank	CDS	63214	63393	.	-	0	ID=cds-ACC59281.1;Dbxref=NCBI_GP:ACC59281.1;Name=ACC59281.1;gbkey=CDS;product=unknown;protein_id=ACC59281.1;transl_table=11
+EU351020.1	Genbank	gene	63422	63666	.	+	.	ID=gene-xis-2;Name=xis;gbkey=Gene;gene=xis;gene_biotype=protein_coding
+EU351020.1	Genbank	CDS	63433	63666	.	+	0	ID=cds-ACC59282.1;Parent=gene-xis-2;Dbxref=NCBI_GP:ACC59282.1;Name=ACC59282.1;gbkey=CDS;gene=xis;product=excisionase;protein_id=ACC59282.1;transl_table=11
+EU351020.1	Genbank	region	63422	63425	.	+	.	ID=id-xis-2;gbkey=RBS;gene=xis
+EU351020.1	Genbank	gene	63739	65259	.	+	.	ID=gene-int-2;Name=int;gbkey=Gene;gene=int;gene_biotype=protein_coding
+EU351020.1	Genbank	CDS	63751	65259	.	+	0	ID=cds-ACC59283.1;Parent=gene-int-2;Dbxref=NCBI_GP:ACC59283.1;Name=ACC59283.1;gbkey=CDS;gene=int;product=integrase;protein_id=ACC59283.1;transl_table=11
+EU351020.1	Genbank	region	63739	63742	.	+	.	ID=id-int-2;gbkey=RBS;gene=int
+EU351020.1	Genbank	recombination_feature	65277	65360	.	+	.	ID=id-EU351020.1:65277..65360;Note=attR;gbkey=misc_recomb
+EU351020.1	Genbank	gene	65327	66192	.	+	.	ID=gene-spr1043;Name=spr1043;gbkey=Gene;gene=spr1043;gene_biotype=protein_coding
+EU351020.1	Genbank	CDS	65341	66192	.	+	0	ID=cds-ACC59284.1;Parent=gene-spr1043;Dbxref=NCBI_GP:ACC59284.1;Name=ACC59284.1;gbkey=CDS;gene=spr1043;product=ribosomal biogenesis GTPase;protein_id=ACC59284.1;transl_table=11
+EU351020.1	Genbank	region	65327	65330	.	+	.	ID=id-spr1043;gbkey=RBS;gene=spr1043
+

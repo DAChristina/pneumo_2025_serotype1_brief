@@ -1,0 +1,36 @@
+{
+"apiVersion": "V2",
+"assemblies": [
+{
+  "files": [
+    {
+      "filePath": "data_summary.tsv",
+      "fileType": "DATA_TABLE",
+      "uncompressedLengthBytes": "397"
+    },
+    {
+      "filePath": "assembly_data_report.jsonl",
+      "fileType": "DATA_REPORT",
+      "uncompressedLengthBytes": "3426"
+    }
+  ]
+},{
+  "accession": "GCF_000273445.1",
+  "files": [
+    {
+      "filePath": "GCF_000273445.1/GCF_000273445.1_Stre_pneu_Tigr4_V1_genomic.fna",
+      "fileType": "GENOMIC_NUCLEOTIDE_FASTA",
+      "uncompressedLengthBytes": "2190474"
+    },
+    {
+      "filePath": "GCF_000273445.1/genomic.gff",
+      "fileType": "GFF3",
+      "uncompressedLengthBytes": "1360298"
+    },
+    {
+      "filePath": "GCF_000273445.1/protein.faa",
+      "fileType": "PROTEIN_FASTA",
+      "uncompressedLengthBytes": "740235"
+    }
+  ]
+}]}

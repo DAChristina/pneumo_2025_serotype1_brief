@@ -1,0 +1,33 @@
+I suspect that Serotype 1 have different transposon family compared to 19 serogroups.
+Some reference transposon genes to detect (ranked) in Serotype 1 (https://www.mdpi.com/2079-6382/7/1/19)
+Some reference in 19F (https://www.sciencedirect.com/science/article/pii/S1567134824001230?via%3Dihub):
+
+Tn5253          (tetM, int, xis, cat);          accession number: EFU09422
+Tn5251/Tn916    (tetM, int, xis);               accession number: U09422.1
+Tn2010          (ermB, tetM, int, xis, mefE);   accession number: AB426620
+
+Tn2009          (tetM, int, xis, mef),
+Tn6002          (ermB, tetM, int, xis),
+Tn3872          (ermB, tetM, tnpA, tnpR),
+Tn6003/Tn1545   (ermB, tetM, int, xis, aph3’-III),
+Tn1116          (ermB, tetM)
+
+Some notes for Tn reference download from nucleotide NCBI database (https://www.ncbi.nlm.nih.gov/nuccore/):
+1. I can't find Streptococcus pneumoniae Tn5253 EFU09422; I use EU351020.1 instead (length = 1-66,192).
+link: https://www.ncbi.nlm.nih.gov/nuccore/183217285
+Strep_DP1322_Tn5253_EU351020
+
+I use prokka to easily annotate the relevant genes:
+prokka --kingdom Bacteria --usegenus \
+       --genus Streptococcus --species pneumoniae \
+       --outdir /home/ron/pneumo_2025_serotype1_brief_report/inputs/prepare_transposon_genes/prokka --force \
+       /home/ron/pneumo_2025_serotype1_brief_report/inputs/prepare_transposon_genes/Strep_DP1322_Tn5253_EU351020.fasta
+
+
+I manually searched for TetM, int, xis and cat genes & compile it to:
+compiled_whole_transposon_genes.fasta
+Then, manually rerun blastn to detect similarities.
+
+Use local host to activate pyGenomeViz
+$ conda activate pygenomeviz_env
+$ pgv-gui

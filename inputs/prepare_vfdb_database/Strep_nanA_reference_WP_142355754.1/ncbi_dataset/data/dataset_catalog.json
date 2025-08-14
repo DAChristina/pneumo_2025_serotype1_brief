@@ -1,0 +1,27 @@
+{
+"apiVersion": "V2",
+"assemblies": [
+{
+  "files": [
+    {
+      "filePath": "data_report.jsonl",
+      "fileType": "PROKARYOTE_GENE_DATA_REPORT",
+      "uncompressedLengthBytes": "332"
+    },
+    {
+      "filePath": "annotation_report.jsonl",
+      "fileType": "PROKARYOTE_GENE_LOCATION_DATA_REPORT",
+      "uncompressedLengthBytes": "975"
+    },
+    {
+      "filePath": "protein.faa",
+      "fileType": "PROTEIN_FASTA",
+      "uncompressedLengthBytes": "1056"
+    },
+    {
+      "filePath": "gene.fna",
+      "fileType": "GENOMIC_NUCLEOTIDE_FASTA",
+      "uncompressedLengthBytes": "6206"
+    }
+  ]
+}]}

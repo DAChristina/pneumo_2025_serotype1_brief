@@ -1,0 +1,22 @@
+{
+  "version": "1.2",
+  "dbname": "db_VFDB_setA_aa_strep_only",
+  "dbtype": "Protein",
+  "db-version": 5,
+  "description": "db_VFDB_setA_aa_strep_only",
+  "number-of-letters": 56616,
+  "number-of-sequences": 119,
+  "last-updated": "2025-04-17T09:31:00",
+  "number-of-volumes": 1,
+  "bytes-total": 121616,
+  "bytes-to-cache": 57816,
+  "files": [
+    "db_VFDB_setA_aa_strep_only.pdb",
+    "db_VFDB_setA_aa_strep_only.phr",
+    "db_VFDB_setA_aa_strep_only.pin",
+    "db_VFDB_setA_aa_strep_only.pot",
+    "db_VFDB_setA_aa_strep_only.psq",
+    "db_VFDB_setA_aa_strep_only.ptf",
+    "db_VFDB_setA_aa_strep_only.pto"
+  ]
+}

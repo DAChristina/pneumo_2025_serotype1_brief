@@ -1,0 +1,72 @@
+locus_tag	ftype	length_bp	gene	EC_number	COG	product
+NBNAMPMI_00001	CDS	336	iga	3.4.24.13		Immunoglobulin A1 protease
+NBNAMPMI_00002	CDS	258				hypothetical protein
+NBNAMPMI_00003	CDS	780				hypothetical protein
+NBNAMPMI_00004	CDS	1359				hypothetical protein
+NBNAMPMI_00005	CDS	450				hypothetical protein
+NBNAMPMI_00006	CDS	381				hypothetical protein
+NBNAMPMI_00007	CDS	234				hypothetical protein
+NBNAMPMI_00008	CDS	588				hypothetical protein
+NBNAMPMI_00009	CDS	645				hypothetical protein
+NBNAMPMI_00010	CDS	837				hypothetical protein
+NBNAMPMI_00011	CDS	300				hypothetical protein
+NBNAMPMI_00012	CDS	489				hypothetical protein
+NBNAMPMI_00013	CDS	1881				hypothetical protein
+NBNAMPMI_00014	CDS	243				hypothetical protein
+NBNAMPMI_00015	CDS	855				hypothetical protein
+NBNAMPMI_00016	CDS	360				hypothetical protein
+NBNAMPMI_00017	CDS	2358				hypothetical protein
+NBNAMPMI_00018	CDS	2814				hypothetical protein
+NBNAMPMI_00019	CDS	201				hypothetical protein
+NBNAMPMI_00020	CDS	195				hypothetical protein
+NBNAMPMI_00021	CDS	1218	Int-Tn			Transposase from transposon Tn916
+NBNAMPMI_00022	CDS	204				hypothetical protein
+NBNAMPMI_00023	CDS	231				hypothetical protein
+NBNAMPMI_00024	CDS	360				hypothetical protein
+NBNAMPMI_00025	CDS	189				hypothetical protein
+NBNAMPMI_00026	CDS	354				hypothetical protein
+NBNAMPMI_00027	CDS	1920	tet(M)			tetracycline resistance ribosomal protection protein Tet(M)
+NBNAMPMI_00028	CDS	933				hypothetical protein
+NBNAMPMI_00029	CDS	1002				hypothetical protein
+NBNAMPMI_00030	CDS	2112				hypothetical protein
+NBNAMPMI_00031	CDS	2448				hypothetical protein
+NBNAMPMI_00032	CDS	507				hypothetical protein
+NBNAMPMI_00033	CDS	498				hypothetical protein
+NBNAMPMI_00034	CDS	222				hypothetical protein
+NBNAMPMI_00035	CDS	1206				hypothetical protein
+NBNAMPMI_00036	CDS	1386				hypothetical protein
+NBNAMPMI_00037	CDS	387				hypothetical protein
+NBNAMPMI_00038	CDS	315				hypothetical protein
+NBNAMPMI_00039	CDS	759	yxdL		COG1136	ABC transporter ATP-binding protein YxdL
+NBNAMPMI_00040	CDS	1317				hypothetical protein
+NBNAMPMI_00041	CDS	411				hypothetical protein
+NBNAMPMI_00042	CDS	6102				hypothetical protein
+NBNAMPMI_00043	CDS	285				hypothetical protein
+NBNAMPMI_00044	CDS	198				hypothetical protein
+NBNAMPMI_00045	CDS	642				hypothetical protein
+NBNAMPMI_00046	CDS	1086				hypothetical protein
+NBNAMPMI_00047	CDS	234				hypothetical protein
+NBNAMPMI_00048	CDS	384				hypothetical protein
+NBNAMPMI_00049	CDS	273				hypothetical protein
+NBNAMPMI_00050	CDS	477	pezA_1		COG1396	Antitoxin PezA
+NBNAMPMI_00051	CDS	759	pezT_1	2.7.1.176		Toxin PezT
+NBNAMPMI_00052	CDS	789				hypothetical protein
+NBNAMPMI_00053	CDS	249				hypothetical protein
+NBNAMPMI_00054	CDS	651	cat	2.3.1.28		Chloramphenicol acetyltransferase
+NBNAMPMI_00055	CDS	225				hypothetical protein
+NBNAMPMI_00056	CDS	936				hypothetical protein
+NBNAMPMI_00057	CDS	738	bbmA	3.2.1.-	COG0366	Intracellular maltogenic amylase
+NBNAMPMI_00058	CDS	645				hypothetical protein
+NBNAMPMI_00059	CDS	588	pezA_2		COG1396	Antitoxin PezA
+NBNAMPMI_00060	CDS	771	pezT_2	2.7.1.176		Toxin PezT
+NBNAMPMI_00061	CDS	717				hypothetical protein
+NBNAMPMI_00062	CDS	1416	dinB	2.7.7.7		DNA polymerase IV
+NBNAMPMI_00063	CDS	363				hypothetical protein
+NBNAMPMI_00064	CDS	291				hypothetical protein
+NBNAMPMI_00065	CDS	357				hypothetical protein
+NBNAMPMI_00066	CDS	366				hypothetical protein
+NBNAMPMI_00067	CDS	1830				hypothetical protein
+NBNAMPMI_00068	CDS	228				hypothetical protein
+NBNAMPMI_00069	CDS	270				hypothetical protein
+NBNAMPMI_00070	CDS	1509	xerC			Tyrosine recombinase XerC
+NBNAMPMI_00071	CDS	852	rbgA		COG1161	Ribosome biogenesis GTPase A

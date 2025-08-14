@@ -1,0 +1,128 @@
+[16:21:58] This is prokka 1.14.6
+[16:21:58] Written by Torsten Seemann <torsten.seemann@gmail.com>
+[16:21:58] Homepage is https://github.com/tseemann/prokka
+[16:21:58] Local time is Fri Aug  1 16:21:58 2025
+[16:21:58] You are ron
+[16:21:58] Operating system is linux
+[16:21:58] You have BioPerl 1.7.8
+[16:21:58] System has 4 cores.
+[16:21:58] Option --cpu asked for 8 cores, but system only has 4
+[16:21:58] Will use maximum of 4 cores.
+[16:21:58] Annotating as >>> Bacteria <<<
+[16:21:58] Generating locus_tag from '/home/ron/pneumo_2025_serotype1_brief_report/inputs/prepare_transposon_genes/Strep_DP1322_Tn5253_EU351020.fasta' contents.
+[16:21:58] Setting --locustag NBNAMPMI from MD5 7b7a6962176e39bdbd32b1c2e2b75be7
+[16:21:58] Re-using existing --outdir /home/ron/pneumo_2025_serotype1_brief_report/inputs/prepare_transposon_genes/prokka
+[16:21:58] Using filename prefix: PROKKA_08012025.XXX
+[16:21:58] Setting HMMER_NCPU=1
+[16:21:58] Writing log to: /home/ron/pneumo_2025_serotype1_brief_report/inputs/prepare_transposon_genes/prokka/PROKKA_08012025.log
+[16:21:58] Command: /home/ron/miniconda3/envs/prokka_env/bin/prokka --kingdom Bacteria --usegenus --genus Streptococcus --species pneumoniae --outdir /home/ron/pneumo_2025_serotype1_brief_report/inputs/prepare_transposon_genes/prokka --force /home/ron/pneumo_2025_serotype1_brief_report/inputs/prepare_transposon_genes/Strep_DP1322_Tn5253_EU351020.fasta
+[16:21:58] Appending to PATH: /home/ron/miniconda3/envs/prokka_env/bin
+[16:21:58] Looking for 'aragorn' - found /home/ron/miniconda3/envs/prokka_env/bin/aragorn
+[16:21:58] Determined aragorn version is 001002 from 'ARAGORN v1.2.41 Dean Laslett'
+[16:21:58] Looking for 'barrnap' - found /home/ron/miniconda3/envs/prokka_env/bin/barrnap
+[16:21:58] Determined barrnap version is 000009 from 'barrnap 0.9'
+[16:21:58] Looking for 'blastp' - found /home/ron/miniconda3/envs/prokka_env/bin/blastp
+[16:22:05] Determined blastp version is 002016 from 'blastp: 2.16.0+'
+[16:22:05] Looking for 'cmpress' - found /home/ron/miniconda3/envs/prokka_env/bin/cmpress
+[16:22:05] Determined cmpress version is 001001 from '# INFERNAL 1.1.5 (Sep 2023)'
+[16:22:05] Looking for 'cmscan' - found /home/ron/miniconda3/envs/prokka_env/bin/cmscan
+[16:22:05] Determined cmscan version is 001001 from '# INFERNAL 1.1.5 (Sep 2023)'
+[16:22:05] Looking for 'egrep' - found /usr/bin/egrep
+[16:22:05] Looking for 'find' - found /usr/bin/find
+[16:22:05] Looking for 'grep' - found /usr/bin/grep
+[16:22:05] Looking for 'hmmpress' - found /home/ron/miniconda3/envs/prokka_env/bin/hmmpress
+[16:22:05] Determined hmmpress version is 003004 from '# HMMER 3.4 (Aug 2023); http://hmmer.org/'
+[16:22:05] Looking for 'hmmscan' - found /home/ron/miniconda3/envs/prokka_env/bin/hmmscan
+[16:22:05] Determined hmmscan version is 003004 from '# HMMER 3.4 (Aug 2023); http://hmmer.org/'
+[16:22:05] Looking for 'java' - found /home/ron/miniconda3/envs/prokka_env/bin/java
+[16:22:05] Looking for 'makeblastdb' - found /home/ron/miniconda3/envs/prokka_env/bin/makeblastdb
+[16:22:05] Determined makeblastdb version is 002016 from 'makeblastdb: 2.16.0+'
+[16:22:05] Looking for 'minced' - found /home/ron/miniconda3/envs/prokka_env/bin/minced
+[16:22:07] Determined minced version is 004002 from 'minced 0.4.2'
+[16:22:07] Looking for 'parallel' - found /home/ron/miniconda3/envs/prokka_env/bin/parallel
+[16:22:07] Determined parallel version is 20241222 from 'GNU parallel 20241222'
+[16:22:07] Looking for 'prodigal' - found /home/ron/miniconda3/envs/prokka_env/bin/prodigal
+[16:22:07] Determined prodigal version is 002006 from 'Prodigal V2.6.3: February, 2016'
+[16:22:07] Looking for 'prokka-genbank_to_fasta_db' - found /home/ron/miniconda3/envs/prokka_env/bin/prokka-genbank_to_fasta_db
+[16:22:07] Looking for 'sed' - found /usr/bin/sed
+[16:22:07] Looking for 'tbl2asn' - found /home/ron/miniconda3/envs/prokka_env/bin/tbl2asn
+[16:22:08] Determined tbl2asn version is 025007 from 'tbl2asn 25.7   arguments:'
+[16:22:08] Using genetic code table 11.
+[16:22:08] Loading and checking input file: /home/ron/pneumo_2025_serotype1_brief_report/inputs/prepare_transposon_genes/Strep_DP1322_Tn5253_EU351020.fasta
+[16:22:08] Wrote 1 contigs totalling 66192 bp.
+[16:22:08] Predicting tRNAs and tmRNAs
+[16:22:08] Running: aragorn -l -gc11  -w \/home\/ron\/pneumo_2025_serotype1_brief_report\/inputs\/prepare_transposon_genes\/prokka\/PROKKA_08012025\.fna
+[16:22:08] Found 0 tRNAs
+[16:22:08] Predicting Ribosomal RNAs
+[16:22:08] Running Barrnap with 4 threads
+[16:22:08] Found 0 rRNAs
+[16:22:08] Skipping ncRNA search, enable with --rfam if desired.
+[16:22:08] Total of 0 tRNA + rRNA features
+[16:22:08] Searching for CRISPR repeats
+[16:22:08] Found 0 CRISPRs
+[16:22:08] Predicting coding sequences
+[16:22:08] Contigs total 66192 bp, so using meta mode
+[16:22:08] Running: prodigal -i \/home\/ron\/pneumo_2025_serotype1_brief_report\/inputs\/prepare_transposon_genes\/prokka\/PROKKA_08012025\.fna -c -m -g 11 -p meta -f sco -q
+[16:22:09] Found 71 CDS
+[16:22:09] Connecting features back to sequences
+[16:22:09] Skipping genus-specific proteins as can't see /home/ron/miniconda3/envs/prokka_env/db/Streptococcus
+[16:22:09] Annotating CDS, please be patient.
+[16:22:09] Will use 4 CPUs for similarity searching.
+[16:22:09] There are still 71 unannotated CDS left (started with 71)
+[16:22:09] Will use blast to search against /home/ron/miniconda3/envs/prokka_env/db/kingdom/Bacteria/IS with 4 CPUs
+[16:22:09] Running: cat \/home\/ron\/pneumo_2025_serotype1_brief_report\/inputs\/prepare_transposon_genes\/prokka\/PROKKA_08012025\.IS\.tmp\.12897\.faa | parallel --gnu --plain -j 4 --block 2441 --recstart '>' --pipe blastp -query - -db /home/ron/miniconda3/envs/prokka_env/db/kingdom/Bacteria/IS -evalue 1e-30 -qcov_hsp_perc 90 -num_threads 1 -num_descriptions 1 -num_alignments 1 -seg no > \/home\/ron\/pneumo_2025_serotype1_brief_report\/inputs\/prepare_transposon_genes\/prokka\/PROKKA_08012025\.IS\.tmp\.12897\.blast 2> /dev/null
+[16:22:12] Deleting unwanted file: /home/ron/pneumo_2025_serotype1_brief_report/inputs/prepare_transposon_genes/prokka/PROKKA_08012025.IS.tmp.12897.faa
+[16:22:12] Deleting unwanted file: /home/ron/pneumo_2025_serotype1_brief_report/inputs/prepare_transposon_genes/prokka/PROKKA_08012025.IS.tmp.12897.blast
+[16:22:12] There are still 71 unannotated CDS left (started with 71)
+[16:22:12] Will use blast to search against /home/ron/miniconda3/envs/prokka_env/db/kingdom/Bacteria/AMR with 4 CPUs
+[16:22:12] Running: cat \/home\/ron\/pneumo_2025_serotype1_brief_report\/inputs\/prepare_transposon_genes\/prokka\/PROKKA_08012025\.AMR\.tmp\.12897\.faa | parallel --gnu --plain -j 4 --block 2441 --recstart '>' --pipe blastp -query - -db /home/ron/miniconda3/envs/prokka_env/db/kingdom/Bacteria/AMR -evalue 1e-300 -qcov_hsp_perc 90 -num_threads 1 -num_descriptions 1 -num_alignments 1 -seg no > \/home\/ron\/pneumo_2025_serotype1_brief_report\/inputs\/prepare_transposon_genes\/prokka\/PROKKA_08012025\.AMR\.tmp\.12897\.blast 2> /dev/null
+[16:22:14] Deleting unwanted file: /home/ron/pneumo_2025_serotype1_brief_report/inputs/prepare_transposon_genes/prokka/PROKKA_08012025.AMR.tmp.12897.faa
+[16:22:14] Deleting unwanted file: /home/ron/pneumo_2025_serotype1_brief_report/inputs/prepare_transposon_genes/prokka/PROKKA_08012025.AMR.tmp.12897.blast
+[16:22:14] There are still 70 unannotated CDS left (started with 71)
+[16:22:14] Will use blast to search against /home/ron/miniconda3/envs/prokka_env/db/kingdom/Bacteria/sprot with 4 CPUs
+[16:22:14] Running: cat \/home\/ron\/pneumo_2025_serotype1_brief_report\/inputs\/prepare_transposon_genes\/prokka\/PROKKA_08012025\.sprot\.tmp\.12897\.faa | parallel --gnu --plain -j 4 --block 2361 --recstart '>' --pipe blastp -query - -db /home/ron/miniconda3/envs/prokka_env/db/kingdom/Bacteria/sprot -evalue 1e-09 -qcov_hsp_perc 80 -num_threads 1 -num_descriptions 1 -num_alignments 1 -seg no > \/home\/ron\/pneumo_2025_serotype1_brief_report\/inputs\/prepare_transposon_genes\/prokka\/PROKKA_08012025\.sprot\.tmp\.12897\.blast 2> /dev/null
+[16:22:19] Deleting unwanted file: /home/ron/pneumo_2025_serotype1_brief_report/inputs/prepare_transposon_genes/prokka/PROKKA_08012025.sprot.tmp.12897.faa
+[16:22:19] Deleting unwanted file: /home/ron/pneumo_2025_serotype1_brief_report/inputs/prepare_transposon_genes/prokka/PROKKA_08012025.sprot.tmp.12897.blast
+[16:22:19] There are still 60 unannotated CDS left (started with 71)
+[16:22:19] Will use hmmer3 to search against /home/ron/miniconda3/envs/prokka_env/db/hmm/HAMAP.hmm with 4 CPUs
+[16:22:19] Running: cat \/home\/ron\/pneumo_2025_serotype1_brief_report\/inputs\/prepare_transposon_genes\/prokka\/PROKKA_08012025\.HAMAP\.hmm\.tmp\.12897\.faa | parallel --gnu --plain -j 4 --block 2058 --recstart '>' --pipe hmmscan --noali --notextw --acc -E 1e-09 --cpu 1 /home/ron/miniconda3/envs/prokka_env/db/hmm/HAMAP.hmm /dev/stdin > \/home\/ron\/pneumo_2025_serotype1_brief_report\/inputs\/prepare_transposon_genes\/prokka\/PROKKA_08012025\.HAMAP\.hmm\.tmp\.12897\.hmmer3 2> /dev/null
+[16:22:27] Deleting unwanted file: /home/ron/pneumo_2025_serotype1_brief_report/inputs/prepare_transposon_genes/prokka/PROKKA_08012025.HAMAP.hmm.tmp.12897.faa
+[16:22:27] Deleting unwanted file: /home/ron/pneumo_2025_serotype1_brief_report/inputs/prepare_transposon_genes/prokka/PROKKA_08012025.HAMAP.hmm.tmp.12897.hmmer3
+[16:22:27] Labelling remaining 58 proteins as 'hypothetical protein'
+[16:22:27] Found 11 unique /gene codes.
+[16:22:27] Fixed 2 duplicate /gene - pezA_1 pezA_2
+[16:22:27] Fixed 2 duplicate /gene - pezT_1 pezT_2
+[16:22:27] Fixed 2 colliding /gene names.
+[16:22:27] Adding /locus_tag identifiers
+[16:22:27] Assigned 71 locus_tags to CDS and RNA features.
+[16:22:27] Writing outputs to /home/ron/pneumo_2025_serotype1_brief_report/inputs/prepare_transposon_genes/prokka/
+[16:22:27] Generating annotation statistics file
+[16:22:27] Generating Genbank and Sequin files
+[16:22:27] Running: tbl2asn -V b -a r10k -l paired-ends -M n -N 1 -y 'Annotated using prokka 1.14.6 from https://github.com/tseemann/prokka' -Z \/home\/ron\/pneumo_2025_serotype1_brief_report\/inputs\/prepare_transposon_genes\/prokka\/PROKKA_08012025\.err -i \/home\/ron\/pneumo_2025_serotype1_brief_report\/inputs\/prepare_transposon_genes\/prokka\/PROKKA_08012025\.fsa 2> /dev/null
+[16:22:29] Deleting unwanted file: /home/ron/pneumo_2025_serotype1_brief_report/inputs/prepare_transposon_genes/prokka/errorsummary.val
+[16:22:29] Deleting unwanted file: /home/ron/pneumo_2025_serotype1_brief_report/inputs/prepare_transposon_genes/prokka/PROKKA_08012025.dr
+[16:22:29] Deleting unwanted file: /home/ron/pneumo_2025_serotype1_brief_report/inputs/prepare_transposon_genes/prokka/PROKKA_08012025.fixedproducts
+[16:22:29] Deleting unwanted file: /home/ron/pneumo_2025_serotype1_brief_report/inputs/prepare_transposon_genes/prokka/PROKKA_08012025.ecn
+[16:22:29] Deleting unwanted file: /home/ron/pneumo_2025_serotype1_brief_report/inputs/prepare_transposon_genes/prokka/PROKKA_08012025.val
+[16:22:29] Repairing broken .GBK output that tbl2asn produces...
+[16:22:29] Running: sed 's/COORDINATES: profile/COORDINATES:profile/' < \/home\/ron\/pneumo_2025_serotype1_brief_report\/inputs\/prepare_transposon_genes\/prokka\/PROKKA_08012025\.gbf > \/home\/ron\/pneumo_2025_serotype1_brief_report\/inputs\/prepare_transposon_genes\/prokka\/PROKKA_08012025\.gbk
+[16:22:29] Deleting unwanted file: /home/ron/pneumo_2025_serotype1_brief_report/inputs/prepare_transposon_genes/prokka/PROKKA_08012025.gbf
+[16:22:29] Output files:
+[16:22:29] /home/ron/pneumo_2025_serotype1_brief_report/inputs/prepare_transposon_genes/prokka/PROKKA_08012025.faa
+[16:22:29] /home/ron/pneumo_2025_serotype1_brief_report/inputs/prepare_transposon_genes/prokka/PROKKA_08012025.sqn
+[16:22:29] /home/ron/pneumo_2025_serotype1_brief_report/inputs/prepare_transposon_genes/prokka/PROKKA_08012025.log
+[16:22:29] /home/ron/pneumo_2025_serotype1_brief_report/inputs/prepare_transposon_genes/prokka/PROKKA_08012025.err
+[16:22:29] /home/ron/pneumo_2025_serotype1_brief_report/inputs/prepare_transposon_genes/prokka/PROKKA_08012025.fna
+[16:22:29] /home/ron/pneumo_2025_serotype1_brief_report/inputs/prepare_transposon_genes/prokka/PROKKA_08012025.txt
+[16:22:29] /home/ron/pneumo_2025_serotype1_brief_report/inputs/prepare_transposon_genes/prokka/PROKKA_08012025.fsa
+[16:22:29] /home/ron/pneumo_2025_serotype1_brief_report/inputs/prepare_transposon_genes/prokka/PROKKA_08012025.gff
+[16:22:29] /home/ron/pneumo_2025_serotype1_brief_report/inputs/prepare_transposon_genes/prokka/PROKKA_08012025.ffn
+[16:22:29] /home/ron/pneumo_2025_serotype1_brief_report/inputs/prepare_transposon_genes/prokka/PROKKA_08012025.tsv
+[16:22:29] /home/ron/pneumo_2025_serotype1_brief_report/inputs/prepare_transposon_genes/prokka/PROKKA_08012025.tbl
+[16:22:29] /home/ron/pneumo_2025_serotype1_brief_report/inputs/prepare_transposon_genes/prokka/PROKKA_08012025.gbk
+[16:22:29] Annotation finished successfully.
+[16:22:29] Walltime used: 0.52 minutes
+[16:22:29] If you use this result please cite the Prokka paper:
+[16:22:29] Seemann T (2014) Prokka: rapid prokaryotic genome annotation. Bioinformatics. 30(14):2068-9.
+[16:22:29] Type 'prokka --citation' for more details.
+[16:22:29] Share and enjoy!

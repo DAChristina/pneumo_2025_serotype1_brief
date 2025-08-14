@@ -1,0 +1,420 @@
+Discrepancy Report Results
+
+Summary
+FATAL: MISSING_PROTEIN_ID:71 proteins have invalid IDs.
+DISC_SOURCE_QUALS_ASNDISC:strain (all present, all unique)
+DISC_SOURCE_QUALS_ASNDISC:taxname (all present, all unique)
+DISC_FEATURE_COUNT:CDS: 71 present
+DISC_COUNT_NUCLEOTIDES:1 nucleotide Bioseqs are present
+FEATURE_LOCATION_CONFLICT:71 features have inconsistent gene locations.
+SUSPECT_PRODUCT_NAMES:1 product_names contain suspect phrase or characters
+	May contain database identifier more appropriate in note; remove from product name
+		1 features contains three or more numbers together that may be identifiers more appropriate in note
+DISC_QUALITY_SCORES:Quality scores are missing on all sequences.
+ONCALLER_COMMENT_PRESENT:1 comment descriptors were found (all same)
+MISSING_GENOMEASSEMBLY_COMMENTS:1 bioseqs are missing GenomeAssembly structured comments
+MOLTYPE_NOT_MRNA:1 molecule types are not set as mRNA.
+TECHNIQUE_NOT_TSA:1 technique are not set as TSA
+MISSING_STRUCTURED_COMMENT:1 sequences do not include structured comments.
+MISSING_PROJECT:72 sequences do not include project.
+DISC_INCONSISTENT_MOLINFO_TECH:Molinfo Technique Report (some missing, all same)
+
+
+Detailed Report
+
+FATAL: DiscRep_ALL:MISSING_PROTEIN_ID::71 proteins have invalid IDs.
+/home/ron/pneumo_2025_serotype1_brief_report/inputs/prepare_transposon_genes/prokka/PROKKA_08012025:EU351020.1_1 (length 111)
+/home/ron/pneumo_2025_serotype1_brief_report/inputs/prepare_transposon_genes/prokka/PROKKA_08012025:EU351020.1_2 (length 85)
+/home/ron/pneumo_2025_serotype1_brief_report/inputs/prepare_transposon_genes/prokka/PROKKA_08012025:EU351020.1_3 (length 259)
+/home/ron/pneumo_2025_serotype1_brief_report/inputs/prepare_transposon_genes/prokka/PROKKA_08012025:EU351020.1_4 (length 452)
+/home/ron/pneumo_2025_serotype1_brief_report/inputs/prepare_transposon_genes/prokka/PROKKA_08012025:EU351020.1_5 (length 149)
+/home/ron/pneumo_2025_serotype1_brief_report/inputs/prepare_transposon_genes/prokka/PROKKA_08012025:EU351020.1_6 (length 126)
+/home/ron/pneumo_2025_serotype1_brief_report/inputs/prepare_transposon_genes/prokka/PROKKA_08012025:EU351020.1_7 (length 77)
+/home/ron/pneumo_2025_serotype1_brief_report/inputs/prepare_transposon_genes/prokka/PROKKA_08012025:EU351020.1_8 (length 195)
+/home/ron/pneumo_2025_serotype1_brief_report/inputs/prepare_transposon_genes/prokka/PROKKA_08012025:EU351020.1_9 (length 214)
+/home/ron/pneumo_2025_serotype1_brief_report/inputs/prepare_transposon_genes/prokka/PROKKA_08012025:EU351020.1_10 (length 278)
+/home/ron/pneumo_2025_serotype1_brief_report/inputs/prepare_transposon_genes/prokka/PROKKA_08012025:EU351020.1_11 (length 99)
+/home/ron/pneumo_2025_serotype1_brief_report/inputs/prepare_transposon_genes/prokka/PROKKA_08012025:EU351020.1_12 (length 162)
+/home/ron/pneumo_2025_serotype1_brief_report/inputs/prepare_transposon_genes/prokka/PROKKA_08012025:EU351020.1_13 (length 626)
+/home/ron/pneumo_2025_serotype1_brief_report/inputs/prepare_transposon_genes/prokka/PROKKA_08012025:EU351020.1_14 (length 80)
+/home/ron/pneumo_2025_serotype1_brief_report/inputs/prepare_transposon_genes/prokka/PROKKA_08012025:EU351020.1_15 (length 284)
+/home/ron/pneumo_2025_serotype1_brief_report/inputs/prepare_transposon_genes/prokka/PROKKA_08012025:EU351020.1_16 (length 119)
+/home/ron/pneumo_2025_serotype1_brief_report/inputs/prepare_transposon_genes/prokka/PROKKA_08012025:EU351020.1_17 (length 785)
+/home/ron/pneumo_2025_serotype1_brief_report/inputs/prepare_transposon_genes/prokka/PROKKA_08012025:EU351020.1_18 (length 937)
+/home/ron/pneumo_2025_serotype1_brief_report/inputs/prepare_transposon_genes/prokka/PROKKA_08012025:EU351020.1_19 (length 66)
+/home/ron/pneumo_2025_serotype1_brief_report/inputs/prepare_transposon_genes/prokka/PROKKA_08012025:EU351020.1_20 (length 64)
+/home/ron/pneumo_2025_serotype1_brief_report/inputs/prepare_transposon_genes/prokka/PROKKA_08012025:EU351020.1_21 (length 405)
+/home/ron/pneumo_2025_serotype1_brief_report/inputs/prepare_transposon_genes/prokka/PROKKA_08012025:EU351020.1_22 (length 67)
+/home/ron/pneumo_2025_serotype1_brief_report/inputs/prepare_transposon_genes/prokka/PROKKA_08012025:EU351020.1_23 (length 76)
+/home/ron/pneumo_2025_serotype1_brief_report/inputs/prepare_transposon_genes/prokka/PROKKA_08012025:EU351020.1_24 (length 119)
+/home/ron/pneumo_2025_serotype1_brief_report/inputs/prepare_transposon_genes/prokka/PROKKA_08012025:EU351020.1_25 (length 62)
+/home/ron/pneumo_2025_serotype1_brief_report/inputs/prepare_transposon_genes/prokka/PROKKA_08012025:EU351020.1_26 (length 117)
+/home/ron/pneumo_2025_serotype1_brief_report/inputs/prepare_transposon_genes/prokka/PROKKA_08012025:EU351020.1_27 (length 639)
+/home/ron/pneumo_2025_serotype1_brief_report/inputs/prepare_transposon_genes/prokka/PROKKA_08012025:EU351020.1_28 (length 310)
+/home/ron/pneumo_2025_serotype1_brief_report/inputs/prepare_transposon_genes/prokka/PROKKA_08012025:EU351020.1_29 (length 333)
+/home/ron/pneumo_2025_serotype1_brief_report/inputs/prepare_transposon_genes/prokka/PROKKA_08012025:EU351020.1_30 (length 703)
+/home/ron/pneumo_2025_serotype1_brief_report/inputs/prepare_transposon_genes/prokka/PROKKA_08012025:EU351020.1_31 (length 815)
+/home/ron/pneumo_2025_serotype1_brief_report/inputs/prepare_transposon_genes/prokka/PROKKA_08012025:EU351020.1_32 (length 168)
+/home/ron/pneumo_2025_serotype1_brief_report/inputs/prepare_transposon_genes/prokka/PROKKA_08012025:EU351020.1_33 (length 165)
+/home/ron/pneumo_2025_serotype1_brief_report/inputs/prepare_transposon_genes/prokka/PROKKA_08012025:EU351020.1_34 (length 73)
+/home/ron/pneumo_2025_serotype1_brief_report/inputs/prepare_transposon_genes/prokka/PROKKA_08012025:EU351020.1_35 (length 401)
+/home/ron/pneumo_2025_serotype1_brief_report/inputs/prepare_transposon_genes/prokka/PROKKA_08012025:EU351020.1_36 (length 461)
+/home/ron/pneumo_2025_serotype1_brief_report/inputs/prepare_transposon_genes/prokka/PROKKA_08012025:EU351020.1_37 (length 128)
+/home/ron/pneumo_2025_serotype1_brief_report/inputs/prepare_transposon_genes/prokka/PROKKA_08012025:EU351020.1_38 (length 104)
+/home/ron/pneumo_2025_serotype1_brief_report/inputs/prepare_transposon_genes/prokka/PROKKA_08012025:EU351020.1_39 (length 252)
+/home/ron/pneumo_2025_serotype1_brief_report/inputs/prepare_transposon_genes/prokka/PROKKA_08012025:EU351020.1_40 (length 438)
+/home/ron/pneumo_2025_serotype1_brief_report/inputs/prepare_transposon_genes/prokka/PROKKA_08012025:EU351020.1_41 (length 136)
+/home/ron/pneumo_2025_serotype1_brief_report/inputs/prepare_transposon_genes/prokka/PROKKA_08012025:EU351020.1_42 (length 2033)
+/home/ron/pneumo_2025_serotype1_brief_report/inputs/prepare_transposon_genes/prokka/PROKKA_08012025:EU351020.1_43 (length 94)
+/home/ron/pneumo_2025_serotype1_brief_report/inputs/prepare_transposon_genes/prokka/PROKKA_08012025:EU351020.1_44 (length 65)
+/home/ron/pneumo_2025_serotype1_brief_report/inputs/prepare_transposon_genes/prokka/PROKKA_08012025:EU351020.1_45 (length 213)
+/home/ron/pneumo_2025_serotype1_brief_report/inputs/prepare_transposon_genes/prokka/PROKKA_08012025:EU351020.1_46 (length 361)
+/home/ron/pneumo_2025_serotype1_brief_report/inputs/prepare_transposon_genes/prokka/PROKKA_08012025:EU351020.1_47 (length 77)
+/home/ron/pneumo_2025_serotype1_brief_report/inputs/prepare_transposon_genes/prokka/PROKKA_08012025:EU351020.1_48 (length 127)
+/home/ron/pneumo_2025_serotype1_brief_report/inputs/prepare_transposon_genes/prokka/PROKKA_08012025:EU351020.1_49 (length 90)
+/home/ron/pneumo_2025_serotype1_brief_report/inputs/prepare_transposon_genes/prokka/PROKKA_08012025:EU351020.1_50 (length 158)
+/home/ron/pneumo_2025_serotype1_brief_report/inputs/prepare_transposon_genes/prokka/PROKKA_08012025:EU351020.1_51 (length 252)
+/home/ron/pneumo_2025_serotype1_brief_report/inputs/prepare_transposon_genes/prokka/PROKKA_08012025:EU351020.1_52 (length 262)
+/home/ron/pneumo_2025_serotype1_brief_report/inputs/prepare_transposon_genes/prokka/PROKKA_08012025:EU351020.1_53 (length 82)
+/home/ron/pneumo_2025_serotype1_brief_report/inputs/prepare_transposon_genes/prokka/PROKKA_08012025:EU351020.1_54 (length 216)
+/home/ron/pneumo_2025_serotype1_brief_report/inputs/prepare_transposon_genes/prokka/PROKKA_08012025:EU351020.1_55 (length 74)
+/home/ron/pneumo_2025_serotype1_brief_report/inputs/prepare_transposon_genes/prokka/PROKKA_08012025:EU351020.1_56 (length 311)
+/home/ron/pneumo_2025_serotype1_brief_report/inputs/prepare_transposon_genes/prokka/PROKKA_08012025:EU351020.1_57 (length 245)
+/home/ron/pneumo_2025_serotype1_brief_report/inputs/prepare_transposon_genes/prokka/PROKKA_08012025:EU351020.1_58 (length 214)
+/home/ron/pneumo_2025_serotype1_brief_report/inputs/prepare_transposon_genes/prokka/PROKKA_08012025:EU351020.1_59 (length 195)
+/home/ron/pneumo_2025_serotype1_brief_report/inputs/prepare_transposon_genes/prokka/PROKKA_08012025:EU351020.1_60 (length 256)
+/home/ron/pneumo_2025_serotype1_brief_report/inputs/prepare_transposon_genes/prokka/PROKKA_08012025:EU351020.1_61 (length 238)
+/home/ron/pneumo_2025_serotype1_brief_report/inputs/prepare_transposon_genes/prokka/PROKKA_08012025:EU351020.1_62 (length 471)
+/home/ron/pneumo_2025_serotype1_brief_report/inputs/prepare_transposon_genes/prokka/PROKKA_08012025:EU351020.1_63 (length 120)
+/home/ron/pneumo_2025_serotype1_brief_report/inputs/prepare_transposon_genes/prokka/PROKKA_08012025:EU351020.1_64 (length 96)
+/home/ron/pneumo_2025_serotype1_brief_report/inputs/prepare_transposon_genes/prokka/PROKKA_08012025:EU351020.1_65 (length 118)
+/home/ron/pneumo_2025_serotype1_brief_report/inputs/prepare_transposon_genes/prokka/PROKKA_08012025:EU351020.1_66 (length 121)
+/home/ron/pneumo_2025_serotype1_brief_report/inputs/prepare_transposon_genes/prokka/PROKKA_08012025:EU351020.1_67 (length 609)
+/home/ron/pneumo_2025_serotype1_brief_report/inputs/prepare_transposon_genes/prokka/PROKKA_08012025:EU351020.1_68 (length 75)
+/home/ron/pneumo_2025_serotype1_brief_report/inputs/prepare_transposon_genes/prokka/PROKKA_08012025:EU351020.1_69 (length 89)
+/home/ron/pneumo_2025_serotype1_brief_report/inputs/prepare_transposon_genes/prokka/PROKKA_08012025:EU351020.1_70 (length 502)
+/home/ron/pneumo_2025_serotype1_brief_report/inputs/prepare_transposon_genes/prokka/PROKKA_08012025:EU351020.1_71 (length 283)
+
+DiscRep_ALL:DISC_SOURCE_QUALS_ASNDISC::strain (all present, all unique)
+DiscRep_SUB:DISC_SOURCE_QUALS_ASNDISC::1 sources have unique values for strain
+DiscRep_ALL:DISC_SOURCE_QUALS_ASNDISC::taxname (all present, all unique)
+DiscRep_SUB:DISC_SOURCE_QUALS_ASNDISC::1 sources have unique values for taxname
+DiscRep_ALL:DISC_FEATURE_COUNT::CDS: 71 present
+DiscRep_ALL:DISC_COUNT_NUCLEOTIDES::1 nucleotide Bioseqs are present
+/home/ron/pneumo_2025_serotype1_brief_report/inputs/prepare_transposon_genes/prokka/PROKKA_08012025:EU351020.1 (length 66192)
+
+DiscRep_ALL:FEATURE_LOCATION_CONFLICT::71 features have inconsistent gene locations.
+DiscRep_SUB:FEATURE_LOCATION_CONFLICT::Coding region xref gene does not exist
+/home/ron/pneumo_2025_serotype1_brief_report/inputs/prepare_transposon_genes/prokka/PROKKA_08012025:CDS	Immunoglobulin A1 protease	EU351020.1:18-353	NBNAMPMI_00001
+
+DiscRep_SUB:FEATURE_LOCATION_CONFLICT::Coding region xref gene does not exist
+/home/ron/pneumo_2025_serotype1_brief_report/inputs/prepare_transposon_genes/prokka/PROKKA_08012025:CDS	hypothetical protein	EU351020.1:986-1243	NBNAMPMI_00002
+
+DiscRep_SUB:FEATURE_LOCATION_CONFLICT::Coding region xref gene does not exist
+/home/ron/pneumo_2025_serotype1_brief_report/inputs/prepare_transposon_genes/prokka/PROKKA_08012025:CDS	hypothetical protein	EU351020.1:1240-2019	NBNAMPMI_00003
+
+DiscRep_SUB:FEATURE_LOCATION_CONFLICT::Coding region xref gene does not exist
+/home/ron/pneumo_2025_serotype1_brief_report/inputs/prepare_transposon_genes/prokka/PROKKA_08012025:CDS	hypothetical protein	EU351020.1:2118-3476	NBNAMPMI_00004
+
+DiscRep_SUB:FEATURE_LOCATION_CONFLICT::Coding region xref gene does not exist
+/home/ron/pneumo_2025_serotype1_brief_report/inputs/prepare_transposon_genes/prokka/PROKKA_08012025:CDS	hypothetical protein	EU351020.1:3460-3909	NBNAMPMI_00005
+
+DiscRep_SUB:FEATURE_LOCATION_CONFLICT::Coding region xref gene does not exist
+/home/ron/pneumo_2025_serotype1_brief_report/inputs/prepare_transposon_genes/prokka/PROKKA_08012025:CDS	hypothetical protein	EU351020.1:3902-4282	NBNAMPMI_00006
+
+DiscRep_SUB:FEATURE_LOCATION_CONFLICT::Coding region xref gene does not exist
+/home/ron/pneumo_2025_serotype1_brief_report/inputs/prepare_transposon_genes/prokka/PROKKA_08012025:CDS	hypothetical protein	EU351020.1:4295-4528	NBNAMPMI_00007
+
+DiscRep_SUB:FEATURE_LOCATION_CONFLICT::Coding region xref gene does not exist
+/home/ron/pneumo_2025_serotype1_brief_report/inputs/prepare_transposon_genes/prokka/PROKKA_08012025:CDS	hypothetical protein	EU351020.1:4531-5118	NBNAMPMI_00008
+
+DiscRep_SUB:FEATURE_LOCATION_CONFLICT::Coding region xref gene does not exist
+/home/ron/pneumo_2025_serotype1_brief_report/inputs/prepare_transposon_genes/prokka/PROKKA_08012025:CDS	hypothetical protein	EU351020.1:5192-5836	NBNAMPMI_00009
+
+DiscRep_SUB:FEATURE_LOCATION_CONFLICT::Coding region xref gene does not exist
+/home/ron/pneumo_2025_serotype1_brief_report/inputs/prepare_transposon_genes/prokka/PROKKA_08012025:CDS	hypothetical protein	EU351020.1:5836-6672	NBNAMPMI_00010
+
+DiscRep_SUB:FEATURE_LOCATION_CONFLICT::Coding region xref gene does not exist
+/home/ron/pneumo_2025_serotype1_brief_report/inputs/prepare_transposon_genes/prokka/PROKKA_08012025:CDS	hypothetical protein	EU351020.1:6955-7254	NBNAMPMI_00011
+
+DiscRep_SUB:FEATURE_LOCATION_CONFLICT::Coding region xref gene does not exist
+/home/ron/pneumo_2025_serotype1_brief_report/inputs/prepare_transposon_genes/prokka/PROKKA_08012025:CDS	hypothetical protein	EU351020.1:7244-7732	NBNAMPMI_00012
+
+DiscRep_SUB:FEATURE_LOCATION_CONFLICT::Coding region xref gene does not exist
+/home/ron/pneumo_2025_serotype1_brief_report/inputs/prepare_transposon_genes/prokka/PROKKA_08012025:CDS	hypothetical protein	EU351020.1:7729-9609	NBNAMPMI_00013
+
+DiscRep_SUB:FEATURE_LOCATION_CONFLICT::Coding region xref gene does not exist
+/home/ron/pneumo_2025_serotype1_brief_report/inputs/prepare_transposon_genes/prokka/PROKKA_08012025:CDS	hypothetical protein	EU351020.1:9630-9872	NBNAMPMI_00014
+
+DiscRep_SUB:FEATURE_LOCATION_CONFLICT::Coding region xref gene does not exist
+/home/ron/pneumo_2025_serotype1_brief_report/inputs/prepare_transposon_genes/prokka/PROKKA_08012025:CDS	hypothetical protein	EU351020.1:9889-10743	NBNAMPMI_00015
+
+DiscRep_SUB:FEATURE_LOCATION_CONFLICT::Coding region xref gene does not exist
+/home/ron/pneumo_2025_serotype1_brief_report/inputs/prepare_transposon_genes/prokka/PROKKA_08012025:CDS	hypothetical protein	EU351020.1:10797-11156	NBNAMPMI_00016
+
+DiscRep_SUB:FEATURE_LOCATION_CONFLICT::Coding region xref gene does not exist
+/home/ron/pneumo_2025_serotype1_brief_report/inputs/prepare_transposon_genes/prokka/PROKKA_08012025:CDS	hypothetical protein	EU351020.1:11107-13464	NBNAMPMI_00017
+
+DiscRep_SUB:FEATURE_LOCATION_CONFLICT::Coding region xref gene does not exist
+/home/ron/pneumo_2025_serotype1_brief_report/inputs/prepare_transposon_genes/prokka/PROKKA_08012025:CDS	hypothetical protein	EU351020.1:13476-16289	NBNAMPMI_00018
+
+DiscRep_SUB:FEATURE_LOCATION_CONFLICT::Coding region xref gene does not exist
+/home/ron/pneumo_2025_serotype1_brief_report/inputs/prepare_transposon_genes/prokka/PROKKA_08012025:CDS	hypothetical protein	EU351020.1:16331-16531	NBNAMPMI_00019
+
+DiscRep_SUB:FEATURE_LOCATION_CONFLICT::Coding region xref gene does not exist
+/home/ron/pneumo_2025_serotype1_brief_report/inputs/prepare_transposon_genes/prokka/PROKKA_08012025:CDS	hypothetical protein	EU351020.1:c16785-16591	NBNAMPMI_00020
+
+DiscRep_SUB:FEATURE_LOCATION_CONFLICT::Coding region xref gene does not exist
+/home/ron/pneumo_2025_serotype1_brief_report/inputs/prepare_transposon_genes/prokka/PROKKA_08012025:CDS	Transposase from transposon Tn916	EU351020.1:c18523-17306	NBNAMPMI_00021
+
+DiscRep_SUB:FEATURE_LOCATION_CONFLICT::Coding region xref gene does not exist
+/home/ron/pneumo_2025_serotype1_brief_report/inputs/prepare_transposon_genes/prokka/PROKKA_08012025:CDS	hypothetical protein	EU351020.1:c18808-18605	NBNAMPMI_00022
+
+DiscRep_SUB:FEATURE_LOCATION_CONFLICT::Coding region xref gene does not exist
+/home/ron/pneumo_2025_serotype1_brief_report/inputs/prepare_transposon_genes/prokka/PROKKA_08012025:CDS	hypothetical protein	EU351020.1:c19499-19269	NBNAMPMI_00023
+
+DiscRep_SUB:FEATURE_LOCATION_CONFLICT::Coding region xref gene does not exist
+/home/ron/pneumo_2025_serotype1_brief_report/inputs/prepare_transposon_genes/prokka/PROKKA_08012025:CDS	hypothetical protein	EU351020.1:c19855-19496	NBNAMPMI_00024
+
+DiscRep_SUB:FEATURE_LOCATION_CONFLICT::Coding region xref gene does not exist
+/home/ron/pneumo_2025_serotype1_brief_report/inputs/prepare_transposon_genes/prokka/PROKKA_08012025:CDS	hypothetical protein	EU351020.1:c20063-19875	NBNAMPMI_00025
+
+DiscRep_SUB:FEATURE_LOCATION_CONFLICT::Coding region xref gene does not exist
+/home/ron/pneumo_2025_serotype1_brief_report/inputs/prepare_transposon_genes/prokka/PROKKA_08012025:CDS	hypothetical protein	EU351020.1:20423-20776	NBNAMPMI_00026
+
+DiscRep_SUB:FEATURE_LOCATION_CONFLICT::Coding region xref gene does not exist
+/home/ron/pneumo_2025_serotype1_brief_report/inputs/prepare_transposon_genes/prokka/PROKKA_08012025:CDS	tetracycline resistance ribosomal protection protein Tet(M)	EU351020.1:c23041-21122	NBNAMPMI_00027
+
+DiscRep_SUB:FEATURE_LOCATION_CONFLICT::Coding region xref gene does not exist
+/home/ron/pneumo_2025_serotype1_brief_report/inputs/prepare_transposon_genes/prokka/PROKKA_08012025:CDS	hypothetical protein	EU351020.1:c24350-23418	NBNAMPMI_00028
+
+DiscRep_SUB:FEATURE_LOCATION_CONFLICT::Coding region xref gene does not exist
+/home/ron/pneumo_2025_serotype1_brief_report/inputs/prepare_transposon_genes/prokka/PROKKA_08012025:CDS	hypothetical protein	EU351020.1:c25348-24347	NBNAMPMI_00029
+
+DiscRep_SUB:FEATURE_LOCATION_CONFLICT::Coding region xref gene does not exist
+/home/ron/pneumo_2025_serotype1_brief_report/inputs/prepare_transposon_genes/prokka/PROKKA_08012025:CDS	hypothetical protein	EU351020.1:c27456-25345	NBNAMPMI_00030
+
+DiscRep_SUB:FEATURE_LOCATION_CONFLICT::Coding region xref gene does not exist
+/home/ron/pneumo_2025_serotype1_brief_report/inputs/prepare_transposon_genes/prokka/PROKKA_08012025:CDS	hypothetical protein	EU351020.1:c29972-27525	NBNAMPMI_00031
+
+DiscRep_SUB:FEATURE_LOCATION_CONFLICT::Coding region xref gene does not exist
+/home/ron/pneumo_2025_serotype1_brief_report/inputs/prepare_transposon_genes/prokka/PROKKA_08012025:CDS	hypothetical protein	EU351020.1:c30462-29956	NBNAMPMI_00032
+
+DiscRep_SUB:FEATURE_LOCATION_CONFLICT::Coding region xref gene does not exist
+/home/ron/pneumo_2025_serotype1_brief_report/inputs/prepare_transposon_genes/prokka/PROKKA_08012025:CDS	hypothetical protein	EU351020.1:c30934-30437	NBNAMPMI_00033
+
+DiscRep_SUB:FEATURE_LOCATION_CONFLICT::Coding region xref gene does not exist
+/home/ron/pneumo_2025_serotype1_brief_report/inputs/prepare_transposon_genes/prokka/PROKKA_08012025:CDS	hypothetical protein	EU351020.1:c31272-31051	NBNAMPMI_00034
+
+DiscRep_SUB:FEATURE_LOCATION_CONFLICT::Coding region xref gene does not exist
+/home/ron/pneumo_2025_serotype1_brief_report/inputs/prepare_transposon_genes/prokka/PROKKA_08012025:CDS	hypothetical protein	EU351020.1:c32520-31315	NBNAMPMI_00035
+
+DiscRep_SUB:FEATURE_LOCATION_CONFLICT::Coding region xref gene does not exist
+/home/ron/pneumo_2025_serotype1_brief_report/inputs/prepare_transposon_genes/prokka/PROKKA_08012025:CDS	hypothetical protein	EU351020.1:c34083-32698	NBNAMPMI_00036
+
+DiscRep_SUB:FEATURE_LOCATION_CONFLICT::Coding region xref gene does not exist
+/home/ron/pneumo_2025_serotype1_brief_report/inputs/prepare_transposon_genes/prokka/PROKKA_08012025:CDS	hypothetical protein	EU351020.1:c34498-34112	NBNAMPMI_00037
+
+DiscRep_SUB:FEATURE_LOCATION_CONFLICT::Coding region xref gene does not exist
+/home/ron/pneumo_2025_serotype1_brief_report/inputs/prepare_transposon_genes/prokka/PROKKA_08012025:CDS	hypothetical protein	EU351020.1:c34828-34514	NBNAMPMI_00038
+
+DiscRep_SUB:FEATURE_LOCATION_CONFLICT::Coding region xref gene does not exist
+/home/ron/pneumo_2025_serotype1_brief_report/inputs/prepare_transposon_genes/prokka/PROKKA_08012025:CDS	ABC transporter ATP-binding protein YxdL	EU351020.1:35240-35998	NBNAMPMI_00039
+
+DiscRep_SUB:FEATURE_LOCATION_CONFLICT::Coding region xref gene does not exist
+/home/ron/pneumo_2025_serotype1_brief_report/inputs/prepare_transposon_genes/prokka/PROKKA_08012025:CDS	hypothetical protein	EU351020.1:36016-37332	NBNAMPMI_00040
+
+DiscRep_SUB:FEATURE_LOCATION_CONFLICT::Coding region xref gene does not exist
+/home/ron/pneumo_2025_serotype1_brief_report/inputs/prepare_transposon_genes/prokka/PROKKA_08012025:CDS	hypothetical protein	EU351020.1:37763-38173	NBNAMPMI_00041
+
+DiscRep_SUB:FEATURE_LOCATION_CONFLICT::Coding region xref gene does not exist
+/home/ron/pneumo_2025_serotype1_brief_report/inputs/prepare_transposon_genes/prokka/PROKKA_08012025:CDS	hypothetical protein	EU351020.1:38206-44307	NBNAMPMI_00042
+
+DiscRep_SUB:FEATURE_LOCATION_CONFLICT::Coding region xref gene does not exist
+/home/ron/pneumo_2025_serotype1_brief_report/inputs/prepare_transposon_genes/prokka/PROKKA_08012025:CDS	hypothetical protein	EU351020.1:44382-44666	NBNAMPMI_00043
+
+DiscRep_SUB:FEATURE_LOCATION_CONFLICT::Coding region xref gene does not exist
+/home/ron/pneumo_2025_serotype1_brief_report/inputs/prepare_transposon_genes/prokka/PROKKA_08012025:CDS	hypothetical protein	EU351020.1:c45187-44990	NBNAMPMI_00044
+
+DiscRep_SUB:FEATURE_LOCATION_CONFLICT::Coding region xref gene does not exist
+/home/ron/pneumo_2025_serotype1_brief_report/inputs/prepare_transposon_genes/prokka/PROKKA_08012025:CDS	hypothetical protein	EU351020.1:45347-45988	NBNAMPMI_00045
+
+DiscRep_SUB:FEATURE_LOCATION_CONFLICT::Coding region xref gene does not exist
+/home/ron/pneumo_2025_serotype1_brief_report/inputs/prepare_transposon_genes/prokka/PROKKA_08012025:CDS	hypothetical protein	EU351020.1:45998-47083	NBNAMPMI_00046
+
+DiscRep_SUB:FEATURE_LOCATION_CONFLICT::Coding region xref gene does not exist
+/home/ron/pneumo_2025_serotype1_brief_report/inputs/prepare_transposon_genes/prokka/PROKKA_08012025:CDS	hypothetical protein	EU351020.1:47134-47367	NBNAMPMI_00047
+
+DiscRep_SUB:FEATURE_LOCATION_CONFLICT::Coding region xref gene does not exist
+/home/ron/pneumo_2025_serotype1_brief_report/inputs/prepare_transposon_genes/prokka/PROKKA_08012025:CDS	hypothetical protein	EU351020.1:47364-47747	NBNAMPMI_00048
+
+DiscRep_SUB:FEATURE_LOCATION_CONFLICT::Coding region xref gene does not exist
+/home/ron/pneumo_2025_serotype1_brief_report/inputs/prepare_transposon_genes/prokka/PROKKA_08012025:CDS	hypothetical protein	EU351020.1:47785-48057	NBNAMPMI_00049
+
+DiscRep_SUB:FEATURE_LOCATION_CONFLICT::Coding region xref gene does not exist
+/home/ron/pneumo_2025_serotype1_brief_report/inputs/prepare_transposon_genes/prokka/PROKKA_08012025:CDS	Antitoxin PezA	EU351020.1:48125-48601	NBNAMPMI_00050
+
+DiscRep_SUB:FEATURE_LOCATION_CONFLICT::Coding region xref gene does not exist
+/home/ron/pneumo_2025_serotype1_brief_report/inputs/prepare_transposon_genes/prokka/PROKKA_08012025:CDS	Toxin PezT	EU351020.1:48601-49359	NBNAMPMI_00051
+
+DiscRep_SUB:FEATURE_LOCATION_CONFLICT::Coding region xref gene does not exist
+/home/ron/pneumo_2025_serotype1_brief_report/inputs/prepare_transposon_genes/prokka/PROKKA_08012025:CDS	hypothetical protein	EU351020.1:49835-50623	NBNAMPMI_00052
+
+DiscRep_SUB:FEATURE_LOCATION_CONFLICT::Coding region xref gene does not exist
+/home/ron/pneumo_2025_serotype1_brief_report/inputs/prepare_transposon_genes/prokka/PROKKA_08012025:CDS	hypothetical protein	EU351020.1:50862-51110	NBNAMPMI_00053
+
+DiscRep_SUB:FEATURE_LOCATION_CONFLICT::Coding region xref gene does not exist
+/home/ron/pneumo_2025_serotype1_brief_report/inputs/prepare_transposon_genes/prokka/PROKKA_08012025:CDS	Chloramphenicol acetyltransferase	EU351020.1:51281-51931	NBNAMPMI_00054
+
+DiscRep_SUB:FEATURE_LOCATION_CONFLICT::Coding region xref gene does not exist
+/home/ron/pneumo_2025_serotype1_brief_report/inputs/prepare_transposon_genes/prokka/PROKKA_08012025:CDS	hypothetical protein	EU351020.1:c52666-52442	NBNAMPMI_00055
+
+DiscRep_SUB:FEATURE_LOCATION_CONFLICT::Coding region xref gene does not exist
+/home/ron/pneumo_2025_serotype1_brief_report/inputs/prepare_transposon_genes/prokka/PROKKA_08012025:CDS	hypothetical protein	EU351020.1:c53731-52796	NBNAMPMI_00056
+
+DiscRep_SUB:FEATURE_LOCATION_CONFLICT::Coding region xref gene does not exist
+/home/ron/pneumo_2025_serotype1_brief_report/inputs/prepare_transposon_genes/prokka/PROKKA_08012025:CDS	Intracellular maltogenic amylase	EU351020.1:54016-54753	NBNAMPMI_00057
+
+DiscRep_SUB:FEATURE_LOCATION_CONFLICT::Coding region xref gene does not exist
+/home/ron/pneumo_2025_serotype1_brief_report/inputs/prepare_transposon_genes/prokka/PROKKA_08012025:CDS	hypothetical protein	EU351020.1:54832-55476	NBNAMPMI_00058
+
+DiscRep_SUB:FEATURE_LOCATION_CONFLICT::Coding region xref gene does not exist
+/home/ron/pneumo_2025_serotype1_brief_report/inputs/prepare_transposon_genes/prokka/PROKKA_08012025:CDS	Antitoxin PezA	EU351020.1:55641-56228	NBNAMPMI_00059
+
+DiscRep_SUB:FEATURE_LOCATION_CONFLICT::Coding region xref gene does not exist
+/home/ron/pneumo_2025_serotype1_brief_report/inputs/prepare_transposon_genes/prokka/PROKKA_08012025:CDS	Toxin PezT	EU351020.1:56228-56998	NBNAMPMI_00060
+
+DiscRep_SUB:FEATURE_LOCATION_CONFLICT::Coding region xref gene does not exist
+/home/ron/pneumo_2025_serotype1_brief_report/inputs/prepare_transposon_genes/prokka/PROKKA_08012025:CDS	hypothetical protein	EU351020.1:57222-57938	NBNAMPMI_00061
+
+DiscRep_SUB:FEATURE_LOCATION_CONFLICT::Coding region xref gene does not exist
+/home/ron/pneumo_2025_serotype1_brief_report/inputs/prepare_transposon_genes/prokka/PROKKA_08012025:CDS	DNA polymerase IV	EU351020.1:57941-59356	NBNAMPMI_00062
+
+DiscRep_SUB:FEATURE_LOCATION_CONFLICT::Coding region xref gene does not exist
+/home/ron/pneumo_2025_serotype1_brief_report/inputs/prepare_transposon_genes/prokka/PROKKA_08012025:CDS	hypothetical protein	EU351020.1:59356-59718	NBNAMPMI_00063
+
+DiscRep_SUB:FEATURE_LOCATION_CONFLICT::Coding region xref gene does not exist
+/home/ron/pneumo_2025_serotype1_brief_report/inputs/prepare_transposon_genes/prokka/PROKKA_08012025:CDS	hypothetical protein	EU351020.1:59708-59998	NBNAMPMI_00064
+
+DiscRep_SUB:FEATURE_LOCATION_CONFLICT::Coding region xref gene does not exist
+/home/ron/pneumo_2025_serotype1_brief_report/inputs/prepare_transposon_genes/prokka/PROKKA_08012025:CDS	hypothetical protein	EU351020.1:60293-60649	NBNAMPMI_00065
+
+DiscRep_SUB:FEATURE_LOCATION_CONFLICT::Coding region xref gene does not exist
+/home/ron/pneumo_2025_serotype1_brief_report/inputs/prepare_transposon_genes/prokka/PROKKA_08012025:CDS	hypothetical protein	EU351020.1:60654-61019	NBNAMPMI_00066
+
+DiscRep_SUB:FEATURE_LOCATION_CONFLICT::Coding region xref gene does not exist
+/home/ron/pneumo_2025_serotype1_brief_report/inputs/prepare_transposon_genes/prokka/PROKKA_08012025:CDS	hypothetical protein	EU351020.1:61006-62835	NBNAMPMI_00067
+
+DiscRep_SUB:FEATURE_LOCATION_CONFLICT::Coding region xref gene does not exist
+/home/ron/pneumo_2025_serotype1_brief_report/inputs/prepare_transposon_genes/prokka/PROKKA_08012025:CDS	hypothetical protein	EU351020.1:62939-63166	NBNAMPMI_00068
+
+DiscRep_SUB:FEATURE_LOCATION_CONFLICT::Coding region xref gene does not exist
+/home/ron/pneumo_2025_serotype1_brief_report/inputs/prepare_transposon_genes/prokka/PROKKA_08012025:CDS	hypothetical protein	EU351020.1:63397-63666	NBNAMPMI_00069
+
+DiscRep_SUB:FEATURE_LOCATION_CONFLICT::Coding region xref gene does not exist
+/home/ron/pneumo_2025_serotype1_brief_report/inputs/prepare_transposon_genes/prokka/PROKKA_08012025:CDS	Tyrosine recombinase XerC	EU351020.1:63751-65259	NBNAMPMI_00070
+
+DiscRep_SUB:FEATURE_LOCATION_CONFLICT::Coding region xref gene does not exist
+/home/ron/pneumo_2025_serotype1_brief_report/inputs/prepare_transposon_genes/prokka/PROKKA_08012025:CDS	Ribosome biogenesis GTPase A	EU351020.1:65341-66192	NBNAMPMI_00071
+
+DiscRep_ALL:SUSPECT_PRODUCT_NAMES::1 product_names contain suspect phrase or characters
+DiscRep_SUB:SUSPECT_PRODUCT_NAMES::May contain database identifier more appropriate in note; remove from product name
+DiscRep_SUB:SUSPECT_PRODUCT_NAMES::1 features contains three or more numbers together that may be identifiers more appropriate in note
+/home/ron/pneumo_2025_serotype1_brief_report/inputs/prepare_transposon_genes/prokka/PROKKA_08012025:CDS	Transposase from transposon Tn916	EU351020.1:c18523-17306	NBNAMPMI_00021
+
+DiscRep_ALL:DISC_QUALITY_SCORES::Quality scores are missing on all sequences.
+
+DiscRep_ALL:ONCALLER_COMMENT_PRESENT::1 comment descriptors were found (all same)
+/home/ron/pneumo_2025_serotype1_brief_report/inputs/prepare_transposon_genes/prokka/PROKKA_08012025:EU351020.1:Annotated using prokka 1.14.6 from https://github.com/tseemann/prokka
+
+DiscRep_ALL:MISSING_GENOMEASSEMBLY_COMMENTS::1 bioseqs are missing GenomeAssembly structured comments
+/home/ron/pneumo_2025_serotype1_brief_report/inputs/prepare_transposon_genes/prokka/PROKKA_08012025:EU351020.1 (length 66192)
+
+DiscRep_ALL:MOLTYPE_NOT_MRNA::1 molecule types are not set as mRNA.
+/home/ron/pneumo_2025_serotype1_brief_report/inputs/prepare_transposon_genes/prokka/PROKKA_08012025:EU351020.1 (length 66192)
+
+DiscRep_ALL:TECHNIQUE_NOT_TSA::1 technique are not set as TSA
+/home/ron/pneumo_2025_serotype1_brief_report/inputs/prepare_transposon_genes/prokka/PROKKA_08012025:EU351020.1 (length 66192)
+
+DiscRep_ALL:MISSING_STRUCTURED_COMMENT::1 sequences do not include structured comments.
+/home/ron/pneumo_2025_serotype1_brief_report/inputs/prepare_transposon_genes/prokka/PROKKA_08012025:EU351020.1 (length 66192)
+
+DiscRep_ALL:MISSING_PROJECT::72 sequences do not include project.
+/home/ron/pneumo_2025_serotype1_brief_report/inputs/prepare_transposon_genes/prokka/PROKKA_08012025:EU351020.1 (length 66192)
+/home/ron/pneumo_2025_serotype1_brief_report/inputs/prepare_transposon_genes/prokka/PROKKA_08012025:EU351020.1_1 (length 111)
+/home/ron/pneumo_2025_serotype1_brief_report/inputs/prepare_transposon_genes/prokka/PROKKA_08012025:EU351020.1_2 (length 85)
+/home/ron/pneumo_2025_serotype1_brief_report/inputs/prepare_transposon_genes/prokka/PROKKA_08012025:EU351020.1_3 (length 259)
+/home/ron/pneumo_2025_serotype1_brief_report/inputs/prepare_transposon_genes/prokka/PROKKA_08012025:EU351020.1_4 (length 452)
+/home/ron/pneumo_2025_serotype1_brief_report/inputs/prepare_transposon_genes/prokka/PROKKA_08012025:EU351020.1_5 (length 149)
+/home/ron/pneumo_2025_serotype1_brief_report/inputs/prepare_transposon_genes/prokka/PROKKA_08012025:EU351020.1_6 (length 126)
+/home/ron/pneumo_2025_serotype1_brief_report/inputs/prepare_transposon_genes/prokka/PROKKA_08012025:EU351020.1_7 (length 77)
+/home/ron/pneumo_2025_serotype1_brief_report/inputs/prepare_transposon_genes/prokka/PROKKA_08012025:EU351020.1_8 (length 195)
+/home/ron/pneumo_2025_serotype1_brief_report/inputs/prepare_transposon_genes/prokka/PROKKA_08012025:EU351020.1_9 (length 214)
+/home/ron/pneumo_2025_serotype1_brief_report/inputs/prepare_transposon_genes/prokka/PROKKA_08012025:EU351020.1_10 (length 278)
+/home/ron/pneumo_2025_serotype1_brief_report/inputs/prepare_transposon_genes/prokka/PROKKA_08012025:EU351020.1_11 (length 99)
+/home/ron/pneumo_2025_serotype1_brief_report/inputs/prepare_transposon_genes/prokka/PROKKA_08012025:EU351020.1_12 (length 162)
+/home/ron/pneumo_2025_serotype1_brief_report/inputs/prepare_transposon_genes/prokka/PROKKA_08012025:EU351020.1_13 (length 626)
+/home/ron/pneumo_2025_serotype1_brief_report/inputs/prepare_transposon_genes/prokka/PROKKA_08012025:EU351020.1_14 (length 80)
+/home/ron/pneumo_2025_serotype1_brief_report/inputs/prepare_transposon_genes/prokka/PROKKA_08012025:EU351020.1_15 (length 284)
+/home/ron/pneumo_2025_serotype1_brief_report/inputs/prepare_transposon_genes/prokka/PROKKA_08012025:EU351020.1_16 (length 119)
+/home/ron/pneumo_2025_serotype1_brief_report/inputs/prepare_transposon_genes/prokka/PROKKA_08012025:EU351020.1_17 (length 785)
+/home/ron/pneumo_2025_serotype1_brief_report/inputs/prepare_transposon_genes/prokka/PROKKA_08012025:EU351020.1_18 (length 937)
+/home/ron/pneumo_2025_serotype1_brief_report/inputs/prepare_transposon_genes/prokka/PROKKA_08012025:EU351020.1_19 (length 66)
+/home/ron/pneumo_2025_serotype1_brief_report/inputs/prepare_transposon_genes/prokka/PROKKA_08012025:EU351020.1_20 (length 64)
+/home/ron/pneumo_2025_serotype1_brief_report/inputs/prepare_transposon_genes/prokka/PROKKA_08012025:EU351020.1_21 (length 405)
+/home/ron/pneumo_2025_serotype1_brief_report/inputs/prepare_transposon_genes/prokka/PROKKA_08012025:EU351020.1_22 (length 67)
+/home/ron/pneumo_2025_serotype1_brief_report/inputs/prepare_transposon_genes/prokka/PROKKA_08012025:EU351020.1_23 (length 76)
+/home/ron/pneumo_2025_serotype1_brief_report/inputs/prepare_transposon_genes/prokka/PROKKA_08012025:EU351020.1_24 (length 119)
+/home/ron/pneumo_2025_serotype1_brief_report/inputs/prepare_transposon_genes/prokka/PROKKA_08012025:EU351020.1_25 (length 62)
+/home/ron/pneumo_2025_serotype1_brief_report/inputs/prepare_transposon_genes/prokka/PROKKA_08012025:EU351020.1_26 (length 117)
+/home/ron/pneumo_2025_serotype1_brief_report/inputs/prepare_transposon_genes/prokka/PROKKA_08012025:EU351020.1_27 (length 639)
+/home/ron/pneumo_2025_serotype1_brief_report/inputs/prepare_transposon_genes/prokka/PROKKA_08012025:EU351020.1_28 (length 310)
+/home/ron/pneumo_2025_serotype1_brief_report/inputs/prepare_transposon_genes/prokka/PROKKA_08012025:EU351020.1_29 (length 333)
+/home/ron/pneumo_2025_serotype1_brief_report/inputs/prepare_transposon_genes/prokka/PROKKA_08012025:EU351020.1_30 (length 703)
+/home/ron/pneumo_2025_serotype1_brief_report/inputs/prepare_transposon_genes/prokka/PROKKA_08012025:EU351020.1_31 (length 815)
+/home/ron/pneumo_2025_serotype1_brief_report/inputs/prepare_transposon_genes/prokka/PROKKA_08012025:EU351020.1_32 (length 168)
+/home/ron/pneumo_2025_serotype1_brief_report/inputs/prepare_transposon_genes/prokka/PROKKA_08012025:EU351020.1_33 (length 165)
+/home/ron/pneumo_2025_serotype1_brief_report/inputs/prepare_transposon_genes/prokka/PROKKA_08012025:EU351020.1_34 (length 73)
+/home/ron/pneumo_2025_serotype1_brief_report/inputs/prepare_transposon_genes/prokka/PROKKA_08012025:EU351020.1_35 (length 401)
+/home/ron/pneumo_2025_serotype1_brief_report/inputs/prepare_transposon_genes/prokka/PROKKA_08012025:EU351020.1_36 (length 461)
+/home/ron/pneumo_2025_serotype1_brief_report/inputs/prepare_transposon_genes/prokka/PROKKA_08012025:EU351020.1_37 (length 128)
+/home/ron/pneumo_2025_serotype1_brief_report/inputs/prepare_transposon_genes/prokka/PROKKA_08012025:EU351020.1_38 (length 104)
+/home/ron/pneumo_2025_serotype1_brief_report/inputs/prepare_transposon_genes/prokka/PROKKA_08012025:EU351020.1_39 (length 252)
+/home/ron/pneumo_2025_serotype1_brief_report/inputs/prepare_transposon_genes/prokka/PROKKA_08012025:EU351020.1_40 (length 438)
+/home/ron/pneumo_2025_serotype1_brief_report/inputs/prepare_transposon_genes/prokka/PROKKA_08012025:EU351020.1_41 (length 136)
+/home/ron/pneumo_2025_serotype1_brief_report/inputs/prepare_transposon_genes/prokka/PROKKA_08012025:EU351020.1_42 (length 2033)
+/home/ron/pneumo_2025_serotype1_brief_report/inputs/prepare_transposon_genes/prokka/PROKKA_08012025:EU351020.1_43 (length 94)
+/home/ron/pneumo_2025_serotype1_brief_report/inputs/prepare_transposon_genes/prokka/PROKKA_08012025:EU351020.1_44 (length 65)
+/home/ron/pneumo_2025_serotype1_brief_report/inputs/prepare_transposon_genes/prokka/PROKKA_08012025:EU351020.1_45 (length 213)
+/home/ron/pneumo_2025_serotype1_brief_report/inputs/prepare_transposon_genes/prokka/PROKKA_08012025:EU351020.1_46 (length 361)
+/home/ron/pneumo_2025_serotype1_brief_report/inputs/prepare_transposon_genes/prokka/PROKKA_08012025:EU351020.1_47 (length 77)
+/home/ron/pneumo_2025_serotype1_brief_report/inputs/prepare_transposon_genes/prokka/PROKKA_08012025:EU351020.1_48 (length 127)
+/home/ron/pneumo_2025_serotype1_brief_report/inputs/prepare_transposon_genes/prokka/PROKKA_08012025:EU351020.1_49 (length 90)
+/home/ron/pneumo_2025_serotype1_brief_report/inputs/prepare_transposon_genes/prokka/PROKKA_08012025:EU351020.1_50 (length 158)
+/home/ron/pneumo_2025_serotype1_brief_report/inputs/prepare_transposon_genes/prokka/PROKKA_08012025:EU351020.1_51 (length 252)
+/home/ron/pneumo_2025_serotype1_brief_report/inputs/prepare_transposon_genes/prokka/PROKKA_08012025:EU351020.1_52 (length 262)
+/home/ron/pneumo_2025_serotype1_brief_report/inputs/prepare_transposon_genes/prokka/PROKKA_08012025:EU351020.1_53 (length 82)
+/home/ron/pneumo_2025_serotype1_brief_report/inputs/prepare_transposon_genes/prokka/PROKKA_08012025:EU351020.1_54 (length 216)
+/home/ron/pneumo_2025_serotype1_brief_report/inputs/prepare_transposon_genes/prokka/PROKKA_08012025:EU351020.1_55 (length 74)
+/home/ron/pneumo_2025_serotype1_brief_report/inputs/prepare_transposon_genes/prokka/PROKKA_08012025:EU351020.1_56 (length 311)
+/home/ron/pneumo_2025_serotype1_brief_report/inputs/prepare_transposon_genes/prokka/PROKKA_08012025:EU351020.1_57 (length 245)
+/home/ron/pneumo_2025_serotype1_brief_report/inputs/prepare_transposon_genes/prokka/PROKKA_08012025:EU351020.1_58 (length 214)
+/home/ron/pneumo_2025_serotype1_brief_report/inputs/prepare_transposon_genes/prokka/PROKKA_08012025:EU351020.1_59 (length 195)
+/home/ron/pneumo_2025_serotype1_brief_report/inputs/prepare_transposon_genes/prokka/PROKKA_08012025:EU351020.1_60 (length 256)
+/home/ron/pneumo_2025_serotype1_brief_report/inputs/prepare_transposon_genes/prokka/PROKKA_08012025:EU351020.1_61 (length 238)
+/home/ron/pneumo_2025_serotype1_brief_report/inputs/prepare_transposon_genes/prokka/PROKKA_08012025:EU351020.1_62 (length 471)
+/home/ron/pneumo_2025_serotype1_brief_report/inputs/prepare_transposon_genes/prokka/PROKKA_08012025:EU351020.1_63 (length 120)
+/home/ron/pneumo_2025_serotype1_brief_report/inputs/prepare_transposon_genes/prokka/PROKKA_08012025:EU351020.1_64 (length 96)
+/home/ron/pneumo_2025_serotype1_brief_report/inputs/prepare_transposon_genes/prokka/PROKKA_08012025:EU351020.1_65 (length 118)
+/home/ron/pneumo_2025_serotype1_brief_report/inputs/prepare_transposon_genes/prokka/PROKKA_08012025:EU351020.1_66 (length 121)
+/home/ron/pneumo_2025_serotype1_brief_report/inputs/prepare_transposon_genes/prokka/PROKKA_08012025:EU351020.1_67 (length 609)
+/home/ron/pneumo_2025_serotype1_brief_report/inputs/prepare_transposon_genes/prokka/PROKKA_08012025:EU351020.1_68 (length 75)
+/home/ron/pneumo_2025_serotype1_brief_report/inputs/prepare_transposon_genes/prokka/PROKKA_08012025:EU351020.1_69 (length 89)
+/home/ron/pneumo_2025_serotype1_brief_report/inputs/prepare_transposon_genes/prokka/PROKKA_08012025:EU351020.1_70 (length 502)
+/home/ron/pneumo_2025_serotype1_brief_report/inputs/prepare_transposon_genes/prokka/PROKKA_08012025:EU351020.1_71 (length 283)
+
+DiscRep_ALL:DISC_INCONSISTENT_MOLINFO_TECH::Molinfo Technique Report (some missing, all same)
+DiscRep_SUB:DISC_INCONSISTENT_MOLINFO_TECH::technique (all missing)
+DiscRep_SUB:DISC_INCONSISTENT_MOLINFO_TECH::1 Molinfos are missing field technique
+/home/ron/pneumo_2025_serotype1_brief_report/inputs/prepare_transposon_genes/prokka/PROKKA_08012025:EU351020.1 (length 66192)
+

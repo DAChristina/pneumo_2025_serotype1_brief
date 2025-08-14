@@ -22,6 +22,5 @@ inst/web
 raw_data/
 hipercow/
 renv/
-inputs/
 outputs/
 Rplots.pdf

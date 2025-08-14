@@ -1,0 +1,22 @@
+{
+  "version": "1.2",
+  "dbname": "db_competence_aa",
+  "dbtype": "Protein",
+  "db-version": 5,
+  "description": "db_competence_aa",
+  "number-of-letters": 4430,
+  "number-of-sequences": 12,
+  "last-updated": "2025-04-13T00:19:00",
+  "number-of-volumes": 1,
+  "bytes-total": 42781,
+  "bytes-to-cache": 4651,
+  "files": [
+    "db_competence_aa.pdb",
+    "db_competence_aa.phr",
+    "db_competence_aa.pin",
+    "db_competence_aa.pot",
+    "db_competence_aa.psq",
+    "db_competence_aa.ptf",
+    "db_competence_aa.pto"
+  ]
+}

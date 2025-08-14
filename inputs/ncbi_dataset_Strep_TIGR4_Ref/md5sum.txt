@@ -1,0 +1,6 @@
+298936f42fc81fa13ecf45a8cc8d5d3e  ncbi_dataset/data/data_summary.tsv
+f7bdaa60c4ac263ed609a58d54e6ab13  ncbi_dataset/data/assembly_data_report.jsonl
+66f8acb47b297a3a8c8ade04048c4cd2  ncbi_dataset/data/GCF_000273445.1/GCF_000273445.1_Stre_pneu_Tigr4_V1_genomic.fna
+9724cce257050939be80832d3d6c51c5  ncbi_dataset/data/GCF_000273445.1/genomic.gff
+e62c693b8e71ed440df36f6816c06dce  ncbi_dataset/data/GCF_000273445.1/protein.faa
+1711035f3837fbccd5048afe91226f37  ncbi_dataset/data/dataset_catalog.json

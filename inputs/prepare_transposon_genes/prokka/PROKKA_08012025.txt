@@ -1,0 +1,4 @@
+organism: Streptococcus pneumoniae strain 
+contigs: 1
+bases: 66192
+CDS: 71

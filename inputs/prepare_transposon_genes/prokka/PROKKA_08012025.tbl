@@ -1,0 +1,322 @@
+>Feature EU351020.1
+18	353	CDS
+			EC_number	3.4.24.13
+			gene	iga
+			inference	ab initio prediction:Prodigal:002006
+			inference	similar to AA sequence:UniProtKB:Q59986
+			locus_tag	NBNAMPMI_00001
+			product	Immunoglobulin A1 protease
+986	1243	CDS
+			inference	ab initio prediction:Prodigal:002006
+			locus_tag	NBNAMPMI_00002
+			product	hypothetical protein
+1240	2019	CDS
+			inference	ab initio prediction:Prodigal:002006
+			locus_tag	NBNAMPMI_00003
+			product	hypothetical protein
+2118	3476	CDS
+			inference	ab initio prediction:Prodigal:002006
+			locus_tag	NBNAMPMI_00004
+			product	hypothetical protein
+3460	3909	CDS
+			inference	ab initio prediction:Prodigal:002006
+			locus_tag	NBNAMPMI_00005
+			product	hypothetical protein
+3902	4282	CDS
+			inference	ab initio prediction:Prodigal:002006
+			locus_tag	NBNAMPMI_00006
+			product	hypothetical protein
+4295	4528	CDS
+			inference	ab initio prediction:Prodigal:002006
+			locus_tag	NBNAMPMI_00007
+			product	hypothetical protein
+4531	5118	CDS
+			inference	ab initio prediction:Prodigal:002006
+			locus_tag	NBNAMPMI_00008
+			product	hypothetical protein
+5192	5836	CDS
+			inference	ab initio prediction:Prodigal:002006
+			locus_tag	NBNAMPMI_00009
+			product	hypothetical protein
+5836	6672	CDS
+			inference	ab initio prediction:Prodigal:002006
+			locus_tag	NBNAMPMI_00010
+			product	hypothetical protein
+6955	7254	CDS
+			inference	ab initio prediction:Prodigal:002006
+			locus_tag	NBNAMPMI_00011
+			product	hypothetical protein
+7244	7732	CDS
+			inference	ab initio prediction:Prodigal:002006
+			locus_tag	NBNAMPMI_00012
+			product	hypothetical protein
+7729	9609	CDS
+			inference	ab initio prediction:Prodigal:002006
+			locus_tag	NBNAMPMI_00013
+			product	hypothetical protein
+9630	9872	CDS
+			inference	ab initio prediction:Prodigal:002006
+			locus_tag	NBNAMPMI_00014
+			product	hypothetical protein
+9889	10743	CDS
+			inference	ab initio prediction:Prodigal:002006
+			locus_tag	NBNAMPMI_00015
+			product	hypothetical protein
+10797	11156	CDS
+			inference	ab initio prediction:Prodigal:002006
+			locus_tag	NBNAMPMI_00016
+			product	hypothetical protein
+11107	13464	CDS
+			inference	ab initio prediction:Prodigal:002006
+			locus_tag	NBNAMPMI_00017
+			product	hypothetical protein
+13476	16289	CDS
+			inference	ab initio prediction:Prodigal:002006
+			locus_tag	NBNAMPMI_00018
+			product	hypothetical protein
+16331	16531	CDS
+			inference	ab initio prediction:Prodigal:002006
+			locus_tag	NBNAMPMI_00019
+			product	hypothetical protein
+16785	16591	CDS
+			inference	ab initio prediction:Prodigal:002006
+			locus_tag	NBNAMPMI_00020
+			product	hypothetical protein
+18523	17306	CDS
+			gene	Int-Tn
+			inference	ab initio prediction:Prodigal:002006
+			inference	similar to AA sequence:UniProtKB:P22886
+			locus_tag	NBNAMPMI_00021
+			product	Transposase from transposon Tn916
+18808	18605	CDS
+			inference	ab initio prediction:Prodigal:002006
+			locus_tag	NBNAMPMI_00022
+			product	hypothetical protein
+19499	19269	CDS
+			inference	ab initio prediction:Prodigal:002006
+			locus_tag	NBNAMPMI_00023
+			product	hypothetical protein
+19855	19496	CDS
+			inference	ab initio prediction:Prodigal:002006
+			locus_tag	NBNAMPMI_00024
+			product	hypothetical protein
+20063	19875	CDS
+			inference	ab initio prediction:Prodigal:002006
+			locus_tag	NBNAMPMI_00025
+			product	hypothetical protein
+20423	20776	CDS
+			inference	ab initio prediction:Prodigal:002006
+			locus_tag	NBNAMPMI_00026
+			product	hypothetical protein
+23041	21122	CDS
+			gene	tet(M)
+			inference	ab initio prediction:Prodigal:002006
+			inference	similar to AA sequence:BARRGD:NG_048217.1
+			locus_tag	NBNAMPMI_00027
+			product	tetracycline resistance ribosomal protection protein Tet(M)
+24350	23418	CDS
+			inference	ab initio prediction:Prodigal:002006
+			locus_tag	NBNAMPMI_00028
+			product	hypothetical protein
+25348	24347	CDS
+			inference	ab initio prediction:Prodigal:002006
+			locus_tag	NBNAMPMI_00029
+			product	hypothetical protein
+27456	25345	CDS
+			inference	ab initio prediction:Prodigal:002006
+			locus_tag	NBNAMPMI_00030
+			product	hypothetical protein
+29972	27525	CDS
+			inference	ab initio prediction:Prodigal:002006
+			locus_tag	NBNAMPMI_00031
+			product	hypothetical protein
+30462	29956	CDS
+			inference	ab initio prediction:Prodigal:002006
+			locus_tag	NBNAMPMI_00032
+			product	hypothetical protein
+30934	30437	CDS
+			inference	ab initio prediction:Prodigal:002006
+			locus_tag	NBNAMPMI_00033
+			product	hypothetical protein
+31272	31051	CDS
+			inference	ab initio prediction:Prodigal:002006
+			locus_tag	NBNAMPMI_00034
+			product	hypothetical protein
+32520	31315	CDS
+			inference	ab initio prediction:Prodigal:002006
+			locus_tag	NBNAMPMI_00035
+			product	hypothetical protein
+34083	32698	CDS
+			inference	ab initio prediction:Prodigal:002006
+			locus_tag	NBNAMPMI_00036
+			product	hypothetical protein
+34498	34112	CDS
+			inference	ab initio prediction:Prodigal:002006
+			locus_tag	NBNAMPMI_00037
+			product	hypothetical protein
+34828	34514	CDS
+			inference	ab initio prediction:Prodigal:002006
+			locus_tag	NBNAMPMI_00038
+			product	hypothetical protein
+35240	35998	CDS
+			db_xref	COG:COG1136
+			gene	yxdL
+			inference	ab initio prediction:Prodigal:002006
+			inference	similar to AA sequence:UniProtKB:P42423
+			locus_tag	NBNAMPMI_00039
+			product	ABC transporter ATP-binding protein YxdL
+36016	37332	CDS
+			inference	ab initio prediction:Prodigal:002006
+			locus_tag	NBNAMPMI_00040
+			product	hypothetical protein
+37763	38173	CDS
+			inference	ab initio prediction:Prodigal:002006
+			locus_tag	NBNAMPMI_00041
+			product	hypothetical protein
+38206	44307	CDS
+			inference	ab initio prediction:Prodigal:002006
+			locus_tag	NBNAMPMI_00042
+			product	hypothetical protein
+44382	44666	CDS
+			inference	ab initio prediction:Prodigal:002006
+			locus_tag	NBNAMPMI_00043
+			product	hypothetical protein
+45187	44990	CDS
+			inference	ab initio prediction:Prodigal:002006
+			locus_tag	NBNAMPMI_00044
+			product	hypothetical protein
+45347	45988	CDS
+			inference	ab initio prediction:Prodigal:002006
+			locus_tag	NBNAMPMI_00045
+			product	hypothetical protein
+45998	47083	CDS
+			inference	ab initio prediction:Prodigal:002006
+			locus_tag	NBNAMPMI_00046
+			product	hypothetical protein
+47134	47367	CDS
+			inference	ab initio prediction:Prodigal:002006
+			locus_tag	NBNAMPMI_00047
+			product	hypothetical protein
+47364	47747	CDS
+			inference	ab initio prediction:Prodigal:002006
+			locus_tag	NBNAMPMI_00048
+			product	hypothetical protein
+47785	48057	CDS
+			inference	ab initio prediction:Prodigal:002006
+			locus_tag	NBNAMPMI_00049
+			product	hypothetical protein
+48125	48601	CDS
+			db_xref	COG:COG1396
+			gene	pezA_1
+			inference	ab initio prediction:Prodigal:002006
+			inference	similar to AA sequence:UniProtKB:Q97QZ2
+			locus_tag	NBNAMPMI_00050
+			product	Antitoxin PezA
+48601	49359	CDS
+			EC_number	2.7.1.176
+			gene	pezT_1
+			inference	ab initio prediction:Prodigal:002006
+			inference	similar to AA sequence:UniProtKB:Q97QZ1
+			locus_tag	NBNAMPMI_00051
+			product	Toxin PezT
+49835	50623	CDS
+			inference	ab initio prediction:Prodigal:002006
+			locus_tag	NBNAMPMI_00052
+			product	hypothetical protein
+50862	51110	CDS
+			inference	ab initio prediction:Prodigal:002006
+			locus_tag	NBNAMPMI_00053
+			product	hypothetical protein
+51281	51931	CDS
+			EC_number	2.3.1.28
+			gene	cat
+			inference	ab initio prediction:Prodigal:002006
+			inference	similar to AA sequence:UniProtKB:P00485
+			locus_tag	NBNAMPMI_00054
+			product	Chloramphenicol acetyltransferase
+52666	52442	CDS
+			inference	ab initio prediction:Prodigal:002006
+			locus_tag	NBNAMPMI_00055
+			product	hypothetical protein
+53731	52796	CDS
+			inference	ab initio prediction:Prodigal:002006
+			locus_tag	NBNAMPMI_00056
+			product	hypothetical protein
+54016	54753	CDS
+			EC_number	3.2.1.-
+			db_xref	COG:COG0366
+			gene	bbmA
+			inference	ab initio prediction:Prodigal:002006
+			inference	similar to AA sequence:UniProtKB:Q9R9H8
+			locus_tag	NBNAMPMI_00057
+			product	Intracellular maltogenic amylase
+54832	55476	CDS
+			inference	ab initio prediction:Prodigal:002006
+			locus_tag	NBNAMPMI_00058
+			product	hypothetical protein
+55641	56228	CDS
+			db_xref	COG:COG1396
+			gene	pezA_2
+			inference	ab initio prediction:Prodigal:002006
+			inference	similar to AA sequence:UniProtKB:Q97QZ2
+			locus_tag	NBNAMPMI_00059
+			product	Antitoxin PezA
+56228	56998	CDS
+			EC_number	2.7.1.176
+			gene	pezT_2
+			inference	ab initio prediction:Prodigal:002006
+			inference	similar to AA sequence:UniProtKB:Q97QZ1
+			locus_tag	NBNAMPMI_00060
+			product	Toxin PezT
+57222	57938	CDS
+			inference	ab initio prediction:Prodigal:002006
+			locus_tag	NBNAMPMI_00061
+			product	hypothetical protein
+57941	59356	CDS
+			EC_number	2.7.7.7
+			gene	dinB
+			inference	ab initio prediction:Prodigal:002006
+			inference	protein motif:HAMAP:MF_01113
+			locus_tag	NBNAMPMI_00062
+			product	DNA polymerase IV
+59356	59718	CDS
+			inference	ab initio prediction:Prodigal:002006
+			locus_tag	NBNAMPMI_00063
+			product	hypothetical protein
+59708	59998	CDS
+			inference	ab initio prediction:Prodigal:002006
+			locus_tag	NBNAMPMI_00064
+			product	hypothetical protein
+60293	60649	CDS
+			inference	ab initio prediction:Prodigal:002006
+			locus_tag	NBNAMPMI_00065
+			product	hypothetical protein
+60654	61019	CDS
+			inference	ab initio prediction:Prodigal:002006
+			locus_tag	NBNAMPMI_00066
+			product	hypothetical protein
+61006	62835	CDS
+			inference	ab initio prediction:Prodigal:002006
+			locus_tag	NBNAMPMI_00067
+			product	hypothetical protein
+62939	63166	CDS
+			inference	ab initio prediction:Prodigal:002006
+			locus_tag	NBNAMPMI_00068
+			product	hypothetical protein
+63397	63666	CDS
+			inference	ab initio prediction:Prodigal:002006
+			locus_tag	NBNAMPMI_00069
+			product	hypothetical protein
+63751	65259	CDS
+			gene	xerC
+			inference	ab initio prediction:Prodigal:002006
+			inference	protein motif:HAMAP:MF_01808
+			locus_tag	NBNAMPMI_00070
+			product	Tyrosine recombinase XerC
+65341	66192	CDS
+			db_xref	COG:COG1161
+			gene	rbgA
+			inference	ab initio prediction:Prodigal:002006
+			inference	similar to AA sequence:UniProtKB:O31743
+			locus_tag	NBNAMPMI_00071
+			product	Ribosome biogenesis GTPase A

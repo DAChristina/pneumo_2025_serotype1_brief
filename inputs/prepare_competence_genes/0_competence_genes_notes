@@ -1,0 +1,17 @@
+# competence genes are based on TIGR4 strain (NCBI RefSeq: GCF_000273445.1, GenBank: GCA_000273445.1) according to this paper:
+https://www.frontiersin.org/journals/microbiology/articles/10.3389/fmicb.2022.960994/full
+https://www.ncbi.nlm.nih.gov/datasets/genome/GCF_000273445.1/
+
+but I also prepare the reference sequence from R6 (NCBI RefSeq: GCF_000007045.1, GenBank: GCA_000007045.1)
+https://www.ncbi.nlm.nih.gov/datasets/genome/GCF_000007045.1/
+
+
+Too lazy to conduct awk or perl, I manually copy genes & aa related to competence: coiA, comAB, comCDE to one file.
+TIGR4 >lcl|NZ_AKVY
+R6 >lcl|NC
+
+
+# generate headers
+grep "^>" /home/ron/pneumo_2025_serotype1_brief_report/inputs/prepare_competence_genes/competence_nt.fasta | sed 's/^>//' > /home/ron/pneumo_2025_serotype1_brief_report/inputs/prepare_competence_genes/competence_headers_nt.txt
+
+grep "^>" /home/ron/pneumo_2025_serotype1_brief_report/inputs/prepare_competence_genes/competence_aa.fasta | sed 's/^>//' > /home/ron/pneumo_2025_serotype1_brief_report/inputs/prepare_competence_genes/competence_headers_aa.txt

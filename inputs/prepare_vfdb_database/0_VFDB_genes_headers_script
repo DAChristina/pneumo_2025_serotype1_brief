@@ -1,0 +1,3 @@
+grep "^>" /home/ron/pneumo_2025_serotype1_brief_report/inputs/prepare_vfdb_database/VFDB_setA_nt_streptococcus_only.fasta | sed 's/^>//' > /home/ron/pneumo_2025_serotype1_brief_report/inputs/prepare_vfdb_database/VFDB_setA_compiled_headers_nt.txt
+
+grep "^>" /home/ron/pneumo_2025_serotype1_brief_report/inputs/prepare_vfdb_database/VFDB_setA_pro_streptococcus_only.fasta | sed 's/^>//' > /home/ron/pneumo_2025_serotype1_brief_report/inputs/prepare_vfdb_database/VFDB_setA_compiled_headers_pro.txt
