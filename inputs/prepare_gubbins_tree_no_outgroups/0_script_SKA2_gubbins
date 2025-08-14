@@ -12,3 +12,4 @@ run_gubbins.py \
     --prefix GPSC2 GPSC2.aln
 
 # I manually move SKA2 & gubbins output to ../outputs
+

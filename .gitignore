@@ -22,5 +22,6 @@ inst/web
 raw_data/
 inputs/prepare_gubbins_tree_no_outgroups/old/
 renv/
+report/
 outputs/
 Rplots.pdf
